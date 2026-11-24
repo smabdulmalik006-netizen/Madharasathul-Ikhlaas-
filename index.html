@@ -7,64 +7,64 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
   body{background:#f5f5f5;padding-bottom:80px}
-  .banner{background:#3a3a3a;color:white;display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
-  .banner .arabic{font-size:28px;font-weight:bold}
-  .banner .english{font-size:15px;letter-spacing:1.5px;font-weight:bold;margin-top:4px}
-  .logo-box{width:68px;height:68px;background:white;display:flex;align-items:center;justify-content:center;border-radius:0;overflow:hidden;flex-shrink:0}
-  .logo-box img{width:100%;height:100%;object-fit:cover}
-  .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:10px 14px}
+  /* BANNER - UNGA LOGO MATTUM - CENTER-LA AZHAGAA */
+  .banner{width:100%;height:150px;background:#3a3a3a;display:flex;align-items:center;justify-content:center}
+  .banner img{height:130px;width:auto;object-fit:contain}
+  .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:12px 14px;box-shadow:0 1px 5px #ddd}
   .search input{border:none;outline:none;flex:1;font-size:15px;margin-left:8px}
-  .live-btn{margin:0 12px 12px;background:#e53935;color:white;text-align:center;padding:13px;border-radius:12px;font-weight:bold;font-size:16px}
+  .live-btn{margin:0 12px 12px;background:#e53935;color:white;text-align:center;padding:14px;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
   .list{padding:0 12px 20px}
-  .card{background:white;border-radius:14px;display:flex;gap:12px;padding:12px;margin-bottom:12px;align-items:center}
-
-  /* BOOK COVER - Image illa, CSS Cover - Eppovum Varum! */
-  .book-cover{width:70px;height:95px;border-radius:8px;flex-shrink:0;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;font-weight:bold;font-size:11px;line-height:1.3}
-  .c1{background:linear-gradient(135deg,#4a6741,#2e4a2a)} /* Seerah - Green */
-  .c2{background:linear-gradient(135deg,#1a73e8,#0d47a1)} /* Hisnul - Blue */
-  .c3{background:linear-gradient(135deg,#8e24aa,#4a148c)} /* Tajweed - Purple */
-  .c4{background:linear-gradient(135deg,#e65100,#bf360c)} /* Yassarnal - Orange */
-
+  .card{background:white;border-radius:14px;display:flex;gap:12px;padding:12px;margin-bottom:12px;align-items:center;cursor:pointer;box-shadow:0 1px 5px #ddd}
+  /* REAL BOOK COVER - SAMPLE-LA IRUKKURA MAADHIRI */
+  .book-img{width:70px;height:95px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:0 2px 6px #aaa}
   .card h3{font-size:16px;margin-bottom:4px}
-  .card p{font-size:13px;color:#666;line-height:1.4}
-  .badge{font-size:11px;background:#e8f5e9;color:#2e7d32;padding:3px 7px;border-radius:10px;display:inline-block;margin-top:6px}
+  .card p{font-size:13px;color:#666}
   .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee}
-  .bottom-nav div{text-align:center;font-size:12px;color:#555}
+  .bottom-nav div{text-align:center;font-size:12px;color:#555;cursor:pointer}
   .bottom-nav .active{color:#1a73e8;font-weight:bold}
 </style>
 </head>
 <body>
 
-<div class="banner">
-  <div><div class="arabic">مدرسة الإخلاص</div><div class="english">MADHARASATHUL IKHLAAS</div></div>
-  <!-- LOGO FIX - logo.jpg nu maathiten -->
-  <div class="logo-box"><img src="logo.jpg" alt="Logo"></div>
-</div>
+<div class="banner"><img src="logo.jpg"></div>
 
-<div class="search">🔍 <input placeholder="Search books..."></div>
-<div class="live-btn">🔴 LIVE CLASS - Join Now</div>
+<div class="search">🔍 <input id="searchInput" onkeyup="searchBooks()" placeholder="Search books..."></div>
+<div class="live-btn" onclick="openLive()">📹 LIVE CLASS - Join Now</div>
 
-<div class="list">
-  <div class="card">
-    <div class="book-cover c1">Ar-Raheeq<br>Al-Makhtum<br><span style="font-size:20px;margin-top:4px">📖</span></div>
-    <div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah of Prophet Muhammad ﷺ - Complete Biography</p><span class="badge">Seerah</span></div>
+<div class="list" id="bookList">
+  <div class="card" onclick="openBook('hisnul-muslim-dua-book.pdf')">
+    <img class="book-img" src="ar-raheeq.jpg">
+    <div><h3>Ar-Raheeq Al-Makhtum</h3><p>The Sealed Nectar • Seerah</p></div>
   </div>
-  <div class="card">
-    <div class="book-cover c2">Hisnul<br>Muslim<br><span style="font-size:20px;margin-top:4px">🤲</span></div>
-    <div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim - Daily Duas & Azkar</p><span class="badge">Duas</span></div>
+  <div class="card" onclick="openBook('hisnul-muslim-dua-book.pdf')">
+    <img class="book-img" src="hisnul.jpg">
+    <div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim • Duas</p></div>
   </div>
-  <div class="card">
-    <div class="book-cover c3">Tajweed<br><span style="font-size:20px;margin-top:4px">🎙️</span></div>
-    <div><h3>Tajweed</h3><p>Learn Quran Pronunciation with Tajweed Rules</p><span class="badge">Quran</span></div>
+  <div class="card" onclick="openBook('tajweed-rules.pdf')">
+    <img class="book-img" src="tajweed.jpg">
+    <div><h3>Tajweed</h3><p>Quran Recitation Rules • Tajweed</p></div>
   </div>
-  <div class="card">
-    <div class="book-cover c4">Yassarnal<br>Quran<br><span style="font-size:20px;margin-top:4px">📗</span></div>
-    <div><h3>Yassarnal Quran</h3><p>Easy Quran Learning for Beginners</p><span class="badge">Learning</span></div>
+  <div class="card" onclick="openBook('yassarnal-quran-1.pdf')">
+    <img class="book-img" src="yassarnal.jpg">
+    <div><h3>Yassarnal Quran</h3><p>Easy Quran Learning • Level 1</p></div>
   </div>
 </div>
 
 <div class="bottom-nav">
-  <div class="active">🏠<br>Home</div><div>📚<br>Books</div><div>🔴<br>Live</div><div>👤<br>Profile</div>
+  <div class="active" onclick="location.reload()">🏠<br>Home</div>
+  <div onclick="document.getElementById('searchInput').focus()">📚<br>Books</div>
+  <div onclick="openLive()">🔴<br>Live</div>
+  <div onclick="alert('Profile Coming Soon!')">👤<br>Profile</div>
 </div>
+
+<script>
+  function searchBooks(){
+    let v=document.getElementById('searchInput').value.toLowerCase();
+    let cards=document.getElementsByClassName('card');
+    for(let i=0;i<cards.length;i++){ cards[i].style.display=cards[i].innerText.toLowerCase().includes(v)?"flex":"none"; }
+  }
+  function openBook(f){ window.open(f,'_blank'); }
+  function openLive(){ window.open('https://youtube.com/@yourchannel','_blank'); }
+</script>
 </body>
 </html>
