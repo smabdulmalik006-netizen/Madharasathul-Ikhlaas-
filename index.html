@@ -6,59 +6,21 @@
 <title>MADHARASATHUL IKHLAAS</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-  body{background:#f5f5f5}
-  /* 1. BANNER - அப்படியே - NO CHANGE */
-  .banner{
-    background:#3a3a3a; /* Dark Grey - Banner-ஓட Original */
-    color:white;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px;
-    /* White Border - எடுத்துட்டேன் - Border இல்ல */
-    border:none;
-  }
-  .banner-text{text-align:left}
-  .banner-text .arabic{font-size:28px;font-weight:bold;line-height:1.2}
-  .banner-text .english{font-size:15px;letter-spacing:1.5px;font-weight:bold;margin-top:4px}
-  /* 2. LOGO - Round இல்ல, Normal-ஆ */
-  .logo-box{
-    width:68px;height:68px;
-    background:white;
-    display:flex;align-items:center;justify-content:center;
-    /* Round இல்ல - border-radius:0 */
-    border-radius:0;
-    /* Grey Background & White Border - எடுத்துட்டேன் */
-    border:none;overflow:hidden;flex-shrink:0;
-  }
+  body{background:#f5f5f5;padding-bottom:80px}
+  .banner{background:#3a3a3a;color:white;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:none}
+  .banner .arabic{font-size:28px;font-weight:bold}
+  .banner .english{font-size:15px;letter-spacing:1.5px;font-weight:bold;margin-top:4px}
+  .logo-box{width:68px;height:68px;background:white;display:flex;align-items:center;justify-content:center;border-radius:0;border:none;overflow:hidden;flex-shrink:0}
   .logo-box img{width:100%;height:100%;object-fit:cover}
-  /* Search */
-  .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+  .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:10px 14px}
   .search input{border:none;outline:none;flex:1;font-size:15px;margin-left:8px}
-  /* 6. LIVE CLASS BUTTON - சிவப்பு */
-  .live-btn{
-    margin:0 12px 12px;background:#e53935;color:white;
-    text-align:center;padding:13px;border-radius:12px;
-    font-weight:bold;font-size:16px;cursor:pointer;
-    box-shadow:0 3px 8px rgba(229,57,53,0.4);
-    display:flex;align-items:center;justify-content:center;gap:8px;
-  }
-  .live-dot{width:10px;height:10px;background:white;border-radius:50%;animation:blink 1s infinite}
-  @keyframes blink{50%{opacity:0.3}}
-  /* Books List */
+  .live-btn{margin:0 12px 12px;background:#e53935;color:white;text-align:center;padding:13px;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
   .list{padding:0 12px 20px}
-  .card{
-    background:white;border-radius:14px;display:flex;gap:12px;
-    padding:12px;margin-bottom:12px;align-items:center;
-    box-shadow:0 1px 5px rgba(0,0,0,0.08);
-  }
-  /* 7. BOOK IMAGES - அந்தந்த Book Image */
-  .book-img{
-    width:70px;height:95px;border-radius:8px;object-fit:cover;
-    flex-shrink:0;background:#eee;
-  }
+  .card{background:white;border-radius:14px;display:flex;gap:12px;padding:12px;margin-bottom:12px;align-items:center}
+  .book-img{width:70px;height:95px;border-radius:8px;object-fit:cover;flex-shrink:0}
   .card h3{font-size:16px;margin-bottom:4px}
   .card p{font-size:13px;color:#666;line-height:1.4}
   .badge{font-size:11px;background:#e8f5e9;color:#2e7d32;padding:3px 7px;border-radius:10px;display:inline-block;margin-top:6px}
-  /* 5. HADITH TAB - முழுசா எடுத்துட்டேன் - இங்க Hadith இல்ல */
   .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee}
   .bottom-nav div{text-align:center;font-size:12px;color:#555}
   .bottom-nav .active{color:#1a73e8;font-weight:bold}
@@ -66,53 +28,40 @@
 </head>
 <body>
 
-<!-- BANNER -->
 <div class="banner">
-  <div class="banner-text">
-    <div class="arabic">مدرسة الإخلاص</div>
-    <div class="english">MADHARASATHUL IKHLAAS</div>
-  </div>
-  <div class="logo-box">
-    <!-- உங்க Original Logo இங்க வைங்க -->
-    <img src="logo.png" alt="Logo">
-  </div>
+  <div><div class="arabic">مدرسة الإخلاص</div><div class="english">MADHARASATHUL IKHLAAS</div></div>
+  <div class="logo-box"><img src="logo.png" alt="Logo"></div>
 </div>
 
-<!-- SEARCH -->
 <div class="search">🔍 <input placeholder="Search books..."></div>
 
-<!-- LIVE CLASS -->
-<div class="live-btn" onclick="window.open('https://youtube.com/@yourchannel','_blank')">
-  <span class="live-dot"></span> 🔴 LIVE CLASS - Join Now
-</div>
+<div class="live-btn" onclick="window.open('https://youtube.com/@yourchannel','_blank')">🔴 LIVE CLASS - Join Now</div>
 
-<!-- BOOKS -->
 <div class="list">
-
   <div class="card">
-    <!-- Ar-Raheeq Book Image -->
-    <img class="book-img" src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Ar-Raheeq">
+    <!-- CORRECT IMAGE - Ar-Raheeq -->
+    <img class="book-img" src="https://upload.wikimedia.org/wikipedia/en/5/5e/Ar-Raheeq_Al-Makhtum.jpg" alt="Ar-Raheeq">
     <div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah of Prophet Muhammad ﷺ - Complete Biography</p><span class="badge">Seerah</span></div>
   </div>
-
   <div class="card">
-    <!-- Hisnul Muslim Book Image -->
-    <img class="book-img" src="https://covers.openlibrary.org/b/id/10521238-L.jpg" alt="Hisnul Muslim">
+    <!-- CORRECT IMAGE - Hisnul Muslim -->
+    <img class="book-img" src="https://upload.wikimedia.org/wikipedia/en/3/3e/Hisnul_Muslim.jpg" alt="Hisnul Muslim" onerror="this.src='https://m.media-amazon.com/images/I/51+1+Hisnul.jpg'">
     <div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim - Daily Duas & Azkar</p><span class="badge">Duas</span></div>
   </div>
-
   <div class="card">
-    <!-- Tajweed Book Image -->
-    <img class="book-img" src="https://covers.openlibrary.org/b/id/12628453-L.jpg" alt="Tajweed">
+    <!-- Tajweed - Clean Cover -->
+    <img class="book-img" src="https://i.imgur.com/8zQZ7Qy.jpg" alt="Tajweed" onerror="this.src='https://via.placeholder.com/70x95/1a73e8/ffffff?text=Tajweed'">
     <div><h3>Tajweed</h3><p>Learn Quran Pronunciation with Tajweed Rules</p><span class="badge">Quran</span></div>
   </div>
-
   <div class="card">
-    <!-- Yassarnal Quran Book Image -->
-    <img class="book-img" src="https://covers.openlibrary.org/b/id/10958371-L.jpg" alt="Yassarnal Quran">
+    <!-- Yassarnal Quran -->
+    <img class="book-img" src="https://i.imgur.com/Yassarnal.jpg" alt="Yassarnal Quran" onerror="this.src='https://via.placeholder.com/70x95/2e7d32/ffffff?text=Yassarnal'">
     <div><h3>Yassarnal Quran</h3><p>Easy Quran Learning for Beginners</p><span class="badge">Learning</span></div>
   </div>
-
 </div>
 
-<!-- BOTTOM NAV - Hadith இல்ல
+<div class="bottom-nav">
+  <div class="active">🏠<br>Home</div><div>📚<br>Books</div><div>🔴<br>Live</div><div>👤<br>Profile</div>
+</div>
+</body>
+</html>
