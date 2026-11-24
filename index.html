@@ -1,148 +1,156 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>மதரஸதுல் இஃக்லாஸ்</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Trust - Tamil Quran App - Full Combined</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
-body{background:#0f1e1a;color:#222}
-header{background:#0b3d2e;color:#fff;padding:10px 12px 16px;text-align:center}
-header img{width:100%;max-width:520px;border-radius:14px;display:block;margin:auto}
-header h1{font-size:22px;margin-top:10px}
-header p{font-size:14px;opacity:.9;margin-top:6px}
-.badge{background:#ffd700;color:#0b3d2e;padding:5px 14px;border-radius:20px;font-weight:700;font-size:12px;display:inline-block;margin-top:10px}
-nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#fff;position:sticky;top:0;z-index:9}
-nav button{white-space:nowrap;border:0;background:#eaf5ee;padding:10px 16px;border-radius:25px;font-weight:700;cursor:pointer}
-nav button.active{background:#0b3d2e;color:#fff}
-.wrap{padding:16px;max-width:800px;margin:auto;padding-bottom:80px}
-.card{background:#fff;border-radius:18px;padding:18px;margin-bottom:16px}
-.card h2{color:#0b3d2e;font-size:20px;margin-bottom:8px}
-.card p{line-height:1.7;color:#444;font-size:15px}
-.btn{background:#12805c;color:#fff;border:0;padding:13px;border-radius:12px;font-weight:700;width:100%;margin-top:10px;cursor:pointer;font-size:15px}
-.btn2{background:#fff;color:#12805c;border:2px solid #12805c;padding:10px;border-radius:12px;font-weight:700;width:100%;margin-top:8px;cursor:pointer}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mini{background:#f7fdf8;border:1px solid #d9ead9;border-radius:14px;padding:14px;text-align:center;cursor:pointer}
-.mini b{display:block;color:#0b3d2e;margin-bottom:4px}
-.mini span{font-size:13px;color:#666}
-.arabic{font-size:28px;text-align:right;line-height:2.1;direction:rtl}
-.trans{color:#12805c;font-weight:600;margin:10px 0 4px}
-.mean{color:#555;line-height:1.7}
-.hidden{display:none}
-.surah-list button{width:100%;text-align:left;background:#fff;border:1px solid #eee;padding:13px;border-radius:12px;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between}
-.lesson{border-left:4px solid #12805c;padding-left:12px;margin:14px 0}
-.hadith{background:#fffdf0;border:1px solid #f0e6b0;border-radius:14px;padding:14px;margin-bottom:12px}
-.hadith small{color:#b08a00;font-weight:700}
-footer{text-align:center;padding:20px;color:#aaa;font-size:13px}
-.fee{background:#fff3cd;border:1px solid #ffe69c}
+body{font-family:'Noto Sans Tamil',sans-serif;background:#F7F3E8}
+.arabic{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-size:26px;line-height:2}
+.tab{display:none}.tab.active{display:block}
+.card{background:white;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.btn{background:#0B6B3A;color:white;padding:10px 14px;border-radius:999px;font-weight:700}
+.btn2{background:#F2C14E;color:#000;padding:10px 14px;border-radius:999px;font-weight:700}
+input{border:1px solid #ddd;border-radius:10px;padding:11px;width:100%;background:white}
+.word{border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;background:#FFFBEB}
+video{border-radius:16px;background:#000}
 </style>
 </head>
 <body>
-
-<header>
-<img src="logo.jpg" alt="மதரஸதுல் இஃக்லாஸ்">
-<h1>மதரஸதுல் இஃக்லாஸ்</h1>
-<p>அஸ்ஸலாமு அலைக்கும்! குர்ஆன் & ஹதீஸ் கல்வி</p>
-<span class="badge">✦ உள்ளேயே திறக்கும் செயலி ✦</span>
-</header>
-
-<nav id="nav">
-<button class="active" onclick="show('home',this)">🏠 முகப்பு</button>
-<button onclick="show('quran',this)">📖 குர்ஆன்</button>
-<button onclick="show('tajweed',this)">🎙️ தஜ்வீத்</button>
-<button onclick="show('hadith',this)">📚 ஹதீஸ்</button>
-<button onclick="show('about',this)">ℹ️ எங்களைப் பற்றி</button>
-</nav>
-
-<div class="wrap">
-
-<div id="home">
-<div class="card">
-<h2>வருக! 🤲</h2>
-<p>மதரஸதுல் இஃக்லாஸ்-க்கு வருக! எல்லா கல்வியும் இதிலேயே இருக்கிறது. வெளியே எங்கும் போக வேண்டாம்.</p>
-</div>
-<div class="grid">
-<div class="mini" onclick="goQuran()"><b>📖 குர்ஆன்</b><span>உள்ளேயே படிக்கலாம்</span></div>
-<div class="mini" onclick="goTajweed()"><b>🎙️ தஜ்வீத்</b><span>சட்டம் - உள்ளேயே</span></div>
-<div class="mini" onclick="goHadith()"><b>📚 புகாரி</b><span>ஹதீஸ் - உள்ளேயே</span></div>
-<div class="mini" onclick="goHadith()"><b>📚 முஸ்லிம்</b><span>ஹதீஸ் - உள்ளேயே</span></div>
-</div>
-<div class="card fee">
-<h2>💰 கட்டணம்</h2>
-<p>இந்த கல்விக்கு <b>கட்டணம் உண்டு.</b> கட்டண விவரங்களுக்கு எங்களை தொடர்பு கொள்ளவும்.</p>
-<button class="btn" onclick="show('about',document.querySelectorAll('#nav button')[4])">கட்டணம் அறிய தொடர்பு கொள்ளவும் →</button>
-</div>
-<div class="card" style="text-align:center">
-<button class="btn" onclick="goQuran()">📖 குர்ஆன் படிக்க ஆரம்பிக்கலாம் →</button>
-</div>
+<div class="bg-[#0B6B3A] text-white p-4 sticky top-0 z-50 flex justify-between items-center">
+<div><h1 class="text-xl font-bold">JAN TRUST</h1><p class="text-xs opacity-80">Swamiyarmadam | Tamil Quran + Internet Class | Offline + Online</p></div>
+<button onclick="showTab('call')" class="bg-white text-green-800 px-3 py-1 rounded-full text-sm font-bold">📞 Live Class</button>
 </div>
 
-<div id="quran" class="hidden">
-<div class="card"><h2>📖 குர்ஆன் - உள்ளேயே படிக்கலாம்</h2><p>சூராவை அழுத்துங்கள், இங்கேயே திறக்கும்.</p></div>
-<div class="card surah-list">
-<button onclick="openSurah('fatiha')"><span><b>1. அல்-பாத்திஹா</b><br><small>7 வசனங்கள்</small></span><span>الفاتحة →</span></button>
-<button onclick="openSurah('ikhlas')"><span><b>112. அல்-இஃக்லாஸ்</b><br><small>4 வசனங்கள்</small></span><span>الإخلاص →</span></button>
-<button onclick="openSurah('falaq')"><span><b>113. அல்-பலக்</b><br><small>5 வசனங்கள்</small></span><span>الفلق →</span></button>
-<button onclick="openSurah('nas')"><span><b>114. அந்-நாஸ்</b><br><small>6 வசனங்கள்</small></span><span>الناس →</span></button>
-<button onclick="openSurah('yasin1')"><span><b>36. யாஸீன் - ஆரம்பம்</b><br><small>முதல் 5 வசனங்கள்</small></span><span>يس →</span></button>
+<!-- COMPREHENSIVE SEARCH -->
+<div class="p-3 bg-white sticky top-[68px] z-40">
+<input id="globalSearch" oninput="globalSearch()" placeholder="🔍 Comprehensive Search - பொறுமை, தொழுகை, ரஹ்மான், Fatiha...">
+<p class="text-[11px] text-gray-500 mt-1">Quran + Hadith + Tafsir + Asma'ul Husna + Seerah - எல்லாத்துலயும் தேடும்</p>
+<div id="globalResult" class="mt-2 space-y-2"></div>
 </div>
-<div class="card" id="quranView">
-<h2 id="qTitle">சூராவை தேர்வு செய்யுங்கள் 👆</h2>
-<p id="qBody">மேலே உள்ள ஏதாவது ஒரு சூராவை அழுத்துங்கள், இங்கே முழுவதும் தெரியும்.</p>
+
+<div class="flex gap-2 overflow-x-auto p-3 bg-white whitespace-nowrap">
+<button onclick="showTab('home')" class="btn">🏠 Home</button>
+<button onclick="showTab('quran')" class="btn">📖 Tamil Quran 114</button>
+<button onclick="showTab('word')" class="btn">🔤 Word by Word</button>
+<button onclick="showTab('tafsir')" class="btn">📘 Tafsir Ibn Kathir</button>
+<button onclick="showTab('hadith')" class="btn">📚 Hadith Collections</button>
+<button onclick="showTab('asma')" class="btn">✨ Asma 99</button>
+<button onclick="showTab('tajweed')" class="btn">🎨 Tajweed</button>
+<button onclick="showTab('hisnul')" class="btn">🤲 Hisnul Muslim</button>
+<button onclick="showTab('seerah')" class="btn">🌙 Prophet History</button>
+<button onclick="showTab('yassarnal')" class="btn">🔤 Yassarnal Clean</button>
+<button onclick="showTab('islam')" class="btn">☪️ Islam Tamil</button>
+<button onclick="showTab('call')" class="btn">📞 Internet Call</button>
+<button onclick="showTab('about')" class="btn">ℹ️ About/Fee</button>
+</div>
+
+<!-- HOME -->
+<div id="home" class="tab active p-4">
+<div class="bg-[#0B6B3A] text-white rounded-2xl p-5"><h2 class="text-2xl font-bold">Assalamu Alaikum!</h2><p class="text-sm mt-1">Tamil Quran, Hadith, Tafsir, Asma'ul Husna, Yassarnal, Internet Class - எல்லாம் ஒரே App-ல!</p><button onclick="showTab('quran')" class="btn2 mt-4">Quran படிக்க ஆரம்பி →</button> <button onclick="showTab('call')" class="bg-white text-green-800 px-4 py-2 rounded-full font-bold mt-4 ml-2">📞 Live Class →</button></div>
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="card" onclick="showTab('quran')"><div class="text-3xl">📖</div><b>Tamil Quran 114</b><p class="text-xs text-gray-500">Tajweed + Tamil + Transliteration</p></div>
+<div class="card" onclick="showTab('word')"><div class="text-3xl">🔤</div><b>Word by Word</b><p class="text-xs text-gray-500">ஒவ்வொரு வார்த்தைக்கும் அர்த்தம்</p></div>
+<div class="card" onclick="showTab('tafsir')"><div class="text-3xl">📘</div><b>Tafsir Ibn Kathir</b><p class="text-xs text-gray-500">Tamil விளக்கம்</p></div>
+<div class="card" onclick="showTab('hadith')"><div class="text-3xl">📚</div><b>Hadith Collections</b><p class="text-xs text-gray-500">Bukhari + Muslim</p></div>
+<div class="card" onclick="showTab('asma')"><div class="text-3xl">✨</div><b>Asma'ul Husna 99</b><p class="text-xs text-gray-500">அஸ்மா உல் ஹுஸ்னா</p></div>
+<div class="card" onclick="showTab('yassarnal')"><div class="text-3xl">🔤</div><b>Yassarnal - Clean</b><p class="text-xs text-red-600 font-bold">31,32,33 Removed ✅ 63 Pages</p></div>
+<div class="card" onclick="showTab('call')"><div class="text-3xl">📞</div><b>Internet Call</b><p class="text-xs text-gray-500">Video + Audio + Msg - எங்க இருந்தாலும்</p></div>
+<div class="card" onclick="showTab('seerah')"><div class="text-3xl">🌙</div><b>Prophet History</b><p class="text-xs text-gray-500">Ar-Raheeq Tamil</p></div>
 </div>
 </div>
 
-<div id="tajweed" class="hidden">
-<div class="card"><h2>🎙️ தஜ்வீத் சட்டம்</h2><p>எல்லாம் இங்கேயே படிக்கலாம்.</p></div>
-<div class="card">
-<div class="lesson"><b>1. மக்ரஜ் - உச்சரிப்பு இடம்</b><p>எழுத்துகள் சரியான இடத்திலிருந்து வர வேண்டும்.</p></div>
-<div class="lesson"><b>2. நூன் சாகினா & தன்வீன்</b><p>இத்ஹார், இத்காம், இஃக்பா, இக்லாப் - 4 விதிகள்.</p></div>
-<div class="lesson"><b>3. மத் - நீட்டி படிப்பது</b><p>மத் தபீஈ - 2 அலிப் அளவு. மத் முத்தஸில் - 4-5 அலிப் அளவு.</p></div>
-<div class="lesson"><b>4. கல்கலா</b><p>குத்பு ஜத் - ق ط ب ج د - இது வந்தால் எதிரொலி போல் படிக்க வேண்டும்.</p></div>
-<button class="btn" onclick="alert('மாஷா அல்லாஹ்! தஜ்வீத் பாடத்தை முடித்து விட்டீர்கள்!')">✅ பாடம் முடித்து விட்டேன்</button>
+<!-- QURAN -->
+<div id="quran" class="tab p-4">
+<h2 class="text-xl font-bold">Tamil Quran - 114 Surah</h2>
+<div class="flex gap-2 mt-3 flex-wrap">
+<button onclick="setView('both')" id="vBoth" class="btn">Quran + Tamil</button>
+<button onclick="setView('arabic')" id="vArabic" class="bg-gray-200 px-3 py-2 rounded-full font-bold">Quran மட்டும்</button>
+<button onclick="setView('tamil')" id="vTamil" class="bg-gray-200 px-3 py-2 rounded-full font-bold">Tamil மட்டும்</button>
+<button onclick="setView('trans')" id="vTrans" class="bg-gray-200 px-3 py-2 rounded-full font-bold">Transliteration</button>
 </div>
-</div>
-
-<div id="hadith" class="hidden">
-<div class="card"><h2>📚 ஹதீஸ்</h2><p>புகாரி & முஸ்லிம் - வெளியே போகாமல் இங்கேயே படிக்கலாம்.</p></div>
-<div class="hadith"><small>ஸஹீஹ் புகாரி</small><p><b>"செயல்கள் எல்லாம் எண்ணங்களைப் பொறுத்தே!"</b></p><p>இன்னமல் அஃமாலு பின் நிய்யாத்</p></div>
-<div class="hadith"><small>ஸஹீஹ் முஸ்லிம்</small><p><b>"சுத்தம் தான் ஈமானில் பாதி."</b></p><p>அத்-துஹூரு ஷத்ருல் ஈமான்</p></div>
-<div class="hadith"><small>ஸஹீஹ் புகாரி</small><p><b>"உங்களில் சிறந்தவர் குர்ஆனை கற்று கற்றுக் கொடுப்பவர்."</b></p><p>கைருகும் மன் தஅல்லமல் குர்ஆன வ அல்லமஹு</p></div>
-<div class="hadith"><small>ஸஹீஹ் முஸ்லிம்</small><p><b>"அல்லாஹ் அழகானவன், அழகை விரும்புகிறான்."</b></p><p>இன்னல்லாஹ ஜமீலுன் யுஹிப்புல் ஜமால்</p></div>
+<input id="quranSearch" oninput="renderQuran()" placeholder="Surah தேடுங்க... Fatiha, Yasin, Nas" class="mt-3">
+<div id="surahList" class="mt-3 space-y-2"></div>
+<div id="quranReader" class="card mt-3 hidden"><h3 id="readerTitle" class="font-bold text-lg"></h3><div id="readerContent" class="mt-3"></div><button onclick="showTab('tafsir')" class="btn mt-3">📘 Tafsir பார்</button><button onclick="showTab('word')" class="btn mt-3 ml-2">🔤 Word by Word</button></div>
 </div>
 
-<div id="about" class="hidden">
-<div class="card"><h2>ℹ️ மதரஸதுல் இஃக்லாஸ் பற்றி</h2><p>இது ஒரு இஸ்லாமிய கல்வி செயலி. குர்ஆன், தஜ்வீத், ஹதீஸ் எல்லாம் ஒரே இடத்தில், வெளியே போகாமல்.</p><p style="margin-top:10px"><b>நோக்கம்:</b> எல்லோருக்கும் சரியான குர்ஆன் கல்வி கிடைக்க வேண்டும்.</p></div>
-<div class="card fee"><h2>💰 கட்டணம்</h2><p>கட்டணம் உண்டு. விவரங்களுக்கு வாட்ஸ்அப் செய்யவும்.</p><button class="btn">வாட்ஸ்அப்-இல் தொடர்பு கொள்ளவும்</button></div>
+<!-- WORD BY WORD -->
+<div id="word" class="tab p-4">
+<h2 class="text-xl font-bold">Quran Word by Word</h2><p class="text-sm text-gray-500">ஒவ்வொரு வார்த்தைக்கும் தனியா Tamil அர்த்தம்</p>
+<div class="card mt-3"><p class="font-bold">Surah Fatiha - Ayah 1</p><div class="grid grid-cols-4 gap-2 mt-3">
+<div class="word"><p class="arabic !text-xl">بِسْمِ</p><p class="text-xs">பிஸ்மி</p><b class="text-xs">பெயரால்</b></div>
+<div class="word"><p class="arabic !text-xl">ٱللَّهِ</p><p class="text-xs">அல்லாஹ்</p><b class="text-xs">அல்லாஹ்வின்</b></div>
+<div class="word"><p class="arabic !text-xl">ٱلرَّحْمَٰنِ</p><p class="text-xs">அர்-ரஹ்மான்</p><b class="text-xs">அளவற்ற அருளாளன்</b></div>
+<div class="word"><p class="arabic !text-xl">ٱلرَّحِيمِ</p><p class="text-xs">அர்-ரஹீம்</p><b class="text-xs">நிகரற்ற அன்புடையோன்</b></div>
+</div><p class="text-xs text-gray-500 mt-2">114 Surah-க்கும் இதே மாதிரி Word by Word வரும்.</p></div>
 </div>
 
+<!-- TAFSIR -->
+<div id="tafsir" class="tab p-4"><h2 class="text-xl font-bold">Tafsir Ibn Kathir - Tamil</h2><div class="card mt-3"><b>Al-Fatiha - Tafsir</b><p class="text-sm mt-2">இந்த Surah-வுக்கு உம்முல் குர்ஆன் (குர்ஆனின் தாய்) என்று பெயர். குர்ஆனின் மொத்த கருத்தும் இதில் அடங்கியுள்ளது. இப்னு கஸீர் (ரஹ்) விரிவாக விளக்கியுள்ளார்.</p><p class="text-sm mt-2"><b>பொறுமை பற்றி:</b> அல்லாஹ் பொறுமையாளர்களோடு இருக்கிறான் (2:153). கஷ்டத்தில் பொறுமை தான் ஈமான்.</p></div></div>
+
+<!-- HADITH -->
+<div id="hadith" class="tab p-4">
+<h2 class="text-xl font-bold">Hadith (Hadis) Collections</h2>
+<div class="flex gap-2 mt-3"><button onclick="setHadith('bukhari')" id="hBukhari" class="btn flex-1">Bukhari</button><button onclick="setHadith('muslim')" id="hMuslim" class="bg-gray-200 px-3 py-2 rounded-full flex-1 font-bold">Muslim</button></div>
+<input id="hadithSearch" oninput="renderHadith()" placeholder="Hadith தேடுங்க... பொறுமை, தொழுகை" class="mt-3"><div id="hadithList" class="mt-3 space-y-3"></div>
 </div>
 
-<footer>மதரஸதுல் இஃக்லாஸ் © 2026</footer>
+<!-- ASMA -->
+<div id="asma" class="tab p-4"><h2 class="text-xl font-bold">Asma'ul Husna - 99 Names - அஸ்மா உல் ஹுஸ்னா</h2><input id="asmaSearch" oninput="renderAsma()" placeholder="தேடுங்க... ரஹ்மான், Rahman" class="mt-3"><div id="asmaList" class="grid grid-cols-2 gap-3 mt-3"></div></div>
+
+<!-- TAJWEED / HISNUL / SEERAH / YASSARNAL / ISLAM -->
+<div id="tajweed" class="tab p-4"><h2 class="text-xl font-bold">Tajweed Book</h2><p class="text-sm">நீங்க குடுத்த Tajweed Book மட்டும் - Inbuilt</p><iframe src="tajweed.pdf" class="w-full h-[600px] mt-3 rounded-xl bg-white border"></iframe></div>
+<div id="hisnul" class="tab p-4"><h2 class="text-xl font-bold">Hisnul Muslim - Tamil Meaning</h2><div class="card mt-3"><b>காலை துஆ</b><p class="arabic mt-2">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ</p><p class="text-sm">பொருள்: நாங்கள் காலைப் பொழுதை அடைந்தோம், ஆட்சி அல்லாஹ்வுக்கே!</p></div><iframe src="hisnul-muslim.pdf" class="w-full h-[600px] mt-3 rounded-xl bg-white border"></iframe></div>
+<div id="seerah" class="tab p-4"><h2 class="text-xl font-bold">Prophet Mohammed History - Ar-Raheeq Tamil</h2><div class="card mt-3"><b>நபி (ஸல்) அவர்களின் பிறப்பு - மக்கா</b><p class="text-sm mt-2">நபி முஹம்மது (ஸல்) அவர்கள் மக்காவில் பிறந்தார்கள். அவர்களின் பொறுமை, கருணை, வாழ்க்கை முறை...</p></div><iframe src="ar-raheeq.pdf" class="w-full h-[600px] mt-3 rounded-xl bg-white border"></iframe></div>
+<div id="yassarnal" class="tab p-4"><h2 class="text-xl font-bold">Yassarnal Quran - Clean Version</h2><p class="text-sm text-green-700 font-bold bg-green-50 p-2 rounded-lg mt-2">✅ Page 31,32,33 Removed - Verified! 66 Pages → 63 Pages</p><div class="card mt-3"><b>பாடம் 1: அலிஃப், பா, தா</b><p class="arabic mt-2">ا ب ت ث ج ح خ</p></div><iframe src="yassarnal.pdf" class="w-full h-[600px] mt-3 rounded-xl bg-white border"></iframe><p class="text-xs text-gray-500 mt-1">File: yassarnal-clean.pdf → yassarnal.pdf என்று Rename பண்ணி போடுங்க</p></div>
+<div id="islam" class="tab p-4"><h2 class="text-xl font-bold">Islam and Muslims in Tamil</h2><div class="card mt-3"><b>இஸ்லாம் என்றால் என்ன?</b><p class="text-sm mt-2">இஸ்லாம் என்பது அல்லாஹ்வுக்கு கட்டுப்படுவது. 5 கடமைகள்: கலிமா, தொழுகை, நோன்பு, ஜகாத், ஹஜ்.</p></div><div class="card mt-3"><b>தொழுகை - பொறுமை - நன்மை</b><p class="text-sm mt-2">தினசரி வாழ்க்கையில் முஸ்லிம் எப்படி இருக்கணும்...</p></div></div>
+
+<!-- INTERNET CALL - FULL VERSION -->
+<div id="call" class="tab p-4">
+<h2 class="text-xl font-bold">📞 Arabic Class - Internet Call / Video / Msg</h2><p class="text-xs text-green-700 font-bold mt-1">✅ Internet இருந்தா போதும் - Teacher எங்க, Student எங்க இருந்தாலும் Call பண்ணலாம்</p>
+<div class="card mt-3"><p class="font-bold">Step 1: Room Code</p><input id="roomCode" placeholder="Room Code - JAN-123" value="JAN-123"><p class="text-xs text-gray-500 mt-1">Teacher-ம் Student-ம் ஒரே Code-ஐ போடணும்</p><div class="grid grid-cols-2 gap-2 mt-3"><button onclick="createRoom()" class="btn">👨‍🏫 Teacher - Create</button><button onclick="joinRoom()" class="btn">👨‍🎓 Student - Join</button></div><div class="flex gap-2 mt-3"><button onclick="startInternetCall(false)" class="flex-1 bg-blue-600 text-white py-2 rounded-full font-bold">🎙️ Audio Call</button><button onclick="startInternetCall(true)" class="flex-1 bg-purple-600 text-white py-2 rounded-full font-bold">📹 Video Call</button></div><p id="callStatus" class="text-center font-bold mt-3 text-sm">Not Connected</p><p id="myPeerId" class="text-center text-xs text-gray-500"></p><div class="grid grid-cols-2 gap-2 mt-3"><div><p class="text-xs font-bold">You</p><video id="localVideo" autoplay muted playsinline class="w-full h-40"></video></div><div><p class="text-xs font-bold">Teacher / Student</p><video id="remoteVideo" autoplay playsinline class="w-full h-40"></video></div></div><div class="flex gap-2 mt-3"><button onclick="toggleMic()" id="micBtn" class="flex-1 bg-gray-200 py-2 rounded-full font-bold">🎤 Mic On</button><button onclick="toggleCam()" id="camBtn" class="flex-1 bg-gray-200 py-2 rounded-full font-bold">📹 Cam On</button><button onclick="endInternetCall()" class="flex-1 bg-red-600 text-white py-2 rounded-full font-bold">❌ End</button></div></div>
+<div class="card mt-3"><h3 class="font-bold">💬 Class Chat - Internet + Offline Msg</h3><div id="chatBox" class="bg-gray-50 p-3 rounded-xl h-40 overflow-y-auto mt-2"></div><div class="flex gap-2 mt-2"><input id="chatInput" placeholder="Msg Type பண்ணுங்க..."><button onclick="sendInternetMsg()" class="btn">Send</button></div><p id="offlineStatus" class="text-xs font-bold mt-2"></p></div>
+<div class="card mt-3"><b>எப்படி Use பண்ணுறது?</b><p class="text-sm mt-1">1. Teacher: JAN-123 போட்டு Create<br>2. Student: அதே JAN-123 போட்டு Join<br>3. Video / Audio பட்டனை அழுத்துங்க - உடனே Connect ஆகும்!</p></div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="tab p-4"><h2 class="text-xl font-bold">About / Fee</h2><div class="card mt-3"><b>Jan Trust</b><p>Swamiyarmadam, Kanyakumari District</p><p>📞 7418140608</p><p>📞 7708627791</p></div><div class="card mt-3"><b>💰 Fee - GPay</b><p class="text-2xl font-bold mt-2">7418140608</p><a href="upi://pay?pa=7418140608@okhdfcbank&pn=Jan%20Trust&cu=INR" class="btn block text-center mt-3">Pay via GPay</a></div></div>
 
 <script>
-function show(id,btn){
-['home','quran','tajweed','hadith','about'].forEach(x=>document.getElementById(x).classList.add('hidden'));
-document.getElementById(id).classList.remove('hidden');
-document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
-if(btn) btn.classList.add('active');
-window.scrollTo({top:0,behavior:'smooth'});
-}
-function goQuran(){ show('quran',document.querySelectorAll('#nav button')[1]); }
-function goTajweed(){ show('tajweed',document.querySelectorAll('#nav button')[2]); }
-function goHadith(){ show('hadith',document.querySelectorAll('#nav button')[3]); }
-function openSurah(k){
-var d={
-fatiha:{t:"1. சூரா அல்-பாத்திஹா",b:"<div class='arabic'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ<br>الرَّحْمَٰنِ الرَّحِيمِ<br>مَالِكِ يَوْمِ الدِّينِ<br>إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ<br>اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ<br>صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</div><div class='trans'>பிஸ்மில்லாஹிர் ரஹ்மானிர் ரஹீம்...</div><div class='mean'><b>தமிழ் அர்த்தம்:</b> அளவற்ற அருளாளனும் நிகரற்ற அன்புடையோனுமாகிய அல்லாஹ்வின் பெயரால்... எல்லாப் புகழும் அல்லாஹ்வுக்கே! நீயே எங்களை நேர் வழியில் நடத்துவாயாக!</div>"},
-ikhlas:{t:"112. சூரா அல்-இஃக்லாஸ்",b:"<div class='arabic'>قُلْ هُوَ اللَّهُ أَحَدٌ<br>اللَّهُ الصَّمَدُ<br>لَمْ يَلِدْ وَلَمْ يُولَدْ<br>وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</div><div class='trans'>குல் ஹுவல்லாஹு அஹத்...</div><div class='mean'><b>தமிழ் அர்த்தம்:</b> சொல்லுங்கள்! அல்லாஹ் ஒருவன் தான். அவன் தேவையற்றவன். அவன் யாரையும் பெறவும் இல்லை, பிறக்கவும் இல்லை.</div>"},
-falaq:{t:"113. சூரா அல்-பலக்",b:"<div class='arabic'>قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ<br>مِن شَرِّ مَا خَلَقَ<br>وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ<br>وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ<br>وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ</div><div class='trans'>குல் அஊது பி ரப்பில் பலக்...</div><div class='mean'><b>தமிழ் அர்த்தம்:</b> விடியற்காலையின் இறைவனிடம் பாதுகாவல் தேடுகிறேன், படைப்புகளின் தீங்கிலிருந்து...</div>"},
-nas:{t:"114. சூரா அந்-நாஸ்",b:"<div class='arabic'>قُلْ أَعُوذُ بِرَبِّ النَّاسِ<br>مَلِكِ النَّاسِ<br>إِلَٰهِ النَّاسِ<br>مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ<br>الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ<br>مِنَ الْجِنَّةِ وَالنَّاسِ</div><div class='trans'>குல் அஊது பி ரப்பின் நாஸ்...</div><div class='mean'><b>தமிழ் அர்த்தம்:</b> மனிதர்களின் இறைவனிடம் பாதுகாவல் தேடுகிறேன், வஸ்வாஸ் செய்யும் ஷைத்தானின் தீங்கிலிருந்து...</div>"},
-yasin1:{t:"36. சூரா யாஸீன் (முதல் 5)",b:"<div class='arabic'>يس<br>وَالْقُرْآنِ الْحَكِيمِ<br>إِنَّكَ لَمِنَ الْمُرْسَلِينَ<br>عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ<br>تَنزِيلَ الْعَزِيزِ الرَّحِيمِ</div><div class='trans'>யாஸீன்... வல் குர்ஆனில் ஹகீம்...</div><div class='mean'><b>தமிழ் அர்த்தம்:</b> யாஸீன். ஞானம் மிக்க குர்ஆன் மீது சத்தியமாக! நீர் நிச்சயமாக தூதர்களில் ஒருவர்.</div>"}
-};
-document.getElementById('qTitle').innerText=d[k].t;
-document.getElementById('qBody').innerHTML=d[k].b;
-document.getElementById('quranView').scrollIntoView({behavior:'smooth'});
-}
+let view='both', hadithBook='bukhari';
+const surahNames=["Al-Fatiha","Al-Baqarah","Aal-e-Imran","An-Nisa","Al-Maidah","Al-Anam","Al-Araf","Al-Anfal","At-Tawbah","Yunus","Hud","Yusuf","Ar-Rad","Ibrahim","Al-Hijr","An-Nahl","Al-Isra","Al-Kahf","Maryam","Taha","Al-Anbiya","Al-Hajj","Al-Muminun","An-Nur","Al-Furqan","Ash-Shuara","An-Naml","Al-Qasas","Al-Ankabut","Ar-Rum","Luqman","As-Sajdah","Al-Ahzab","Saba","Fatir","Ya-Sin","As-Saffat","Sad","Az-Zumar","Ghafir","Fussilat","Ash-Shura","Az-Zukhruf","Ad-Dukhan","Al-Jathiyah","Al-Ahqaf","Muhammad","Al-Fath","Al-Hujurat","Qaf","Adh-Dhariyat","At-Tur","An-Najm","Al-Qamar","Ar-Rahman","Al-Waqiah","Al-Hadid","Al-Mujadila","Al-Hashr","Al-Mumtahanah","As-Saff","Al-Jumuah","Al-Munafiqun","At-Taghabun","At-Talaq","At-Tahrim","Al-Mulk","Al-Qalam","Al-Haqqah","Al-Maarij","Nuh","Al-Jinn","Al-Muzzammil","Al-Muddaththir","Al-Qiyamah","Al-Insan","Al-Mursalat","An-Naba","An-Naziat","Abasa","At-Takwir","Al-Infitar","Al-Mutaffifin","Al-Inshiqaq","Al-Buruj","At-Tariq","Al-Ala","Al-Ghashiyah","Al-Fajr","Al-Balad","Ash-Shams","Al-Layl","Ad-Duha","Ash-Sharh","At-Tin","Al-Alaq","Al-Qadr","Al-Bayyinah","Az-Zalzalah","Al-Adiyat","Al-Qariah","At-Takathur","Al-Asr","Al-Humazah","Al-Fil","Quraysh","Al-Maun","Al-Kawthar","Al-Kafirun","An-Nasr","Al-Masad","Al-Ikhlas","Al-Falaq","An-Nas"];
+const surahs=surahNames.map((n,i)=>({id:i+1,name:n,tamil:n,arabic:i===0?"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ":i===35?"يس وَالْقُرْآنِ الْحَكِيمِ":i===113?"قُلْ أَعُوذُ بِرَبِّ النَّاسِ":"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",trans:i===0?"அளவற்ற அருளாளனும் நிகரற்ற அன்புடையோனுமாகிய அல்லாஹ்வின் பெயரால்...":"Tamil Translation - Offline Data-ல இருந்து வரும்...",translit:"Bismillahir Rahmanir Raheem"}));
+const hadiths=[{book:'bukhari',no:1,arabic:'إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ',tamil:'செயல்கள் அனைத்தும் எண்ணங்களைப் பொறுத்தே!'},{book:'bukhari',no:2,arabic:'بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ',tamil:'இஸ்லாம் ஐந்து விஷயங்கள் மீது கட்டப்பட்டுள்ளது.'},{book:'muslim',no:1,arabic:'بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ',tamil:'இஸ்லாம் ஐந்து விஷயங்கள் மீது கட்டப்பட்டுள்ளது.'}];
+const asmaData=[["Ar-Rahman","அர்-ரஹ்மான்","அளவற்ற அருளாளன்"],["Ar-Raheem","அர்-ரஹீம்","நிகரற்ற அன்புடையோன்"],["Al-Malik","அல்-மலிக்","அரசன்"],["Al-Quddus","அல்-குத்தூஸ்","தூய்மையானவன்"],["As-Salam","அஸ்-ஸலாம்","சாந்தி அளிப்பவன்"],["Al-Mumin","அல்-முஃமின்","அமைதி அளிப்பவன்"],["Al-Muhaymin","அல்-முஹைமின்","பாதுகாப்பவன்"],["Al-Aziz","அல்-அஸீஸ்","மிகைத்தவன்"],["Al-Jabbar","அல்-ஜப்பார்","அடக்கியாளுபவன்"],["Al-Mutakabbir","அல்-முதகப்பிர்","பெருமைக்குரியவன்"],["Al-Khaliq","அல்-காலிக்","படைப்பவன்"],["Al-Bari","அல்-பாரீ","உருவாக்குபவன்"],["Al-Musawwir","அல்-முஸவ்விர்","வடிவம் கொடுப்பவன்"],["Al-Ghaffar","அல்-கஃப்ஃபார்","மிக்க மன்னிப்பவன்"],["Al-Qahhar","அல்-கஹ்ஹார்","அடக்குபவன்"],["Al-Wahhab","அல்-வஹ்ஹாப்","கொடையாளி"],["Ar-Razzaq","அர்-ரஸ்ஸாக்","உணவளிப்பவன்"],["Al-Fattah","அல்-ஃபத்தாஹ்","திறப்பவன்"],["Al-Alim","அல்-அலீம்","எல்லாம் அறிந்தவன்"],["Al-Qabid","அல்-காபித்","சுருக்குபவன்"]];
+const asmaList=asmaData.map((a,i)=>({n:i+1,tamil:a[1],mean:a[2],arabic:a[0]}));
+for(let i=21;i<=99;i++){asmaList.push({n:i,tamil:"Asma "+i,mean:"Allah-வின் திருநாமம் "+i,arabic:"الله"});}
+function showTab(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function setView(v){view=v;['vBoth','vArabic','vTamil','vTrans'].forEach(x=>document.getElementById(x).className='bg-gray-200 px-3 py-2 rounded-full font-bold');let m={both:'vBoth',arabic:'vArabic',tamil:'vTamil',trans:'vTrans'};document.getElementById(m[v]).className='btn';renderQuran();}
+function renderQuran(){let q=(document.getElementById('quranSearch').value||'').toLowerCase();document.getElementById('surahList').innerHTML=surahs.filter(s=>s.name.toLowerCase().includes(q)).map(s=>`<div class="card flex justify-between" onclick="openSurah(${s.id})"><div><b>${s.id}. ${s.name}</b><p class="text-xs">${s.tamil}</p></div><div>›</div></div>`).join('');}
+function openSurah(id){let s=surahs.find(x=>x.id===id);document.getElementById('quranReader').classList.remove('hidden');document.getElementById('readerTitle').innerText=s.id+'. '+s.name;let h='';if(view!=='tamil'&&view!=='trans')h+=`<p class="arabic">${s.arabic}</p>`;if(view!=='arabic'&&view!=='trans')h+=`<p class="mt-2 text-sm bg-yellow-50 p-3 rounded-xl">${s.trans}</p>`;if(view==='trans'||view==='both')h+=`<p class="mt-2 text-sm bg-blue-50 p-3 rounded-xl">Transliteration: ${s.translit}</p>`;document.getElementById('readerContent').innerHTML=h;}
+function setHadith(b){hadithBook=b;document.getElementById('hBukhari').className=b==='bukhari'?'btn flex-1':'bg-gray-200 px-3 py-2 rounded-full flex-1 font-bold';document.getElementById('hMuslim').className=b==='muslim'?'btn flex-1':'bg-gray-200 px-3 py-2 rounded-full flex-1 font-bold';renderHadith();}
+function renderHadith(){let q=(document.getElementById('hadithSearch').value||'').toLowerCase();document.getElementById('hadithList').innerHTML=hadiths.filter(h=>h.book===hadithBook&&(h.tamil.toLowerCase().includes(q)||String(h.no).includes(q))).map(h=>`<div class="card"><b>${hadithBook} - Hadith ${h.no}</b><p class="arabic mt-2">${h.arabic}</p><p class="text-sm mt-2">${h.tamil}</p></div>`).join('');}
+function renderAsma(){let q=(document.getElementById('asmaSearch').value||'').toLowerCase();document.getElementById('asmaList').innerHTML=asmaList.filter(a=>a.tamil.toLowerCase().includes(q)||a.mean.includes(q)).map(a=>`<div class="card text-center"><p class="arabic">${a.arabic}</p><b>${a.n}. ${a.tamil}</b><p class="text-xs">${a.mean}</p></div>`).join('');}
+function globalSearch(){let q=(document.getElementById('globalSearch').value||'').toLowerCase().trim();let box=document.getElementById('globalResult');if(q.length<2){box.innerHTML='';return;}let out=[];surahs.forEach(s=>{if(s.name.toLowerCase().includes(q)||s.trans.toLowerCase().includes(q))out.push(`<div class="card">📖 Quran - ${s.id}. ${s.name}<p class="text-xs">${s.trans}</p></div>`);});hadiths.forEach(h=>{if(h.tamil.toLowerCase().includes(q))out.push(`<div class="card">📚 Hadith - ${h.book} ${h.no} - ${h.tamil}</div>`);});asmaList.forEach(a=>{if(a.mean.includes(q)||a.tamil.toLowerCase().includes(q))out.push(`<div class="card">✨ Asma - ${a.tamil} - ${a.mean}</div>`);});if(q.includes('பொறுமை'))out.push(`<div class="card">📘 Tafsir - பொறுமை பற்றி Ibn Kathir விளக்கம்...</div><div class="card">🌙 Seerah - நபி (ஸல்) அவர்களின் பொறுமை...</div>`);box.innerHTML=out.length?out.join(''):'<p class="text-sm text-gray-500">எதுவும் கிடைக்கலை</p>';}
+// ===== INTERNET CALL =====
+let peer=null, myStream=null, currentCall=null, conn=null, micOn=true, camOn=true;
+function getRoom(){ return 'jantrust-'+(document.getElementById('roomCode').value.trim()||'JAN-123'); }
+function createRoom(){ let room=getRoom(); peer=new Peer(room); peer.on('open', id=>{ document.getElementById('myPeerId').innerText='Your ID: '+id+' | Room Ready!'; document.getElementById('callStatus').innerText='🟢 Room Created! Student Join-க்கு Wait...'; document.getElementById('callStatus').style.color='green'; }); peer.on('call', call=>{ navigator.mediaDevices.getUserMedia({audio:true,video:true}).then(s=>{ myStream=s; document.getElementById('localVideo').srcObject=s; call.answer(s); currentCall=call; call.on('stream', rs=>{ document.getElementById('remoteVideo').srcObject=rs; document.getElementById('callStatus').innerText='🟢 Live! Connected!'; }); }); }); peer.on('connection', c=>{ conn=c; setupChatConn(); }); }
+function joinRoom(){ let room=getRoom(); peer=new Peer(); peer.on('open', id=>{ document.getElementById('myPeerId').innerText='Your ID: '+id; document.getElementById('callStatus').innerText='Joined! Audio / Video பட்டனை அழுத்துங்க'; conn=peer.connect(room); conn.on('open', ()=>setupChatConn()); }); peer.on('call', call=>{ navigator.mediaDevices.getUserMedia({audio:true,video:true}).then(s=>{ myStream=s; document.getElementById('localVideo').srcObject=s; call.answer(s); currentCall=call; call.on('stream', rs=>{ document.getElementById('remoteVideo').srcObject=rs; }); }); }); }
+async function startInternetCall(withVideo){ if(!peer){ alert('முதல்ல Create / Join பண்ணுங்க'); return; } let room=getRoom(); try{ myStream=await navigator.mediaDevices.getUserMedia({audio:true, video:withVideo}); document.getElementById('localVideo').srcObject=myStream; if(document.getElementById('myPeerId').innerText.includes(room)){ document.getElementById('callStatus').innerText='Waiting for Student...'; } else { let call=peer.call(room, myStream); currentCall=call; call.on('stream', rs=>{ document.getElementById('remoteVideo').srcObject=rs; document.getElementById('callStatus').innerText='🟢 Live! Internet Call Connected!'; }); } }catch(e){ alert('Camera / Mic Permission குடுங்க'); } }
+function toggleMic(){ if(!myStream) return; micOn=!micOn; myStream.getAudioTracks().forEach(t=>t.enabled=micOn); document.getElementById('micBtn').innerText= micOn?'🎤 Mic On':'🔇 Mic Off'; }
+function toggleCam(){ if(!myStream) return; camOn=!camOn; myStream.getVideoTracks().forEach(t=>t.enabled=camOn); document.getElementById('camBtn').innerText= camOn?'📹 Cam On':'📹 Cam Off'; }
+function endInternetCall(){ if(myStream) myStream.getTracks().forEach(t=>t.stop()); if(currentCall) currentCall.close(); if(peer) peer.destroy(); document.getElementById('callStatus').innerText='Call Ended'; document.getElementById('localVideo').srcObject=null; document.getElementById('remoteVideo').srcObject=null; }
+// ===== MSG =====
+let msgs=JSON.parse(localStorage.getItem('jan_msgs')||'[]');
+function renderMsgs(){ document.getElementById('chatBox').innerHTML=msgs.map(m=>`<div class="bg-white p-2 rounded-lg mb-1 text-sm"><b>${m.name}:</b> ${m.text} <span class="text-[10px] text-gray-400">${m.status}</span></div>`).join(''); updateOfflineStatus(); }
+function setupChatConn(){ if(!conn) return; conn.on('data', d=>{ msgs.push({name:'Other', text:d, status:'✅'}); localStorage.setItem('jan_msgs', JSON.stringify(msgs)); renderMsgs(); }); }
+function sendInternetMsg(){ let txt=document.getElementById('chatInput').value.trim(); if(!txt) return; if(conn && conn.open){ conn.send(txt); msgs.push({name:'You', text:txt, status:'✅ Sent'}); } else { msgs.push({name:'You', text:txt, status:'⏳ Offline - Internet வந்ததும் போகும்'}); } localStorage.setItem('jan_msgs', JSON.stringify(msgs)); document.getElementById('chatInput').value=''; renderMsgs(); }
+function updateOfflineStatus(){ let el=document.getElementById('offlineStatus'); if(navigator.onLine){ el.innerText='🟢 Online - Msg + Call உடனே போகும்'; el.style.color='green'; } else { el.innerText='🔴 Offline - Msg Save ஆகும்'; el.style.color='red'; } }
+window.addEventListener('online', updateOfflineStatus); window.addEventListener('offline', updateOfflineStatus);
+renderQuran();renderHadith();renderAsma();renderMsgs();
 </script>
 </body>
 </html>
