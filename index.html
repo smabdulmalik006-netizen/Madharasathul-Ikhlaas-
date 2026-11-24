@@ -1,194 +1,118 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Madharasathul Ikhlaas</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<title>MADHARASATHUL IKHLAAS</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
-body{background:#f7f5f0;color:#222;padding-bottom:90px}
-header{background:#0f5132;color:#fff;padding:14px 16px 16px;text-align:center;position:sticky;top:0;z-index:10}
-header img{width:100%;max-width:320px;height:auto;max-height:130px;object-fit:contain;background:#fff;border-radius:14px;padding:6px}
-header h1{font-size:23px;margin-top:10px}
-header p{font-size:13px;opacity:.85}
-.tabs{display:flex;gap:8px;padding:12px;overflow:auto}
-.tab{flex:1;min-width:80px;padding:10px;border-radius:999px;border:1px solid #ddd;background:#fff;cursor:pointer;font-weight:600;white-space:nowrap}
-.tab.active{background:#0f5132;color:#fff;border-color:#0f5132}
-.section{padding:0 14px;display:none}
-.section.active{display:block}
-.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 5px rgba(0,0,0,.06);cursor:pointer}
-.card img{width:52px;height:68px;object-fit:cover;border-radius:8px;background:#e8e8e8}
-.card h3{font-size:16px}
-.card p{font-size:13px;color:#666;margin-top:3px}
-.badge{background:#e8f5e9;color:#0f5132;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700}
-.list-item{background:#fff;padding:14px;border-radius:12px;margin-bottom:10px;cursor:pointer}
-.list-item b{font-size:15px}
-.list-item span{color:#666;font-size:13px;display:block;margin-top:2px}
-.detail{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px}
-.arabic{font-size:24px;line-height:2;text-align:right;direction:rtl;font-family:serif}
-.tamil{font-size:15px;line-height:1.7;margin-top:8px;color:#333}
-.back{border:0;background:#eee;padding:8px 14px;border-radius:999px;margin-bottom:12px;cursor:pointer;font-weight:600}
-.loader{text-align:center;padding:30px;color:#666}
-input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin-bottom:12px}
-.bigbtn{display:block;text-align:center;padding:14px;border-radius:12px;margin-bottom:10px;font-weight:700;text-decoration:none;color:#fff}
-#reader{position:fixed;inset:0;background:#1a1a1a;z-index:100;display:none;flex-direction:column}
-#readerTop{background:#0f5132;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
-#readerTop button{border:0;background:#fff;color:#0f5132;padding:7px 12px;border-radius:999px;font-weight:700}
-#pdfCanvasWrap{flex:1;overflow:auto;display:flex;justify-content:center;padding:12px}
-canvas{max-width:100%;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4)}
-#readerBottom{background:#fff;padding:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-#readerBottom button{flex:1;padding:10px;border:0;border-radius:10px;background:#0f5132;color:#fff;font-weight:700}
-#readerBottom button:disabled{opacity:.4}
-#callBox{position:fixed;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
-#callBox iframe{flex:1;width:100%;border:0}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+  body{background:#f5f5f5}
+  /* 1. BANNER - அப்படியே - NO CHANGE */
+  .banner{
+    background:#3a3a3a; /* Dark Grey - Banner-ஓட Original */
+    color:white;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;
+    /* White Border - எடுத்துட்டேன் - Border இல்ல */
+    border:none;
+  }
+  .banner-text{text-align:left}
+  .banner-text .arabic{font-size:28px;font-weight:bold;line-height:1.2}
+  .banner-text .english{font-size:15px;letter-spacing:1.5px;font-weight:bold;margin-top:4px}
+  /* 2. LOGO - Round இல்ல, Normal-ஆ */
+  .logo-box{
+    width:68px;height:68px;
+    background:white;
+    display:flex;align-items:center;justify-content:center;
+    /* Round இல்ல - border-radius:0 */
+    border-radius:0;
+    /* Grey Background & White Border - எடுத்துட்டேன் */
+    border:none;overflow:hidden;flex-shrink:0;
+  }
+  .logo-box img{width:100%;height:100%;object-fit:cover}
+  /* Search */
+  .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+  .search input{border:none;outline:none;flex:1;font-size:15px;margin-left:8px}
+  /* 6. LIVE CLASS BUTTON - சிவப்பு */
+  .live-btn{
+    margin:0 12px 12px;background:#e53935;color:white;
+    text-align:center;padding:13px;border-radius:12px;
+    font-weight:bold;font-size:16px;cursor:pointer;
+    box-shadow:0 3px 8px rgba(229,57,53,0.4);
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .live-dot{width:10px;height:10px;background:white;border-radius:50%;animation:blink 1s infinite}
+  @keyframes blink{50%{opacity:0.3}}
+  /* Books List */
+  .list{padding:0 12px 20px}
+  .card{
+    background:white;border-radius:14px;display:flex;gap:12px;
+    padding:12px;margin-bottom:12px;align-items:center;
+    box-shadow:0 1px 5px rgba(0,0,0,0.08);
+  }
+  /* 7. BOOK IMAGES - அந்தந்த Book Image */
+  .book-img{
+    width:70px;height:95px;border-radius:8px;object-fit:cover;
+    flex-shrink:0;background:#eee;
+  }
+  .card h3{font-size:16px;margin-bottom:4px}
+  .card p{font-size:13px;color:#666;line-height:1.4}
+  .badge{font-size:11px;background:#e8f5e9;color:#2e7d32;padding:3px 7px;border-radius:10px;display:inline-block;margin-top:6px}
+  /* 5. HADITH TAB - முழுசா எடுத்துட்டேன் - இங்க Hadith இல்ல */
+  .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee}
+  .bottom-nav div{text-align:center;font-size:12px;color:#555}
+  .bottom-nav .active{color:#1a73e8;font-weight:bold}
 </style>
 </head>
 <body>
 
-<header>
-<img src="logo.jpg" onerror="this.style.display='none'">
-<h1>Madharasathul Ikhlaas</h1>
-<p>Quran • Hadith • Books • Classes</p>
-</header>
-
-<div class="tabs">
-<button class="tab active" onclick="showTab('books',this)">📚 Books</button>
-<button class="tab" onclick="showTab('quran',this)">📖 Quran</button>
-<button class="tab" onclick="showTab('hadith',this)">📜 Hadith</button>
-<button class="tab" onclick="showTab('contact',this)">📞 Call / Msg</button>
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-text">
+    <div class="arabic">مدرسة الإخلاص</div>
+    <div class="english">MADHARASATHUL IKHLAAS</div>
+  </div>
+  <div class="logo-box">
+    <!-- உங்க Original Logo இங்க வைங்க -->
+    <img src="logo.png" alt="Logo">
+  </div>
 </div>
 
-<div id="books" class="section active">
-<div class="card" onclick="openBook('ar-raheeq.pdf','Ar-Raheeq Al-Makhtum')"><img src="logo.jpg"><div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah - Prophet ﷺ Life</p><span class="badge">Read in App</span></div></div>
-<div class="card" onclick="openBook('hisnul-muslim.pdf','Hisnul Muslim')"><img src="logo.jpg"><div><h3>Hisnul Muslim</h3><p>Daily Duas & Dhikr</p><span class="badge">Read in App</span></div></div>
-<div class="card" onclick="openBook('tajweed.pdf','Tajweed')"><img src="logo.jpg"><div><h3>Tajweed</h3><p>Quran Pronunciation Rules</p><span class="badge">Read in App</span></div></div>
-<div class="card" onclick="openBook('yassarnal.pdf','Yassarnal Quran')"><img src="logo.jpg"><div><h3>Yassarnal Quran</h3><p>Learn to Read Quran</p><span class="badge">Read in App</span></div></div>
+<!-- SEARCH -->
+<div class="search">🔍 <input placeholder="Search books..."></div>
+
+<!-- LIVE CLASS -->
+<div class="live-btn" onclick="window.open('https://youtube.com/@yourchannel','_blank')">
+  <span class="live-dot"></span> 🔴 LIVE CLASS - Join Now
 </div>
 
-<div id="quran" class="section">
-<input id="qSearch" placeholder="Surah தேடுங்க... e.g. Yasin" oninput="filterQuran()">
-<div id="quranList"><div class="loader">Loading Quran...</div></div>
-<div id="quranDetail"></div>
+<!-- BOOKS -->
+<div class="list">
+
+  <div class="card">
+    <!-- Ar-Raheeq Book Image -->
+    <img class="book-img" src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Ar-Raheeq">
+    <div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah of Prophet Muhammad ﷺ - Complete Biography</p><span class="badge">Seerah</span></div>
+  </div>
+
+  <div class="card">
+    <!-- Hisnul Muslim Book Image -->
+    <img class="book-img" src="https://covers.openlibrary.org/b/id/10521238-L.jpg" alt="Hisnul Muslim">
+    <div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim - Daily Duas & Azkar</p><span class="badge">Duas</span></div>
+  </div>
+
+  <div class="card">
+    <!-- Tajweed Book Image -->
+    <img class="book-img" src="https://covers.openlibrary.org/b/id/12628453-L.jpg" alt="Tajweed">
+    <div><h3>Tajweed</h3><p>Learn Quran Pronunciation with Tajweed Rules</p><span class="badge">Quran</span></div>
+  </div>
+
+  <div class="card">
+    <!-- Yassarnal Quran Book Image -->
+    <img class="book-img" src="https://covers.openlibrary.org/b/id/10958371-L.jpg" alt="Yassarnal Quran">
+    <div><h3>Yassarnal Quran</h3><p>Easy Quran Learning for Beginners</p><span class="badge">Learning</span></div>
+  </div>
+
 </div>
 
-<div id="hadith" class="section">
-<div class="card" onclick="loadHadith('bukhari','Sahih Bukhari')"><div><h3>Sahih Bukhari</h3><p>Full Hadith Collection - Click to Open</p></div></div>
-<div class="card" onclick="loadHadith('muslim','Sahih Muslim')"><div><h3>Sahih Muslim</h3><p>Full Hadith Collection - Click to Open</p></div></div>
-<div id="hadithList"></div>
-<div id="hadithDetail"></div>
-</div>
-
-<div id="contact" class="section">
-<div class="detail"><h2>📞 Call / Message</h2><p style="color:#666;margin-top:4px">Madharasathul Ikhlaas - Teachers-ஓட பேசுங்க</p></div>
-<a class="bigbtn" style="background:#0f5132" href="#" onclick="openCall('video');return false">📹 Video Call - Join Class</a>
-<a class="bigbtn" style="background:#198754" href="#" onclick="openCall('audio');return false">🎧 Audio Call - Voice Only</a>
-<a class="bigbtn" style="background:#25D366" href="https://wa.me/919999999999?text=Assalamu%20Alaikum%20Madharasathul%20Ikhlaas" target="_blank">💬 WhatsApp Message</a>
-<div class="detail"><h3>✉️ Message அனுப்புங்க</h3><p style="color:#666;font-size:13px;margin-bottom:10px">உங்க பேரு + Message-ஐ Type பண்ணி WhatsApp-ல அனுப்பலாம்</p>
-<input id="msgName" placeholder="உங்க பேரு">
-<textarea id="msgText" rows="4" placeholder="Message எழுதுங்க..."></textarea>
-<a class="bigbtn" style="background:#0f5132" href="#" onclick="sendMsg();return false">Send Message →</a>
-<p style="font-size:12px;color:#888;text-align:center">WhatsApp Number-ஐ மாத்தணும்னா சொல்லுங்க, நான் மாத்தி தரேன். இப்போ Demo Number இருக்கு.</p>
-</div>
-</div>
-
-<div id="reader">
-<div id="readerTop"><span id="readerTitle">Book</span><button onclick="closeReader()">✕ Close</button></div>
-<div id="pdfCanvasWrap"><canvas id="pdfCanvas"></canvas></div>
-<div id="readerBottom"><button id="prevBtn" onclick="changePage(-1)">← Prev</button><span id="pageInfo" style="font-weight:700">1 / 1</span><button id="nextBtn" onclick="changePage(1)">Next →</button></div>
-</div>
-
-<div id="callBox">
-<div style="background:#0f5132;color:#fff;padding:12px;display:flex;justify-content:space-between"><span id="callTitle">Video Call</span><button onclick="closeCall()" style="border:0;background:#fff;color:#0f5132;padding:6px 12px;border-radius:999px;font-weight:700">✕ Close</button></div>
-<iframe id="callFrame" allow="camera; microphone; fullscreen; display-capture"></iframe>
-</div>
-
-<script>
-let pdfDoc=null, pageNum=1, quranData=[];
-function showTab(id,btn){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-document.getElementById(id).classList.add('active'); btn.classList.add('active');
-if(id==='quran' && quranData.length===0) loadQuran();
-}
-async function loadQuran(){
-try{
-let r=await fetch('https://api.alquran.cloud/v1/surah');
-let j=await r.json(); quranData=j.data; renderQuran(quranData);
-}catch(e){document.getElementById('quranList').innerHTML='<div class="loader">Internet Problem. மறுபடி Try பண்ணுங்க.</div>'}
-}
-function renderQuran(list){
-document.getElementById('quranDetail').innerHTML='';
-document.getElementById('quranList').innerHTML=list.map(s=>`<div class="list-item" onclick="openSurah(${s.number})"><b>${s.number}. ${s.englishName} - ${s.name}</b><span>${s.englishNameTranslation} • ${s.numberOfAyahs} Ayahs</span></div>`).join('');
-}
-function filterQuran(){
-let v=document.getElementById('qSearch').value.toLowerCase();
-renderQuran(quranData.filter(s=>s.englishName.toLowerCase().includes(v)||s.englishNameTranslation.toLowerCase().includes(v)));
-}
-async function openSurah(num){
-document.getElementById('quranList').innerHTML='<div class="loader">Loading Surah...</div>';
-try{
-let r=await fetch(`https://api.alquran.cloud/v1/surah/${num}/editions/quran-uthmani,ta.tamil`);
-let j=await r.json(); let ar=j.data[0], ta=j.data[1];
-document.getElementById('quranList').innerHTML='';
-document.getElementById('quranDetail').innerHTML=`<button class="back" onclick="loadQuran()">← Back</button><div class="detail"><h2>${ar.englishName} - ${ar.name}</h2><p>${ar.englishNameTranslation} • ${ar.numberOfAyahs} Ayahs</p></div>`+ar.ayahs.map((a,i)=>`<div class="detail"><div class="arabic">${a.text}</div><div class="tamil"><b>${i+1}.</b> ${ta.ayahs[i]?ta.ayahs[i].text:'-'}</div></div>`).join('');
-window.scrollTo(0,0);
-}catch(e){document.getElementById('quranList').innerHTML='Load ஆகலை, மறுபடி Try பண்ணுங்க.'}
-}
-// HADITH - NEW WORKING API
-async function loadHadith(book,title){
-document.getElementById('hadithList').innerHTML='<div class="loader">Loading '+title+'...</div>';
-document.getElementById('hadithDetail').innerHTML='';
-try{
-let r=await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-${book}.json`);
-let j=await r.json(); let list=j.hadiths.slice(0,100);
-document.getElementById('hadithList').innerHTML=`<h3 style="margin-bottom:10px">${title} - First 100 Hadith</h3>`+list.map(h=>`<div class="list-item" onclick="showHadith('${book}',${h.hadithnumber})"><b>Hadith ${h.hadithnumber}</b><span>${h.text.substring(0,120)}...</span></div>`).join('');
-window.scrollTo(0,0);
-}catch(e){document.getElementById('hadithList').innerHTML='Load ஆகலை, Internet Check பண்ணுங்க.'}
-}
-async function showHadith(book,num){
-document.getElementById('hadithDetail').innerHTML='<div class="loader">Loading...</div>';
-try{
-let [r1,r2]=await Promise.all([fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-${book}.json`),fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/eng-${book}.json`)]);
-let j1=await r1.json(); let j2=await r2.json();
-let h1=j1.hadiths.find(x=>x.hadithnumber==num); let h2=j2.hadiths.find(x=>x.hadithnumber==num);
-document.getElementById('hadithList').innerHTML='';
-document.getElementById('hadithDetail').innerHTML=`<button class="back" onclick="document.getElementById('hadithDetail').innerHTML='';loadHadith('${book}','${book}')">← Back</button><div class="detail"><h3>Hadith ${num}</h3><div class="arabic" style="margin-top:12px">${h1?h1.text:''}</div><div class="tamil" style="margin-top:14px"><b>English:</b><br>${h2?h2.text:''}</div></div>`;
-window.scrollTo(0,0);
-}catch(e){alert('Load ஆகலை')}
-}
-async function openBook(file,title){
-document.getElementById('readerTitle').innerText=title;
-document.getElementById('reader').style.display='flex';
-document.getElementById('pdfCanvasWrap').innerHTML='<div style="color:#fff;padding:40px">Loading Book...</div>';
-try{
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-pdfDoc=await pdfjsLib.getDocument(file).promise; pageNum=1; renderPage();
-}catch(e){document.getElementById('pdfCanvasWrap').innerHTML='<div style="color:#fff">Book Load ஆகலை.</div>'}
-}
-async function renderPage(){
-let page=await pdfDoc.getPage(pageNum);
-let canvas=document.getElementById('pdfCanvas'); if(!canvas){document.getElementById('pdfCanvasWrap').innerHTML='<canvas id="pdfCanvas"></canvas>'; canvas=document.getElementById('pdfCanvas');}
-let vp=page.getViewport({scale:1.5}); canvas.height=vp.height; canvas.width=vp.width;
-await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
-document.getElementById('pageInfo').innerText=pageNum+' / '+pdfDoc.numPages;
-document.getElementById('prevBtn').disabled=pageNum<=1;
-document.getElementById('nextBtn').disabled=pageNum>=pdfDoc.numPages;
-}
-function changePage(d){let n=pageNum+d; if(n>=1&&n<=pdfDoc.numPages){pageNum=n; renderPage(); document.getElementById('pdfCanvasWrap').scrollTop=0;}}
-function closeReader(){document.getElementById('reader').style.display='none';}
-function openCall(type){
-let room='MadharasathulIkhlaas-Class';
-document.getElementById('callTitle').innerText=type==='video'?'📹 Video Call':'🎧 Audio Call';
-document.getElementById('callFrame').src=`https://meet.jit.si/${room}#config.startWithVideoMuted=${type==='audio'}`;
-document.getElementById('callBox').style.display='flex';
-}
-function closeCall(){document.getElementById('callBox').style.display='none'; document.getElementById('callFrame').src='';}
-function sendMsg(){
-let n=document.getElementById('msgName').value||'Student'; let t=document.getElementById('msgText').value||'Assalamu Alaikum';
-window.open(`https://wa.me/919999999999?text=${encodeURIComponent(n+' : '+t)}`,'_blank');
-}
-loadQuran();
-</script>
-</body>
-</html>
+<!-- BOTTOM NAV - Hadith இல்ல
