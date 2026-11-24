@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MADHARASATHUL IKHLAAS</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -22,6 +21,10 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 .sec{padding:0 14px 10px;color:#C9A227;font-family:'Cinzel',serif;font-size:14px;letter-spacing:1px}
 .card{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:18px;display:flex;gap:14px;padding:13px;margin:0 14px 12px;align-items:center;cursor:pointer}
 .quran-card{background:linear-gradient(135deg,#0F3D26,#1E5A3A);border:1.5px solid #C9A227}
+.hisnul-card{background:linear-gradient(135deg,#1E3A0F,#2A4A1A);border:1.5px solid #C9A227}
+.tajweed-card{background:linear-gradient(135deg,#0F3D5E,#0A2A42);border:1.5px solid #C9A227}
+.seerah-card{background:linear-gradient(135deg,#4A1A1A,#2A0F0F);border:1.5px solid #C9A227}
+.yassarnal-card{background:linear-gradient(135deg,#5A3A0F,#3A2408);border:1.5px solid #C9A227}
 .cover{width:66px;height:90px;border-radius:10px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;font-weight:700;line-height:1.2}
 .cover small{font-size:9px;font-weight:400;opacity:.9;margin-top:4px}
 .c1{background:linear-gradient(135deg,#1E5A3A,#0F3D26);color:#FFD700;border:1px solid #C9A227}
@@ -39,15 +42,14 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 .nav{position:fixed;bottom:0;left:0;right:0;background:#141821;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid rgba(201,162,39,.4);z-index:99}
 .nav div{text-align:center;font-size:12px;color:#9AA3B2;cursor:pointer}
 .nav .active{color:#C9A227;font-weight:700}
-.surah-item{background:#242936;border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:13px;margin:0 14px 8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.surah-item b{font-size:15px}
-.surah-item span{color:#C9A227;font-size:18px}
-.surah-item small{color:#9AA3B2;font-size:12px}
+.surah-item,.dua-item,.lesson-item{background:#242936;border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:13px;margin:0 14px 8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.surah-item b,.dua-item b,.lesson-item b{font-size:15px}
+.surah-item span,.dua-item span,.lesson-item span{color:#C9A227;font-size:18px}
+.surah-item small,.dua-item small,.lesson-item small{color:#9AA3B2;font-size:12px}
 #reader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1B1F2A;display:none;flex-direction:column;z-index:999}
 #readerHeader{background:#C9A227;color:#1B1F2A;padding:13px;display:flex;justify-content:space-between;font-weight:700}
 #readerHeader button{background:#1B1F2A;color:#C9A227;border:none;padding:8px 14px;border-radius:8px;font-weight:700}
 #readerContent{flex:1;overflow-y:auto;padding:14px}
-#readerContent canvas{width:100%;max-width:800px;background:#fff;margin:0 auto 10px;border-radius:6px;display:block}
 .ayah{background:#242936;border:1px solid rgba(201,162,39,.2);border-radius:14px;padding:14px;margin-bottom:10px}
 .ayah .ar{font-size:26px;text-align:right;line-height:2.1;direction:rtl}
 .ayah .num{color:#C9A227;font-size:12px;font-weight:700}
@@ -55,6 +57,12 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 .tamil b{color:#C9A227;font-size:11px;display:block;margin-bottom:4px}
 .tajweed-box{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:12px;padding:10px;margin-bottom:12px;display:flex;justify-content:space-around;font-size:11px;text-align:center}
 .tajweed-box b{display:block;font-size:12px}
+.detail-box{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:16px;padding:16px;margin-bottom:12px}
+.detail-box .ar{font-size:26px;text-align:right;line-height:2.1;direction:rtl}
+.repeat{background:#C9A227;color:#1B1F2A;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
+.lesson-title{color:#C9A227;font-size:18px;font-weight:700;margin-bottom:10px;text-align:center}
+.lesson-body{font-size:15px;line-height:1.8;color:#E8E8E8}
+.lesson-body h4{color:#C9A227;margin:14px 0 6px}
 </style>
 </head>
 <body>
@@ -66,18 +74,16 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 <div class="adm" onclick="showForm()">📝 STUDENT ADMISSION FORM</div>
 <div class="sec">✦ PREMIUM BOOKS COLLECTION ✦</div>
 <div class="card quran-card" onclick="showQuranList()"><div class="cover c1">القرآن<small>FULL QURAN</small></div><div><h3>Full Quran - 114 Surah</h3><p>Arabic + Tamil (Jan Trust) • Tajweed Colour</p><span>OPEN QURAN →</span></div></div>
-<div class="card" onclick="openBook('hisnul-muslim.pdf')"><div class="cover c1">حصن المسلم<small>HISNUL MUSLIM</small></div><div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim • Duas</p><span>READ INSIDE APP →</span></div></div>
-<div class="card" onclick="openBook('tajweed.pdf')"><div class="cover c2">تجويد<small>TAJWEED</small></div><div><h3>Tajweed</h3><p>Quran Recitation Rules</p><span>READ INSIDE APP →</span></div></div>
-<div class="card" onclick="openBook('yassarnal.pdf')"><div class="cover c3">يسرنا<small>YASSARNAL</small></div><div><h3>Yassarnal Quran</h3><p>Easy Quran Learning</p><span>READ INSIDE APP →</span></div></div>
-<div class="card" onclick="openBook('ar-raheeq.pdf')"><div class="cover c4">الرحيق<small>AR-RAHEEQ</small></div><div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah - Prophet Life</p><span>READ INSIDE APP →</span></div></div>
+<div class="card hisnul-card" onclick="showHisnulList()"><div class="cover c1">حصن المسلم<small>HISNUL MUSLIM</small></div><div><h3>Hisnul Muslim</h3><p>40 Duas • Arabic + Tamil • No PDF</p><span>OPEN DUAS →</span></div></div>
+<div class="card tajweed-card" onclick="showTajweedList()"><div class="cover c2">تجويد<small>TAJWEED</small></div><div><h3>Tajweed - Tamil Lessons</h3><p>12 Lessons • Tamil-la • No PDF</p><span>OPEN LESSONS →</span></div></div>
+<div class="card yassarnal-card" onclick="showYassarnalList()"><div class="cover c3">يسرنا<small>YASSARNAL</small></div><div><h3>Yassarnal Quran</h3><p>Tamil Lessons • Easy Learning • No PDF</p><span>OPEN LESSONS →</span></div></div>
+<div class="card seerah-card" onclick="showSeerahList()"><div class="cover c4">الرحيق<small>AR-RAHEEQ</small></div><div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah Tamil Story • No PDF</p><span>OPEN SEERAH →</span></div></div>
 </div>
-<div class="box" id="quranSection" style="display:none;background:transparent;border:none;padding:0">
-<h2 style="margin:12px">📖 Full Quran - 114 Surah</h2>
-<p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Arabic + Tamil (Jan Trust) • Tajweed Colour</p>
-<div class="search">🔍 <input id="quranSearch" onkeyup="searchSurah()" placeholder="Search Surah... Ex: Yasin, Fatiha"></div>
-<div id="surahList"></div>
-<p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p>
-</div>
+<div class="box" id="quranSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📖 Full Quran - 114 Surah</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Arabic + Tamil (Jan Trust) • Tajweed Colour</p><div class="search">🔍 <input id="quranSearch" onkeyup="searchSurah()" placeholder="Search Surah... Ex: Yasin, Fatiha"></div><div id="surahList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="hisnulSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">🤲 Hisnul Muslim</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">40 Duas • Arabic + Tamil • PDF Illaama</p><div class="search">🔍 <input id="hisnulSearch" onkeyup="searchDua()" placeholder="Search Dua... Ex: Morning, Sleeping"></div><div id="duaList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="tajweedSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📘 Tajweed - Tamil Lessons</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Quran Azhagaa Oodha Kattukkolvom • Tamil-la</p><div class="search">🔍 <input id="tajweedSearch" onkeyup="searchTajweed()" placeholder="Search... Ex: Madd, Ghunnah"></div><div id="tajweedList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="yassarnalSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📗 Yassarnal Quran</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Easy Quran Learning • Tamil-la</p><div id="yassarnalList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="seerahSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📕 Ar-Raheeq Al-Makhtum</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Nabi (Sal) Vazhkai Varalaaru • Tamil Story</p><div class="search">🔍 <input id="seerahSearch" onkeyup="searchSeerah()" placeholder="Search... Ex: Hijrat, Badr"></div><div id="seerahList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="classSection"><h2>🟢 Live Class</h2><p style="text-align:center;color:#9AA3B2;font-size:13px;margin:6px 0">Aalima M.Syed Ali Fathima</p><div style="background:#1B1F2A;border:1px solid #C9A227;border-radius:16px;padding:20px;text-align:center;margin:15px 0"><div style="font-size:50px">📹</div><h3 style="margin:10px 0">Daily Live Class</h3><p style="color:#cbd5e1;font-size:14px;margin-bottom:15px">Button-a Click Panni Join Pannunga!</p><a href="https://meet.jit.si/Madharasathul-Ikhlaas-Class-123" target="_blank" style="display:block;background:linear-gradient(135deg,#C9A227,#8A6D1A);color:#fff;padding:16px;border-radius:12px;text-decoration:none;font-weight:700">📹 JOIN CLASS - CLICK HERE</a></div><p style="text-align:center;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="formSection"><h2>📝 Admission Form</h2><input id="sName" placeholder="Student Name *"><input id="sAge" placeholder="Age *" type="number"><input id="pName" placeholder="Parent Name *"><input id="pPhone" placeholder="Parent Phone *"><select id="sClass"><option>Select Class</option><option>Quran - Basic</option><option>Quran - Hifz</option><option>Aalima Course</option><option>Tajweed</option><option>Yassarnal Quran</option></select><button onclick="submitAdmission()">Submit via WhatsApp ✅</button><p style="text-align:center;margin-top:10px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="profileSection" style="text-align:center"><h2>Aalima M.Syed Ali Fathima</h2><p style="margin:6px 0">Madharasathul Ikhlaas</p><p>📍 Swamiyarmadam</p><p>📞 7418140608</p><a class="call-btn" href="tel:7418140608">📞 Audio Call</a><a class="call-btn" style="background:#7b1fa2" href="https://wa.me/917418140608?text=Assalamu%20Alaikum%2C%20Video%20Call%20Pannalama%3F">📹 Video Call</a><a class="call-btn" style="background:#25D366" href="https://wa.me/917418140608?text=Assalamu%20Alaikum!">💬 WhatsApp Message</a><a class="call-btn" style="background:#C9A227" onclick="showClass()">📹 Join Live Class</a><p style="margin-top:12px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
@@ -85,37 +91,112 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 <div id="reader"><div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div><div id="readerContent"></div><div style="background:#141821;padding:10px;text-align:center;font-size:12px;color:#C9A227">Madharasathul Ikhlaas • Scroll Panni Padikkalam</div></div>
 <script>
 var surahs=[["1","Al-Fatiha","الفاتحة","7"],["2","Al-Baqarah","البقرة","286"],["3","Aal-e-Imran","آل عمران","200"],["4","An-Nisa","النساء","176"],["5","Al-Ma'idah","المائدة","120"],["6","Al-An'am","الأنعام","165"],["7","Al-A'raf","الأعراف","206"],["8","Al-Anfal","الأنفال","75"],["9","At-Tawbah","التوبة","129"],["10","Yunus","يونس","109"],["11","Hud","هود","123"],["12","Yusuf","يوسف","111"],["13","Ar-Ra'd","الرعد","43"],["14","Ibrahim","ابراهيم","52"],["15","Al-Hijr","الحجر","99"],["16","An-Nahl","النحل","128"],["17","Al-Isra","الإسراء","111"],["18","Al-Kahf","الكهف","110"],["19","Maryam","مريم","98"],["20","Taha","طه","135"],["21","Al-Anbiya","الأنبياء","112"],["22","Al-Hajj","الحج","78"],["23","Al-Mu'minun","المؤمنون","118"],["24","An-Nur","النور","64"],["25","Al-Furqan","الفرقان","77"],["26","Ash-Shu'ara","الشعراء","227"],["27","An-Naml","النمل","93"],["28","Al-Qasas","القصص","88"],["29","Al-Ankabut","العنكبوت","69"],["30","Ar-Rum","الروم","60"],["31","Luqman","لقمان","34"],["32","As-Sajdah","السجدة","30"],["33","Al-Ahzab","الأحزاب","73"],["34","Saba","سبإ","54"],["35","Fatir","فاطر","45"],["36","Ya-Sin","يس","83"],["37","As-Saffat","الصافات","182"],["38","Sad","ص","88"],["39","Az-Zumar","الزمر","75"],["40","Ghafir","غافر","85"],["41","Fussilat","فصلت","54"],["42","Ash-Shura","الشورى","53"],["43","Az-Zukhruf","الزخرف","89"],["44","Ad-Dukhan","الدخان","59"],["45","Al-Jathiyah","الجاثية","37"],["46","Al-Ahqaf","الأحقاف","35"],["47","Muhammad","محمد","38"],["48","Al-Fath","الفتح","29"],["49","Al-Hujurat","الحجرات","18"],["50","Qaf","ق","45"],["51","Adh-Dhariyat","الذاريات","60"],["52","At-Tur","الطور","49"],["53","An-Najm","النجم","62"],["54","Al-Qamar","القمر","55"],["55","Ar-Rahman","الرحمن","78"],["56","Al-Waqi'ah","الواقعة","96"],["57","Al-Hadid","الحديد","29"],["58","Al-Mujadila","المجادلة","22"],["59","Al-Hashr","الحشر","24"],["60","Al-Mumtahanah","الممتحنة","13"],["61","As-Saff","الصف","14"],["62","Al-Jumu'ah","الجمعة","11"],["63","Al-Munafiqun","المنافقون","11"],["64","At-Taghabun","التغابن","18"],["65","At-Talaq","الطلاق","12"],["66","At-Tahrim","التحريم","12"],["67","Al-Mulk","الملك","30"],["68","Al-Qalam","القلم","52"],["69","Al-Haqqah","الحاقة","52"],["70","Al-Ma'arij","المعارج","44"],["71","Nuh","نوح","28"],["72","Al-Jinn","الجن","28"],["73","Al-Muzzammil","المزمل","20"],["74","Al-Muddaththir","المدثر","56"],["75","Al-Qiyamah","القيامة","40"],["76","Al-Insan","الانسان","31"],["77","Al-Mursalat","المرسلات","50"],["78","An-Naba","النبإ","40"],["79","An-Nazi'at","النازعات","46"],["80","Abasa","عبس","42"],["81","At-Takwir","التكوير","29"],["82","Al-Infitar","الانفطار","19"],["83","Al-Mutaffifin","المطففين","36"],["84","Al-Inshiqaq","الانشقاق","25"],["85","Al-Buruj","البروج","22"],["86","At-Tariq","الطارق","17"],["87","Al-A'la","الأعلى","19"],["88","Al-Ghashiyah","الغاشية","26"],["89","Al-Fajr","الفجر","30"],["90","Al-Balad","البلد","20"],["91","Ash-Shams","الشمس","15"],["92","Al-Layl","الليل","21"],["93","Ad-Duha","الضحى","11"],["94","Ash-Sharh","الشرح","8"],["95","At-Tin","التين","8"],["96","Al-Alaq","العلق","19"],["97","Al-Qadr","القدر","5"],["98","Al-Bayyinah","البينة","8"],["99","Az-Zalzalah","الزلزلة","8"],["100","Al-Adiyat","العاديات","11"],["101","Al-Qari'ah","القارعة","11"],["102","At-Takathur","التكاثر","8"],["103","Al-Asr","العصر","3"],["104","Al-Humazah","الهمزة","9"],["105","Al-Fil","الفيل","5"],["106","Quraysh","قريش","4"],["107","Al-Ma'un","الماعون","7"],["108","Al-Kawthar","الكوثر","3"],["109","Al-Kafirun","الكافرون","6"],["110","An-Nasr","النصر","3"],["111","Al-Masad","المسد","5"],["112","Al-Ikhlas","الإخلاص","4"],["113","Al-Falaq","الفلق","5"],["114","An-Nas","الناس","6"]];
+var duas=[
+{t:"1. Morning Dua - Kaalai Dua",a:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",tm:"Naangal kaalaiyil elundhom, aadchiyum Allah-vukke uriyadhu. Pugazh anaithum Allah-vukke.",r:"1 Time - Kaalaiyil",cat:"Morning"},
+{t:"2. Evening Dua - Maalai Dua",a:"أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",tm:"Naangal maalaiyil aanom, aadchiyum Allah-vukke uriyadhu.",r:"1 Time - Maalaiyil",cat:"Evening"},
+{t:"3. Before Sleeping",a:"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",tm:"Allah-ve! Un peyaraal naan thoongugiren, un peyaraal elugiren.",r:"1 Time - Thoongum Mun",cat:"Sleeping"},
+{t:"4. After Waking Up",a:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",tm:"Engalai thookkathukku pin uyir kodutha Allah-vukke pugazh.",r:"1 Time - Kaalai",cat:"Waking"},
+{t:"5. Before Eating",a:"بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ",tm:"Allah-vin peyaraal, Allah-vin barakkathin meedhu saappidugiren.",r:"1 Time",cat:"Eating"},
+{t:"6. After Eating",a:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",tm:"Engalukku unavu alithu, neer alithu, engalai Muslim-aakkiya Allah-vukke pugazh.",r:"1 Time",cat:"Eating"},
+{t:"7. Entering Toilet",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ",tm:"Allah-ve! Asuthamana jinn-galidam irundhu paadhu kaaval thedugiren.",r:"1 Time",cat:"Toilet"},
+{t:"8. Leaving Toilet",a:"غُفْرَانَكَ",tm:"Allah-ve! Un mannippaith thedugiren.",r:"1 Time",cat:"Toilet"},
+{t:"9. Entering Home",a:"بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا",tm:"Allah-vin peyaraal nulainthom, Allah-vin peyaraal veliyerugiroom.",r:"1 Time",cat:"Home"},
+{t:"10. Leaving Home",a:"بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",tm:"Allah-vin peyaraal veliyerugiren, Allah-vin meedhu nambikkai vaithen.",r:"1 Time",cat:"Home"},
+{t:"11. Before Wudu",a:"بِسْمِ اللَّهِ",tm:"Allah-vin peyaraal Wudu seigiren.",r:"1 Time",cat:"Wudu"},
+{t:"12. After Wudu",a:"أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",tm:"Allah-vai thavira iraivan illai. Muhammad (Sal) Allah-vin adiyaarum thoodharum.",r:"1 Time",cat:"Wudu"},
+{t:"13. Ayatul Kursi",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ",tm:"Allah - Avanai thavira iraivan illai. Avan uyirullavan, nirvagippavan.",r:"Thozhugai-kku Pin",cat:"Quran Dua"},
+{t:"14. Dua for Parents",a:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",tm:"En Rabb-e! Ennai chinna vayadhil valarthadhu pola, en petravarukku karunai kaattuvayaga!",r:"Daily",cat:"Parents"},
+{t:"15. Dua for Knowledge",a:"رَبِّ زِدْنِي عِلْمًا",tm:"En Rabb-e! Enakku kalviyai adhigapaduthuvayaga!",r:"Daily",cat:"Knowledge"},
+{t:"16. Travelling Dua",a:"سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",tm:"Idhai engalukku vasappaduthi thanthavan thooimaiyaanavan.",r:"Payanam Thodangum Bodhu",cat:"Travel"},
+{t:"17. Dua for Difficulty",a:"اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا",tm:"Allah-ve! Nee elidhakkiyadhu thavira elidhaana ondrum illai.",r:"Thevaiyana Bodhu",cat:"Difficulty"},
+{t:"18. Dua Before Studying",a:"اللَّهُمَّ افْتَحْ عَلَيْنَا حِكْمَتَكَ وَانْشُرْ عَلَيْنَا رَحْمَتَكَ",tm:"Allah-ve! Engalukku un gnaana kathavai thirappayaga!",r:"Padikkum Mun",cat:"Knowledge"},
+{t:"19. Istighfar",a:"أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ",tm:"Maga periya Allah-vidam mannippu thedugiren, Avanidame meelugiren.",r:"100 Times Daily",cat:"Istighfar"},
+{t:"20. Protection Dua",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",tm:"Allah-vin poorana vaarthaiyhalai kondu paadhu kaaval thedugiren.",r:"3 Times Kaalai/Maalai",cat:"Protection"},
+{t:"21. Entering Masjid",a:"أَعُوذُ بِاللَّهِ الْعَظِيمِ وَبِوَجْهِهِ الْكَرِيمِ وَسُلْطَانِهِ الْقَدِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ، بِسْمِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",tm:"Maga periya Allah-vidam Saathanidam irundhu paadhu kaaval thedugiren. Allah-ve! Un karunai kathavai thirappayaga!",r:"Masjid Nuzhaiyum Bodhu",cat:"Masjid"},
+{t:"22. Leaving Masjid",a:"بِسْمِ اللَّهِ، وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",tm:"Allah-vin peyaraal veliyerugiren. Allah-ve! Un arulilirundhu ketkiren.",r:"Masjid Vittu Varum Bodhu",cat:"Masjid"},
+{t:"23. Dua After Adhan",a:"اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ",tm:"Allah-ve! Indha poorana azhaippin Rabb-e! Muhammad (Sal)-kku Waseela-vai koduppayaaga!",r:"Adhan-kku Pin",cat:"Adhan"},
+{t:"24. Before Sleeping - Ikhlas Falaq Nas",a:"قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ",tm:"Ikhlas, Falaq, Nas - Moonu Surah-vum 3 Thadava Oodhi Kaiyil Oodhi Udambula Theikkanum.",r:"3 Times - Thoongum Mun",cat:"Sleeping"},
+{t:"25. Dua for Debt",a:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",tm:"Allah-ve! Un halaalai kondu haraam-ai vittu podhumaanadhaakkidu.",r:"Kadan Irundha",cat:"Debt"},
+{t:"26. Dua for Anxiety",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ",tm:"Allah-ve! Kavalai, thuyaram, iyalamaai, sombal - Ivai anaithilirundhum paadhu kaaval thedugiren.",r:"Kavalai Irukkum Bodhu",cat:"Anxiety"},
+{t:"27. Dua for Good End",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ حُسْنَ الْخَاتِمَةِ",tm:"Allah-ve! Engalukku nalla mudivai tharuvayaga!",r:"Daily",cat:"Akhirah"},
+{t:"28. Dua for Rain",a:"اللَّهُمَّ صَيِّبًا نَافِعًا",tm:"Allah-ve! Payanulla mazhaiya koduppayaaga!",r:"Mazhai Varum Bodhu",cat:"Rain"},
+{t:"29. Dua When Hearing Thunder",a:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ",tm:"Idiyum Malaakkugalum Avan pugazhai kondu thasbeeh seiyum Allah thooimaiyaanavan.",r:"Idi Idikkum Bodhu",cat:"Rain"},
+{t:"30. Dua for New Clothes",a:"الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",tm:"En sakthi illamal Idhai enakkaga anivithu unavu alitha Allah-vukke pugazh.",r:"Pudhu Dress Podum Bodhu",cat:"Clothes"},
+{t:"31. Dua for Mirror",a:"اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",tm:"Allah-ve! En thotramai azhagakkiyadhu pola, en gunathaiyum azhagakkuvayaga!",r:"Kannadi Paarkkum Bodhu",cat:"Daily"},
+{t:"32. Dua When Angry",a:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",tm:"Kalleri eriyappatta Saathanidam irundhu Allah-vidam paadhu kaaval thedugiren.",r:"Kovam Varum Bodhu",cat:"Anger"},
+{t:"33. Dua for Sick Person",a:"أَذْهِبِ الْبَأْسَ رَبَّ النَّاسِ، اشْفِ وَأَنْتَ الشَّافِي",tm:"Manidhargalin Rabb-e! Noyai neekkuvayaaga! Nee thaan gunapaduthubavan.",r:"Noyali Paarkkum Bodhu",cat:"Sick"},
+{t:"34. Dua for Graveyard",a:"السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ",tm:"Mumineengal-aana indha veettin makkalukke salam undaagattum.",r:"Qabradi-kku Pogum Bodhu",cat:"Graveyard"},
+{t:"35. Dua for Marriage",a:"بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",tm:"Allah unakku barakkath seivaanaga! Ungalai nalla vishayathil serthu vaippaanaga!",r:"Thirumanam Nadakkum Bodhu",cat:"Marriage"},
+{t:"36. Dua for New Born Baby",a:"أُعِيذُكَ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ",tm:"Allah-vin poorana vaarthaiyhalai kondu Saathanidamum ketta kannilirundhum paadhu kaaval thedugiren.",r:"Kuzhandhai Pirantha Pin",cat:"Baby"},
+{t:"37. Dua When Seeing Difficulty",a:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي مِمَّا ابْتَلَاكَ بِهِ",tm:"Unakku kodutha sodhanaiyilirundhu ennai kaappaathiya Allah-vukke pugazh.",r:"Kashtathil Ulla Oruvarai Paarkkum Bodhu",cat:"Difficulty"},
+{t:"38. Dua for Parents + Muslims",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",tm:"Engal Rabb-e! Ennaiyum en petravaraiyum Mumineengalaiyum Hisab Naalil mannippayaga!",r:"Daily - Thozhugaiyil",cat:"Parents"},
+{t:"39. Dua for Jannah",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ الْجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ",tm:"Allah-ve! Jannath-aiyum adhai nerungum sollaiyum seyalaiyum ketkirom!",r:"Daily - 3 Times",cat:"Jannah"},
+{t:"40. Dua for Protection from Hell",a:"اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",tm:"Allah-ve! Ennai Naragathilirundhu kaappaattruvayaga!",r:"Daily - 7 Times",cat:"Protection"}
+];
+var tajweed=[
+{t:"1. Tajweed Enna? - Adippadai",ar:"التجويد",body:"<h4>Tamil Vilakkam:</h4>Quran-ai Nabi (Sal) eppidi oodhinaargalo appadiye azhaga sariya oodhuvadhuthaan Tajweed.<br><br><h4>3 Mukkiya Rules:</h4>1. Oru Oru Ezhuthaiyum Sariya Ucharikkanum (Makhraj)<br>2. Neettanum Edathula Neettanum (Madd)<br>3. Nirkkanum Edathula Nirkkanum (Waqf)"},
+{t:"2. Makhraj - Ezhuthu Varum Idam",ar:"المخرج",body:"<h4>Tamil Vilakkam:</h4>Arabic-la 29 Ezhuthu, 17 Idathilirundhu varudhu.<br><br>Thondai - Ha, Ayn, Haa<br>Naakku - Qaf, Kaf, Jeem<br>Udhadu - Ba, Meem, Waw<br>Mookku - Noon, Meem Ghunnah"},
+{t:"3. Noon Saakinah & Tanween",ar:"النون الساكنة",body:"<h4>Tamil Vilakkam:</h4>Noon-ku Sukoon irundha 4 Rules:<br>1. Izhaar - Theliva Oodhanum<br>2. Idgham - Sera Oodhanum<br>3. Iqlab - Meem-a Maathanum<br>4. Ikhfa - Maraichu Oodhanum"},
+{t:"4. Meem Saakinah",ar:"الميم الساكنة",body:"<h4>Tamil Vilakkam:</h4>Meem-ku Sukoon irundha 3 Rules:<br>1. Ikhfa Shafawi - Ba vandha Maraichu + Ghunnah<br>2. Idgham Shafawi - Meem vandha Sera + Ghunnah<br>3. Izhaar Shafawi - Vera Ezhuthu vandha Theliva"},
+{t:"5. Madd - Neetti Oodhuvathu",ar:"المد",body:"<h4>Tamil Vilakkam:</h4>Madd-na Neetti Oodhuvathu. 3 Ezhuthu: Alif, Waw, Ya.<br>Madd Thabi'i - 2 Alavu<br>Madd Muttasil - 4-5 Alavu<br>Madd Laazim - 6 Alavu"},
+{t:"6. Ghunnah - Mookkil Osai",ar:"الغنة",body:"<h4>Tamil Vilakkam:</h4>Ghunnah-na Mookkula varra Osai. 2 Alavu varanum.<br>Enga Varum? Noon Meem Shaddah - Inna, Amma<br>Idgham + Ikhfa Edathula"},
+{t:"7. Qalqalah",ar:"القلقلة",body:"<h4>Tamil Vilakkam:</h4>5 Ezhuthu: Qaf, Ta, Ba, Jeem, Dal - 'Qutb Jad'<br>Idhukku Sukoon vandha Edhir-olikkum. Ex: Al-Haqq"},
+{t:"8. Waqf - Nirkkum Murai",ar:"الوقف",body:"<h4>Tamil Vilakkam:</h4>Waqf Laazim - Meem Symbol - Kandippa Nirkkanum<br>Waqf Jaiz - Jeem Symbol - Nirkkalam<br>Waqf Mamnu - La Symbol - Nirkka Koodadhu"},
+{t:"9. Tafkheem & Tarqeeq",ar:"التفخيم",body:"<h4>Tamil Vilakkam:</h4>Tafkheem - Ganama Oodhanum - 7 Ezhuthu: Kha, Saad, Dhaad, Ghayn, Ta, Qaf, Zha<br>Tarqeeq - Mellisa Oodhanum"},
+{t:"10. Hamza & Alif",ar:"الهمزة",body:"<h4>Tamil Vilakkam:</h4>Hamza - Thondaiyoda Kadaisiyilirundhu varum. Alif - Madd-kku mattum."},
+{t:"11. Shaddah & Sukoon",ar:"الشدة",body:"<h4>Tamil Vilakkam:</h4>Shaddah irundha Rendu Thadava Oodhanum - Azhutham Koduthu. Sukoon irundha Osai Illaama Nirkkanum."},
+{t:"12. Daily Plan",ar:"التدريب",body:"<h4>Tamil Plan:</h4>Daily 10 Nimisham - 1 Rule Padikkanum<br>Surah Fatiha-vai Tajweed-oda 5 Thadava Oodhanum"}
+];
+var yassarnal=[
+{t:"1. Arabic Ezhuthukkal - 29 Letters",ar:"ا ب ت ث",body:"<h4>Tamil Vilakkam:</h4>Arabic-la 29 Ezhuthu. Valathilirundhu Idathukku Padippom.<br>Alif, Ba, Ta, Tha, Jeem, Ha, Kha..."},
+{t:"2. Harakath",ar:"َ ِ ُ",body:"<h4>Tamil:</h4>Fathah - 'A' Osai - Ba = Baa<br>Kasrah - 'I' Osai - Bi = Bee<br>Dhammah - 'U' Osai - Bu = Boo"},
+{t:"3. Sukoon & Shaddah",ar:"ْ ّ",body:"<h4>Tamil:</h4>Sukoon - Osai Illaama Nirkkanum. Shaddah - Rendu Thadava Oodhanum."},
+{t:"4. Madd - Neettam",ar:"ا و ي",body:"<h4>Tamil:</h4>Alif, Waw, Ya - Neetti Oodhanum. Ba + Alif = Baa (2 Alavu)"},
+{t:"5. Tanween",ar:"ً ٍ ٌ",body:"<h4>Tamil:</h4>Rendu Fathah = 'An' - Kitaban. Rendu Kasrah = 'In', Rendu Dhammah = 'Un'."},
+{t:"6. Surah Fatiha Padippom",ar:"الفاتحة",body:"<h4>Tamil:</h4>Bismillah-il irundhu Aaramikkalam. Oru Oru Vaarthaiya Pirichu Padikkalam."}
+];
+var seerah=[
+{t:"1. Makkah-vil Pirappu - 571 AD",ar:"المولد",body:"<h4>Tamil Story:</h4>Nabi (Sal) Makkah-vil - Rabiul Awwal 12 - Thingal Kilamai Piranthaargal.<br>Thandhai Abdullah, Thaai Aamina. Halima Sadia (Rali) Palootti Valarththaargal."},
+{t:"2. Chinna Vayasu - Nambikkaiyalar",ar:"الشباب",body:"<h4>Tamil Story:</h4>Nabi (Sal) Chinna Vayasilirundhe Unmai Pesubavar - Makkal 'Al-Ameen' endru Azhaithaargal.<br>25 Vayasil Khadija (Rali)-oda Thirumanam."},
+{t:"3. Hira Cave - Vahi Varugirathu",ar:"الوحي",body:"<h4>Tamil Story:</h4>40 Vayasil - Hira Malaiyil - Jibreel (Alai) Vandhu 'Iqra' endru Sonnaargal.<br>Mudhal Vahi - Surah Al-Alaq - Mudhal 5 Ayah."},
+{t:"4. Ragasiya Da'wah - 3 Varusham",ar:"الدعوة السرية",body:"<h4>Tamil Story:</h4>Mudhal 3 Varusham Ragasiyama Islam-ai Sonnaargal. Mudhal Muslim - Khadija, Ali, Abu Bakr, Zaid."},
+{t:"5. Kodaygal - Boycott",ar:"المقاطعة",body:"<h4>Tamil Story:</h4>Qurayshigal Muslim-galai Kodumai Paduthinaargal. 3 Varusham Boycott - Saappadu Illaama Kashtappattaargal."},
+{t:"6. Taif Payanam",ar:"الطائف",body:"<h4>Tamil Story:</h4>Taif-ku Ponaargal - Anga Makkal Kallal Adithaargal. Nabi (Sal) 'Ivargal Sandhathiyil Muslim Varuvargal' endru Sonnaargal."},
+{t:"7. Hijrat - Madina Payanam",ar:"الهجرة",body:"<h4>Tamil Story:</h4>622 AD - Makkah-vilirundhu Madina-kku Hijrat. Abu Bakr-oda Payanam. Thawr Cave-la 3 Naal."},
+{t:"8. Badr Yuddham - 624 AD",ar:"بدر",body:"<h4>Tamil Story:</h4>313 Muslim vs 1000 Quraysh. Allah Malaaikkagalai Anuppi Uthavi Seidhaan. Muslim-gal Vetri."},
+{t:"9. Uhud Yuddham - Padam",ar:"أحد",body:"<h4>Tamil Story:</h4>625 AD - Uhud Malaiyil Yuddham. 70 Sahabakkal Shaheed - Hamza (Rali) Shaheed."},
+{t:"10. Makkah Vetri - Fath Makkah",ar:"فتح مكة",body:"<h4>Tamil Story:</h4>630 AD - 10,000 Muslim-galoda Makkah Vetri. 'Inniki Ungalukku Manippu' endru Manniththaargal."},
+{t:"11. Hajjatul Wada",ar:"حجة الوداع",body:"<h4>Tamil Story:</h4>632 AD - Arafat-il Pirivu Urai: 'Muslim-gal Anaivarum Sagotharargal. Quran-aiyum En Sunnath-aiyum Pidithukkondu Vittu Selgiren.'"},
+{t:"12. Maranam - 632 AD",ar:"الوفاة",body:"<h4>Tamil Story:</h4>Rabiul Awwal 12 - 63 Vayasil Nabi (Sal) Maranithaargal. Madina-vil Adakkam Seiyappattaargal."}
+];
 function buildSurahs(){let h='';surahs.forEach(s=>{h+='<div class="surah-item" onclick="openSurah('+s[0]+',\''+s[1]+'\')"><div><b>'+s[0]+'. '+s[1]+'</b><br><small>'+s[3]+' Ayahs • Tamil + Tajweed</small></div><span>'+s[2]+' →</span></div>'});document.getElementById('surahList').innerHTML=h}
 buildSurahs();
-function hideAll(){['homeSection','classSection','formSection','profileSection','quranSection'].forEach(id=>document.getElementById(id).style.display='none')}
+function buildDuas(){let h='';duas.forEach((d,i)=>{h+='<div class="dua-item" onclick="openDua('+i+')"><div><b>'+d.t+'</b><br><small>'+d.r+'</small></div><span>🤲 →</span></div>'});document.getElementById('duaList').innerHTML=h}
+buildDuas();
+function buildTajweed(){let h='';tajweed.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'tajweed\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Vilakkam • Click Panni Padikkalam</small></div><span>'+d.ar+' →</span></div>'});document.getElementById('tajweedList').innerHTML=h}
+buildTajweed();
+function buildYassarnal(){let h='';yassarnal.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'yassarnal\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Lesson</small></div><span>'+d.ar+' →</span></div>'});document.getElementById('yassarnalList').innerHTML=h}
+buildYassarnal();
+function buildSeerah(){let h='';seerah.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'seerah\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Story • Click Panni Padikkalam</small></div><span>📖 →</span></div>'});document.getElementById('seerahList').innerHTML=h}
+buildSeerah();
+function hideAll(){['homeSection','classSection','formSection','profileSection','quranSection','hisnulSection','tajweedSection','yassarnalSection','seerahSection'].forEach(id=>document.getElementById(id).style.display='none')}
 function showHome(){hideAll();document.getElementById('homeSection').style.display='block'}
 function showClass(){hideAll();document.getElementById('classSection').style.display='block'}
 function showForm(){hideAll();document.getElementById('formSection').style.display='block'}
 function showProfile(){hideAll();document.getElementById('profileSection').style.display='block'}
 function showQuranList(){hideAll();document.getElementById('quranSection').style.display='block';window.scrollTo(0,0)}
+function showHisnulList(){hideAll();document.getElementById('hisnulSection').style.display='block';window.scrollTo(0,0)}
+function showTajweedList(){hideAll();document.getElementById('tajweedSection').style.display='block';window.scrollTo(0,0)}
+function showYassarnalList(){hideAll();document.getElementById('yassarnalSection').style.display='block';window.scrollTo(0,0)}
+function showSeerahList(){hideAll();document.getElementById('seerahSection').style.display='block';window.scrollTo(0,0)}
 function searchBooks(){let v=document.getElementById('searchInput').value.toLowerCase();let cards=document.getElementsByClassName('card');for(let i=0;i<cards.length;i++){cards[i].style.display=cards[i].innerText.toLowerCase().includes(v)?"flex":"none"}}
 function searchSurah(){let v=document.getElementById('quranSearch').value.toLowerCase();let items=document.getElementsByClassName('surah-item');for(let i=0;i<items.length;i++){items[i].style.display=items[i].innerText.toLowerCase().includes(v)?"flex":"none"}}
-async function openSurah(n,name){
-document.getElementById('readerTitle').innerText=n+'. '+name;
-document.getElementById('reader').style.display='flex';
-let c=document.getElementById('readerContent');
-c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Surah Loading... Tamil + Tajweed-oda Varudhu...</p>';c.scrollTop=0;
-try{
-let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil');
-let j=await res.json();
-let arabic=j.data[0].ayahs; let tamil=j.data[1].ayahs;
-let html='<div class="tajweed-box"><div>🔴<b>Idgham</b>Red</div><div>🟢<b>Ikhfa</b>Green</div><div>🔵<b>Madd</b>Blue</div><div>🟠<b>Ghunnah</b>Orange</div></div>';
-html+='<p style="text-align:center;color:#C9A227;font-size:12px;margin-bottom:12px">Tamil Translation - Jan Trust • Tajweed Colour</p>';
-arabic.forEach((a,i)=>{
-let txt=a.text;
-txt=txt.replace(/نّ|مّ|نّ|مّ/g,'<span style="color:#FFA500">$&</span>');
-txt=txt.replace(/آ|أٰ|ٱٰ/g,'<span style="color:#5DA9FF">$&</span>');
-html+='<div class="ayah"><div class="num">Ayah '+a.numberInSurah+'</div><div class="ar">'+txt+'</div><div class="tamil"><b>TAMIL TRANSLATION - JAN TRUST:</b>'+tamil[i].text+'</div></div>';
-});
-c.innerHTML=html;
-}catch(e){c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Load Aagala - Internet Check Pannunga</p>'}
-}
-async function openBook(f){let t=f;if(f=='hisnul-muslim.pdf')t='Hisnul Muslim';if(f=='tajweed.pdf')t='Tajweed';if(f=='yassarnal.pdf')t='Yassarnal Quran';if(f=='ar-raheeq.pdf')t='Ar-Raheeq Al-Makhtum';document.getElementById('readerTitle').innerText=t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Book Loading...</p>';c.scrollTop=0;try{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';let pdf=await pdfjsLib.getDocument(f).promise;c.innerHTML='';for(let i=1;i<=pdf.numPages;i++){let p=await pdf.getPage(i);let v=p.getViewport({scale:1.5});let cv=document.createElement('canvas');cv.width=v.width;cv.height=v.height;await p.render({canvasContext:cv.getContext('2d'),viewport:v}).promise;c.appendChild(cv)}}catch(e){c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Book Load Aagala</p>'}}
+function searchDua(){let v=document.getElementById('hisnulSearch').value.toLowerCase();let items=document.getElementsByClassName('dua-item');for(let i=0;i<items.length;i++){items[i].style.display=items[i].innerText.toLowerCase().includes(v)?"flex":"none"}}
+function searchTajweed(){let v=document.getElementById('tajweedSearch').value.toLowerCase();let items=document.querySelectorAll('#tajweedList .lesson-item');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
+function searchSeerah(){let v=document.getElementById('seerahSearch').value.toLowerCase();let items=document.querySelectorAll('#seerahList .lesson-item');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
+function openDua(i){let d=duas[i];document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><span class="repeat">⏰ '+d.r+'</span><div class="ar">'+d.a+'</div><div class="tamil"><b>TAMIL TRANSLATION:</b>'+d.tm+'</div><p style="color:#C9A227;font-size:12px;margin-top:12px">📖 Hisnul Muslim • '+d.cat+'</p></div>'}
+function openLesson(type,i){let d;let title="";if(type=='tajweed'){d=tajweed[i];title="Tajweed - Tamil";}if(type=='yassarnal'){d=yassarnal[i];title="Yassarnal Quran";}if(type=='seerah'){d=seerah[i];title="Ar-Raheeq - Seerah Tamil";}document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><div class="lesson-title">'+d.t+'</div><div class="ar" style="text-align:center;font-size:30px;margin-bottom:10px">'+d.ar+'</div><div class="lesson-body">'+d.body+'</div><p style="color:#C9A227;font-size:12px;margin-top:14px;text-align:center">📖 '+title+' • Madharasathul Ikhlaas</p></div>'}
+async function openSurah(n,name){document.getElementById('readerTitle').innerText=n+'. '+name;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Surah Loading... Tamil + Tajweed-oda Varudhu...</p>';c.scrollTop=0;try{let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil');let j=await res.json();let arabic=j.data[0].ayahs;let tamil=j.data[1].ayahs;let html='<div class="tajweed-box"><div>🔴<b>Idgham</b>Red</div><div>🟢<b>Ikhfa</b>Green</div><div>🔵<b>Madd</b>Blue</div><div>🟠<b>Ghunnah</b>Orange</div></div>';html+='<p style="text-align:center;color:#C9A227;font-size:12px;margin-bottom:12px">Tamil Translation - Jan Trust • Tajweed Colour</p>';arabic.forEach((a,i)=>{let txt=a.text;txt=txt.replace(/نّ|مّ/g,'<span style="color:#FFA500">$&</span>');txt=txt.replace(/آ|أٰ|ٱٰ/g,'<span style="color:#5DA9FF">$&</span>');html+='<div class="ayah"><div class="num">Ayah '+a.numberInSurah+'</div><div class="ar">'+txt+'</div><div class="tamil"><b>TAMIL TRANSLATION - JAN TRUST:</b>'+tamil[i].text+'</div></div>'});c.innerHTML=html}catch(e){c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Load Aagala - Internet Check Pannunga</p>'}}
 function closeBook(){document.getElementById('reader').style.display='none';document.getElementById('readerContent').innerHTML=''}
 function submitAdmission(){let n=document.getElementById('sName').value,a=document.getElementById('sAge').value,pn=document.getElementById('pName').value,pp=document.getElementById('pPhone').value,c=document.getElementById('sClass').value;if(!n||!a||!pn||!pp){alert('Please fill all fields!');return}let m="New Admission%0A%0AStudent: "+n+"%0AAge: "+a+"%0AParent: "+pn+"%0APhone: "+pp+"%0AClass: "+c;window.open('https://wa.me/917418140608?text='+m,'_blank')}
 </script>
