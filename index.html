@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MADHARASATHUL IKHLAAS</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
   body{background:#f5f5f5;padding-bottom:80px}
@@ -28,10 +29,11 @@
   .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee;z-index:99}
   .bottom-nav div{text-align:center;font-size:12px;color:#555;cursor:pointer}
   .bottom-nav .active{color:#1a73e8;font-weight:bold}
-  #reader{position:fixed;top:0;left:0;right:0;bottom:0;background:#111;display:none;flex-direction:column;z-index:999}
+  #reader{position:fixed;top:0;left:0;right:0;bottom:0;background:#333;display:none;flex-direction:column;z-index:999}
   #readerHeader{background:#2e7d32;color:white;padding:12px;display:flex;justify-content:space-between;align-items:center}
   #readerHeader button{background:white;color:#2e7d32;border:none;padding:8px 14px;border-radius:8px;font-weight:bold;cursor:pointer}
-  #readerFrame{flex:1;width:100%;border:none;background:white}
+  #readerContent{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px;text-align:center;-webkit-overflow-scrolling:touch}
+  #readerContent canvas{width:100%;max-width:800px;background:white;margin-bottom:10px;box-shadow:0 2px 10px rgba(0,0,0,.5);border-radius:4px}
   #readerFooter{background:white;padding:10px;text-align:center;font-size:12px;color:#555}
 </style>
 </head>
@@ -41,15 +43,12 @@
 
 <div id="homeSection">
   <div class="search">🔍 <input id="searchInput" onkeyup="searchBooks()" placeholder="Search books..."></div>
-
   <div class="class-banner" onclick="showClass()">
     <div style="color:#2e7d32;font-weight:bold;font-size:16px">🟢 LIVE CLASS OPEN!</div>
     <p style="font-size:13px;color:#555;margin:5px 0">Madharasathul Ikhlaas</p>
     <div style="background:#2e7d32;color:white;padding:12px;border-radius:10px;font-weight:bold">📹 Join Class - Button-a Click Pannunga!</div>
   </div>
-
   <div class="admission-btn" onclick="showForm()">📝 STUDENT ADMISSION FORM</div>
-
   <div class="list" id="bookList">
     <div class="card" onclick="openBook('hisnul-muslim.pdf')"><div class="book-img">📖</div><div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim • Duas</p></div></div>
     <div class="card" onclick="openBook('tajweed.pdf')"><div class="book-img">📗</div><div><h3>Tajweed</h3><p>Quran Recitation Rules</p></div></div>
@@ -103,8 +102,8 @@
 
 <div id="reader">
   <div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div>
-  <iframe id="readerFrame" src=""></iframe>
-  <div id="readerFooter">Madharasathul Ikhlaas • Scroll Panni Padikkalam • Vera Website-ku Pogaadhu</div>
+  <div id="readerContent"><p id="loadingText" style="color:white;padding:30px">Book Loading... Konjam Wait Pannunga...</p></div>
+  <div id="readerFooter">Madharasathul Ikhlaas • Scroll Panni Padikkalam</div>
 </div>
 
 <script>
@@ -114,8 +113,30 @@
   function showForm(){ hideAll(); document.getElementById('formSection').style.display='block'; }
   function showProfile(){ hideAll(); document.getElementById('profileSection').style.display='block'; }
   function searchBooks(){ let v=document.getElementById('searchInput').value.toLowerCase(); let cards=document.getElementsByClassName('card'); for(let i=0;i<cards.length;i++){ cards[i].style.display=cards[i].innerText.toLowerCase().includes(v)?"flex":"none"; } }
-  function openBook(f){ let t=f; if(f=='hisnul-muslim.pdf') t='Hisnul Muslim'; if(f=='tajweed.pdf') t='Tajweed'; if(f=='yassarnal.pdf') t='Yassarnal Quran'; if(f=='ar-raheeq.pdf') t='Ar-Raheeq Al-Makhtum'; document.getElementById('readerTitle').innerText=t; document.getElementById('readerFrame').src=f; document.getElementById('reader').style.display='flex'; }
-  function closeBook(){ document.getElementById('reader').style.display='none'; document.getElementById('readerFrame').src=''; }
+  async function openBook(f){
+    let t=f; if(f=='hisnul-muslim.pdf') t='Hisnul Muslim'; if(f=='tajweed.pdf') t='Tajweed'; if(f=='yassarnal.pdf') t='Yassarnal Quran'; if(f=='ar-raheeq.pdf') t='Ar-Raheeq Al-Makhtum';
+    document.getElementById('readerTitle').innerText=t;
+    document.getElementById('reader').style.display='flex';
+    let container=document.getElementById('readerContent');
+    container.innerHTML='<p style="color:white;padding:30px">Book Loading... Konjam Wait Pannunga...</p>';
+    container.scrollTop=0;
+    try{
+      pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      let pdf=await pdfjsLib.getDocument(f).promise;
+      container.innerHTML='';
+      for(let i=1;i<=pdf.numPages;i++){
+        let page=await pdf.getPage(i);
+        let scale=1.5;
+        let viewport=page.getViewport({scale:scale});
+        let canvas=document.createElement('canvas');
+        canvas.width=viewport.width; canvas.height=viewport.height;
+        let ctx=canvas.getContext('2d');
+        await page.render({canvasContext:ctx,viewport:viewport}).promise;
+        container.appendChild(canvas);
+      }
+    }catch(e){ container.innerHTML='<p style="color:white;padding:30px">Book Load Aagala - Internet Check Panni Thiruppi Try Pannunga</p>'; }
+  }
+  function closeBook(){ document.getElementById('reader').style.display='none'; document.getElementById('readerContent').innerHTML=''; }
   function submitAdmission(){ let n=document.getElementById('sName').value, a=document.getElementById('sAge').value, pn=document.getElementById('pName').value, pp=document.getElementById('pPhone').value, c=document.getElementById('sClass').value; if(!n||!a||!pn||!pp){ alert('Please fill all fields!'); return; } let msg="New Admission%0A%0AStudent: "+n+"%0AAge: "+a+"%0AParent: "+pn+"%0APhone: "+pp+"%0AClass: "+c; window.open('https://wa.me/917418140608?text='+msg,'_blank'); }
 </script>
 </body>
