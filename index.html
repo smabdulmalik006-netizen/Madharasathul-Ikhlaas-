@@ -7,17 +7,24 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
   body{background:#f5f5f5;padding-bottom:80px}
-  .banner{background:#3a3a3a;color:white;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:none}
+  .banner{background:#3a3a3a;color:white;display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
   .banner .arabic{font-size:28px;font-weight:bold}
   .banner .english{font-size:15px;letter-spacing:1.5px;font-weight:bold;margin-top:4px}
-  .logo-box{width:68px;height:68px;background:white;display:flex;align-items:center;justify-content:center;border-radius:0;border:none;overflow:hidden;flex-shrink:0}
+  .logo-box{width:68px;height:68px;background:white;display:flex;align-items:center;justify-content:center;border-radius:0;overflow:hidden;flex-shrink:0}
   .logo-box img{width:100%;height:100%;object-fit:cover}
   .search{margin:12px;background:white;border-radius:25px;display:flex;align-items:center;padding:10px 14px}
   .search input{border:none;outline:none;flex:1;font-size:15px;margin-left:8px}
-  .live-btn{margin:0 12px 12px;background:#e53935;color:white;text-align:center;padding:13px;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+  .live-btn{margin:0 12px 12px;background:#e53935;color:white;text-align:center;padding:13px;border-radius:12px;font-weight:bold;font-size:16px}
   .list{padding:0 12px 20px}
   .card{background:white;border-radius:14px;display:flex;gap:12px;padding:12px;margin-bottom:12px;align-items:center}
-  .book-img{width:70px;height:95px;border-radius:8px;object-fit:cover;flex-shrink:0}
+
+  /* BOOK COVER - Image illa, CSS Cover - Eppovum Varum! */
+  .book-cover{width:70px;height:95px;border-radius:8px;flex-shrink:0;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;font-weight:bold;font-size:11px;line-height:1.3}
+  .c1{background:linear-gradient(135deg,#4a6741,#2e4a2a)} /* Seerah - Green */
+  .c2{background:linear-gradient(135deg,#1a73e8,#0d47a1)} /* Hisnul - Blue */
+  .c3{background:linear-gradient(135deg,#8e24aa,#4a148c)} /* Tajweed - Purple */
+  .c4{background:linear-gradient(135deg,#e65100,#bf360c)} /* Yassarnal - Orange */
+
   .card h3{font-size:16px;margin-bottom:4px}
   .card p{font-size:13px;color:#666;line-height:1.4}
   .badge{font-size:11px;background:#e8f5e9;color:#2e7d32;padding:3px 7px;border-radius:10px;display:inline-block;margin-top:6px}
@@ -30,32 +37,28 @@
 
 <div class="banner">
   <div><div class="arabic">مدرسة الإخلاص</div><div class="english">MADHARASATHUL IKHLAAS</div></div>
-  <div class="logo-box"><img src="logo.png" alt="Logo"></div>
+  <!-- LOGO FIX - logo.jpg nu maathiten -->
+  <div class="logo-box"><img src="logo.jpg" alt="Logo"></div>
 </div>
 
 <div class="search">🔍 <input placeholder="Search books..."></div>
-
-<div class="live-btn" onclick="window.open('https://youtube.com/@yourchannel','_blank')">🔴 LIVE CLASS - Join Now</div>
+<div class="live-btn">🔴 LIVE CLASS - Join Now</div>
 
 <div class="list">
   <div class="card">
-    <!-- CORRECT IMAGE - Ar-Raheeq -->
-    <img class="book-img" src="https://upload.wikimedia.org/wikipedia/en/5/5e/Ar-Raheeq_Al-Makhtum.jpg" alt="Ar-Raheeq">
+    <div class="book-cover c1">Ar-Raheeq<br>Al-Makhtum<br><span style="font-size:20px;margin-top:4px">📖</span></div>
     <div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah of Prophet Muhammad ﷺ - Complete Biography</p><span class="badge">Seerah</span></div>
   </div>
   <div class="card">
-    <!-- CORRECT IMAGE - Hisnul Muslim -->
-    <img class="book-img" src="https://upload.wikimedia.org/wikipedia/en/3/3e/Hisnul_Muslim.jpg" alt="Hisnul Muslim" onerror="this.src='https://m.media-amazon.com/images/I/51+1+Hisnul.jpg'">
+    <div class="book-cover c2">Hisnul<br>Muslim<br><span style="font-size:20px;margin-top:4px">🤲</span></div>
     <div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim - Daily Duas & Azkar</p><span class="badge">Duas</span></div>
   </div>
   <div class="card">
-    <!-- Tajweed - Clean Cover -->
-    <img class="book-img" src="https://i.imgur.com/8zQZ7Qy.jpg" alt="Tajweed" onerror="this.src='https://via.placeholder.com/70x95/1a73e8/ffffff?text=Tajweed'">
+    <div class="book-cover c3">Tajweed<br><span style="font-size:20px;margin-top:4px">🎙️</span></div>
     <div><h3>Tajweed</h3><p>Learn Quran Pronunciation with Tajweed Rules</p><span class="badge">Quran</span></div>
   </div>
   <div class="card">
-    <!-- Yassarnal Quran -->
-    <img class="book-img" src="https://i.imgur.com/Yassarnal.jpg" alt="Yassarnal Quran" onerror="this.src='https://via.placeholder.com/70x95/2e7d32/ffffff?text=Yassarnal'">
+    <div class="book-cover c4">Yassarnal<br>Quran<br><span style="font-size:20px;margin-top:4px">📗</span></div>
     <div><h3>Yassarnal Quran</h3><p>Easy Quran Learning for Beginners</p><span class="badge">Learning</span></div>
   </div>
 </div>
