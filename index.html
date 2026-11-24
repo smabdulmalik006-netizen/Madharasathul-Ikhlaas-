@@ -14,4 +14,94 @@
   .class-banner{margin:0 12px 12px;background:#e8f5e9;border:2px solid #2e7d32;border-radius:14px;padding:12px;text-align:center;cursor:pointer}
   .admission-btn{margin:0 12px 12px;background:#2e7d32;color:white;text-align:center;padding:14px;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
   .list{padding:0 12px 20px}
-  .card{background:white;border-radius:14px;display:flex;gap:
+  .card{background:white;border-radius:14px;display:flex;gap:12px;padding:12px;margin-bottom:12px;align-items:center;cursor:pointer;box-shadow:0 1px 5px #ddd}
+  .book-img{width:70px;height:95px;object-fit:cover;border-radius:6px;flex-shrink:0;background:#e8f5e9;display:flex;align-items:center;justify-content:center;font-size:35px}
+  .card h3{font-size:16px;margin-bottom:4px}
+  .card p{font-size:13px;color:#666}
+  .profile-box,.form-box,.class-box{margin:12px;background:white;border-radius:14px;padding:16px;box-shadow:0 1px 5px #ddd;display:none}
+  .profile-box{text-align:center}
+  .profile-box h2{font-size:18px}
+  .profile-box p{font-size:14px;color:#555;margin:4px 0}
+  .call-btn{display:block;margin-top:10px;background:#1a73e8;color:white;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold;text-align:center}
+  .form-box input,.form-box select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;font-size:15px}
+  .form-box button{width:100%;background:#2e7d32;color:white;padding:14px;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
+  .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee;z-index:99}
+  .bottom-nav div{text-align:center;font-size:12px;color:#555;cursor:pointer}
+  .bottom-nav .active{color:#1a73e8;font-weight:bold}
+  iframe{width:100%;height:500px;border:none;border-radius:10px}
+</style>
+</head>
+<body>
+
+<div class="banner"><img src="logo.jpg"></div>
+
+<div id="homeSection">
+  <div class="search">🔍 <input id="searchInput" onkeyup="searchBooks()" placeholder="Search books..."></div>
+
+  <div class="class-banner" onclick="showClass()">
+    <div style="color:#2e7d32;font-weight:bold;font-size:16px">🟢 DAILY CLASS OPEN!</div>
+    <p style="font-size:13px;color:#555;margin:5px 0">Madharasathul Ikhlaas</p>
+    <div style="background:#2e7d32;color:white;padding:12px;border-radius:10px;font-weight:bold">📹 Join Class - Website-kkulle-ye!</div>
+  </div>
+
+  <div class="admission-btn" onclick="showForm()">📝 STUDENT ADMISSION FORM</div>
+
+  <div class="list" id="bookList">
+    <div class="card" onclick="openBook('hisnul-muslim.pdf')"><div class="book-img">📖</div><div><h3>Hisnul Muslim</h3><p>Fortress of the Muslim • Duas</p></div></div>
+    <div class="card" onclick="openBook('tajweed.pdf')"><div class="book-img">📗</div><div><h3>Tajweed</h3><p>Quran Recitation Rules</p></div></div>
+    <div class="card" onclick="openBook('yassarnal.pdf')"><div class="book-img">📘</div><div><h3>Yassarnal Quran</h3><p>Easy Quran Learning</p></div></div>
+    <div class="card" onclick="openBook('ar-raheeq.pdf')"><div class="book-img">📕</div><div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah - Prophet Life</p></div></div>
+  </div>
+</div>
+
+<div class="class-box" id="classSection">
+  <h2 style="text-align:center">🟢 Daily Class - Live</h2>
+  <p style="text-align:center;color:#666;font-size:13px;margin:6px 0">Madharasathul Ikhlaas • Aalima M.Syed Ali Fathima</p>
+  <iframe src="https://madharasathul-ikhlaas.daily.co/Class" allow="camera; microphone; fullscreen; display-capture; autoplay"></iframe>
+  <p style="text-align:center;margin-top:10px;color:#888;font-size:12px">Camera / Mic Permission Ketta - Allow Kudunga!</p>
+  <p style="text-align:center;margin-top:8px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p>
+</div>
+
+<div class="form-box" id="formSection">
+  <h2 style="text-align:center">📝 Admission Form</h2>
+  <input id="sName" placeholder="Student Name *">
+  <input id="sAge" placeholder="Age *" type="number">
+  <input id="pName" placeholder="Parent Name *">
+  <input id="pPhone" placeholder="Parent Phone Number *">
+  <select id="sClass"><option>Select Class</option><option>Quran - Basic</option><option>Quran - Hifz</option><option>Aalima Course</option><option>Tajweed</option><option>Yassarnal Quran</option></select>
+  <button onclick="submitAdmission()">Submit via WhatsApp ✅</button>
+  <p style="text-align:center;margin-top:10px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p>
+</div>
+
+<div class="profile-box" id="profileSection">
+  <div style="font-size:50px">👩‍🏫</div>
+  <h2>Aalima M.Syed Ali Fathima</h2>
+  <p><b>Madharasathul Ikhlaas</b></p>
+  <p>📍 Swamiyarmadam</p>
+  <p>📞 7418140608</p>
+  <a class="call-btn" href="tel:7418140608">📞 Audio Call</a>
+  <a class="call-btn" style="background:#7b1fa2" href="https://wa.me/917418140608?text=Assalamu%20Alaikum%2C%20Video%20Call%20Pannalama%3F">📹 Video Call</a>
+  <a class="call-btn" style="background:#25D366" href="https://wa.me/917418140608?text=Assalamu%20Alaikum!">💬 WhatsApp Message</a>
+  <a class="call-btn" style="background:#ff6f00" onclick="showClass()">📹 Join Daily Class</a>
+  <p style="margin-top:12px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p>
+</div>
+
+<div class="bottom-nav">
+  <div class="active" id="navHome" onclick="showHome()">🏠<br>Home</div>
+  <div onclick="showClass()">📹<br>Class</div>
+  <div onclick="showForm()">📝<br>Admission</div>
+  <div onclick="showProfile()">👤<br>Profile</div>
+</div>
+
+<script>
+  function hideAll(){ document.getElementById('homeSection').style.display='none'; document.getElementById('classSection').style.display='none'; document.getElementById('formSection').style.display='none'; document.getElementById('profileSection').style.display='none'; }
+  function showHome(){ hideAll(); document.getElementById('homeSection').style.display='block'; }
+  function showClass(){ hideAll(); document.getElementById('classSection').style.display='block'; }
+  function showForm(){ hideAll(); document.getElementById('formSection').style.display='block'; }
+  function showProfile(){ hideAll(); document.getElementById('profileSection').style.display='block'; }
+  function searchBooks(){ let v=document.getElementById('searchInput').value.toLowerCase(); let cards=document.getElementsByClassName('card'); for(let i=0;i<cards.length;i++){ cards[i].style.display=cards[i].innerText.toLowerCase().includes(v)?"flex":"none"; } }
+  function openBook(f){ window.open(f,'_blank'); }
+  function submitAdmission(){ let n=document.getElementById('sName').value, a=document.getElementById('sAge').value, pn=document.getElementById('pName').value, pp=document.getElementById('pPhone').value, c=document.getElementById('sClass').value; if(!n||!a||!pn||!pp){ alert('Please fill all fields!'); return; } let msg="New Admission%0A%0AStudent: "+n+"%0AAge: "+a+"%0AParent: "+pn+"%0APhone: "+pp+"%0AClass: "+c; window.open('https://wa.me/917418140608?text='+msg,'_blank'); }
+</script>
+</body>
+</html>
