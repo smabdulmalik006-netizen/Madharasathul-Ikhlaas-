@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madharasathul Ikhlaas</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f6f0;color:#222}
+header{background:#0b5e2e;color:#fff;padding:20px;text-align:center}
+header h1{margin:0;font-size:21px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:10px;background:#fff;position:sticky;top:0}
+nav button{border:0;background:#e8f0e8;padding:10px 13px;border-radius:20px;white-space:nowrap;font-weight:bold;cursor:pointer}
+nav button.active{background:#0b5e2e;color:#fff}
+section{padding:16px;display:none}
+section.active{display:block}
+.card{background:#fff;padding:16px;border-radius:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card h2{margin:0 0 8px;color:#0b5e2e}
+.btn{display:block;background:#0b5e2e;color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;margin-top:10px;font-weight:bold}
+.btn2{background:#d4a017}
+input{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px;box-sizing:border-box}
+.surah{display:flex;justify-content:space-between;background:#fff;padding:12px;border-radius:10px;margin-bottom:8px}
+.dua{font-size:22px;text-align:right;line-height:1.9}
+.taj{padding:12px;border-radius:10px;margin:8px 0;font-weight:bold}
+.red{background:#ffcccc}.green{background:#ccffcc}.blue{background:#cce5ff}.yellow{background:#fff3b0}.pink{background:#ffcce5}
+.rule{border-left:5px solid #0b5e2e;padding-left:12px;margin:14px 0}
+</style>
+</head>
+<body>
+<header><h1>🕌 MADHARASATHUL IKHLAAS</h1><p>Quran • Tajweed • Hadith Tamil • Dua • Seerah</p></header>
+<nav>
+<button class="active" onclick="show('home',this)">Home</button>
+<button onclick="show('quran',this)">📖 Quran</button>
+<button onclick="show('tajweed',this)">🎙️ Tajweed Quran</button>
+<button onclick="show('tajweedrules',this)">📜 Tajweed Sattam</button>
+<button onclick="show('hadith',this)">📚 Bukhari & Muslim Tamil</button>
+<button onclick="show('dua',this)">🤲 Hisnul Muslim</button>
+<button onclick="show('books',this)">📖 Seerah Book</button>
+<button onclick="show('fees',this)">💰 Fees ₹500</button>
+<button onclick="show('admission',this)">📝 Admission</button>
+</nav>
+
+<section id="home" class="active">
+<div class="card"><h2>Assalamu Alaikum!</h2><p>Madharasathul Ikhlaas ku varuga! Ellam oru app la irukku.</p></div>
+<div class="card"><h2>🎙️ Tajweed Quran</h2><a class="btn" href="#" onclick="show('tajweed',document.querySelectorAll('nav button')[2]);return false;">Tajweed Quran Padikalam</a></div>
+<div class="card"><h2>📜 Tajweed Sattam</h2><a class="btn" href="#" onclick="show('tajweedrules',document.querySelectorAll('nav button')[3]);return false;">Sattam Paakalam</a></div>
+<div class="card"><h2>📚 Bukhari & Muslim - Tamil</h2><a class="btn" href="#" onclick="show('hadith',document.querySelectorAll('nav button')[4]);return false;">Hadith Tamil la Padikalam</a></div>
+</section>
+
+<section id="quran"><div class="card"><h2>📖 Al-Quran</h2><input id="qSearch" placeholder="Surah thedunga..." onkeyup="searchQ()"><div id="qList"></div></div></section>
+
+<section id="tajweed">
+<div class="card"><h2>🎙️ Tajweed Quran - Colour Quran</h2>
+<div class="taj red">🔴 Sivappu - Mad - Neeti Odhanum</div>
+<div class="taj green">🟢 Pachai - Ghunnah - Mookula Osai</div>
+<div class="taj blue">🔵 Neelam - Qalqalah - Edhir Olikkum</div>
+<div class="taj yellow">🟡 Manjal - Ikhfa - Maraithu Odhanum</div>
+<div class="taj pink">🩷 Pink - Idgham - Serthu Odhanum</div>
+<a class="btn" href="https://www.google.com/search?q=Tajweed+Quran+Colour+Coded+PDF" target="_blank">🎨 Colour Tajweed Quran PDF</a>
+<a class="btn btn2" href="https://tanzil.net" target="_blank">📖 Tajweed Quran Online</a></div>
+</section>
+
+<section id="tajweedrules">
+<div class="card"><h2>📜 Tajweed Sattam - Full Rules</h2></div>
+<div class="card"><div class="rule"><h3>1. Makhraj</h3><p>Ovvoru ezhuthum thondai, naakku, udhadu la irundhu varum.</p></div>
+<div class="rule"><h3>2. Noon Saakinah - 4 Sattam</h3><p><b>Izhar:</b> Thelivaga - ء ه ع ح غ خ<br><b>Idgham:</b> Serthu - ي ر م ل و ن<br><b>Ikhfa:</b> Maraithu - 15 ezhuthu<br><b>Iqlab:</b> Ba vandha Noon ah Meem ah maathanum</p></div>
+<div class="rule"><h3>3. Meem Saakinah - 3 Sattam</h3><p><b>Ikhfa Shafawi, Idgham Shafawi, Izhar Shafawi</b></p></div>
+<div class="rule"><h3>4. Ghunnah</h3><p>Noon, Meem ku Shaddah irundha 2 alavu mookula osai.</p></div>
+<div class="rule"><h3>5. Mad</h3><p><b>Tabee:</b> 2 alavu, <b>Muttasil:</b> 4-5 alavu, <b>Lazim:</b> 6 alavu</p></div>
+<div class="rule"><h3>6. Qalqalah</h3><p>5 ezhuthu: <b>ق ط ب ج د - Qutb Jad</b> - Edhir olikkum</p></div>
+<div class="rule"><h3>7. Tafkheem & Tarqeeq</h3><p><b>Ganam:</b> خ ص ض غ ط ق ظ, <b>Melidu:</b> Vera ellam</p></div>
+<div class="rule"><h3>8. Waqf</h3><p><b>م:</b> Niruthanum, <b>ج:</b> Niruthalam, <b>لا:</b> Nirutha koodadhu</p></div>
+<a class="btn" href="https://www.youtube.com/results?search_query=tajweed+rules+tamil" target="_blank">▶️ Tajweed Tamil Video</a></div>
+</section>
+
+<section id="hadith">
+<div class="card"><h2>📚 ஸஹீஹுல் புகாரி - தமிழ்</h2><p>7563 Hadithgal - Full Tamil + Arabic</p><p><b>Hadith 1:</b> "செயல்கள் அனைத்தும் எண்ணங்களைப் பொருத்தே அமைகின்றன."</p><a class="btn" href="https://tamililquran.com/hadith/bukhari" target="_blank">📖 புகாரி தமிழில் முழுசா படிக்கலாம்</a></div>
+<div class="card"><h2>📚 ஸஹீஹ் முஸ்லிம் - தமிழ்</h2><p>7000+ Hadithgal - Full Tamil + Arabic</p><p><b>Hadith:</b> "ஒரு முஸ்லிமுக்கு ஏற்படும் துன்பம் மூலம் அல்லாஹ் பாவங்களை அழிக்கிறான்."</p><a class="btn" href="https://tamililquran.com/hadith/muslim" target="_blank">📖 முஸ்லிம் தமிழில் முழுசா படிக்கலாம்</a></div>
+<div class="card"><h2>🔍 Hadith Thedunga</h2><input id="hSearch" placeholder="Ex: தொழுகை, நோன்பு..." onkeyup="searchH()"><div id="hList"></div></div>
+</section>
+
+<section id="dua"><div class="card"><h2>🤲 Hisnul Muslim</h2></div><div class="card"><h3>1. Kaalai Dua</h3><p class="dua">الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا</p><p>Porul: Engalai uyir kodutha Allah vukke pugazh.</p></div><div class="card"><h3>2. Sapadu Mun</h3><p class="dua">بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ</p></div><div class="card"><a class="btn" href="https://hisnulm.us" target="_blank">Full Hisnul Muslim (132 Duas)</a></div></section>
+
+<section id="books"><div class="card"><h2>📖 Raheequl Makhtoom</h2><p>Nabi (SAW) varalaru.</p><a class="btn" href="https://www.google.com/search?q=Ar+Raheeq+Al+Makhtoom+Tamil+PDF" target="_blank">Tamil PDF Padikalam</a><a class="btn btn2" href="https://archive.org/details/ar-raheeq-al-makhtum" target="_blank">English Book Padikalam</a></div></section>
+
+<section id="fees"><div class="card"><h2>💰 Fees ₹500 / Month</h2><p>Quran + Tajweed + Hadith + Dua ellam adangum.</p><a class="btn" href="https://wa.me/919999999999?text=Fees" target="_blank">WhatsApp la Fees Kekanum</a></div></section>
+
+<section id="admission"><div class="card"><h2>📝 Admission</h2><input placeholder="Kuzhandhai Peru"><input placeholder="Vayasu"><input placeholder="Parent Peru"><input placeholder="Phone Number"><a class="btn" href="https://wa.me/919999999999?text=Admission venum" target="_blank">WhatsApp la Anuppunga</a></div></section>
+
+<script>
+function show(id,btn){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+let surahs=["1 Al-Fatiha","2 Al-Baqarah","36 Yaseen","55 Ar-Rahman","67 Al-Mulk","112 Al-Ikhlas","113 Al-Falaq","114 An-Nas"];
+function renderQ(list){document.getElementById('qList').innerHTML=list.map(s=>{let n=s.split(' ')[0];return `<div class="surah"><b>${s}</b><a href="https://quran.com/${n}" target="_blank">Padikalam →</a></div>`}).join('')}
+renderQ(surahs);
+function searchQ(){let v=document.getElementById('qSearch').value.toLowerCase();renderQ(surahs.filter(s=>s.toLowerCase().includes(v)))}
+let hadiths=[{t:"தொழுகை - புகாரி",d:"தொழுகை தான் இஸ்லாத்தின் தூண்."},{t:"நோன்பு - முஸ்லிம்",d:"நோன்பு எனக்குரியது, நானே அதற்கு கூலி தருவேன் - அல்லாஹ்."},{t:"பெற்றோர் - புகாரி",d:"பெற்றோரை மதிக்க வேண்டும்."}];
+function renderH(list){document.getElementById('hList').innerHTML=list.map(h=>`<div class="card"><b>${h.t}</b><p>${h.d}</p></div>`).join('')}
+renderH(hadiths);
+function searchH(){let v=document.getElementById('hSearch').value.toLowerCase();renderH(hadiths.filter(h=>(h.t+h.d).toLowerCase().includes(v)))}
+</script>
+</body>
+</html>
