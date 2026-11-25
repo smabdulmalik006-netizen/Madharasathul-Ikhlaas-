@@ -5,428 +5,304 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MADHARASATHUL IKHLAAS</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Cinzel:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
-.top-img{width:100%;height:auto;object-fit:contain;display:block;background:#1B1F2A}
-.gold-line{height:2px;background:linear-gradient(90deg,transparent,#C9A227,transparent)}
+.top-img{width:100%;display:block}.gold-line{height:2px;background:linear-gradient(90deg,transparent,#C9A227,transparent)}
 .search{margin:14px;background:#262B38;border:1px solid rgba(201,162,39,.5);border-radius:25px;padding:13px 15px;display:flex;gap:8px}
-.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:15px}
-.search input::placeholder{color:#8A93A6}
+.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:15px}.search input::placeholder{color:#8A93A6}
 .live{margin:0 14px 12px;background:linear-gradient(135deg,#D4AF37,#9A7B1A);border-radius:18px;padding:16px;text-align:center;cursor:pointer}
-.live b{font-size:16px;color:#fff}
-.live p{font-size:13px;color:#fff;opacity:.9;margin:5px 0 10px}
-.live div:last-child{background:#1B1F2A;color:#C9A227;padding:13px;border-radius:12px;font-weight:700}
+.live div:last-child{background:#1B1F2A;color:#C9A227;padding:13px;border-radius:12px;font-weight:700;margin-top:10px}
 .adm{margin:0 14px 16px;border:1.5px solid #C9A227;color:#C9A227;text-align:center;padding:15px;border-radius:14px;font-weight:700;cursor:pointer}
 .sec{padding:0 14px 10px;color:#C9A227;font-family:'Cinzel',serif;font-size:14px;letter-spacing:1px}
 .card{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:18px;display:flex;gap:14px;padding:13px;margin:0 14px 12px;align-items:center;cursor:pointer}
-.quran-card{background:linear-gradient(135deg,#0F3D26,#1E5A3A);border:1.5px solid #C9A227}
-.hisnul-card{background:linear-gradient(135deg,#1E3A0F,#2A4A1A);border:1.5px solid #C9A227}
-.tajweed-card{background:linear-gradient(135deg,#0F3D5E,#0A2A42);border:1.5px solid #C9A227}
-.seerah-card{background:linear-gradient(135deg,#4A1A1A,#2A0F0F);border:1.5px solid #C9A227}
-.yassarnal-card{background:linear-gradient(135deg,#5A3A0F,#3A2408);border:1.5px solid #C9A227}
-.cover{width:66px;height:90px;border-radius:10px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;font-weight:700;line-height:1.2}
-.cover small{font-size:9px;font-weight:400;opacity:.9;margin-top:4px}
-.c1{background:linear-gradient(135deg,#1E5A3A,#0F3D26);color:#FFD700;border:1px solid #C9A227}
-.c2{background:linear-gradient(135deg,#0F3D5E,#0A2A42);color:#fff;border:1px solid #C9A227}
-.c3{background:linear-gradient(135deg,#5A3A0F,#3A2408);color:#FFD700;border:1px solid #C9A227}
-.c4{background:linear-gradient(135deg,#4A1A1A,#2A0F0F);color:#FFD700;border:1px solid #C9A227}
-.card h3{font-size:16px}
-.card p{font-size:13px;color:#9AA3B2;margin:2px 0}
-.card span{font-size:11px;color:#C9A227;font-weight:600}
+.hisnul-card{background:linear-gradient(135deg,#1E3A0F,#2A4A1A);border:1.5px solid #C9A227}.quran-card{background:linear-gradient(135deg,#2E7D32,#1B5E20);border:1.5px solid #C9A227}
+.tajweed-card{background:linear-gradient(135deg,#0F3D5E,#0A2A42);border:1.5px solid #C9A227}.seerah-card{background:linear-gradient(135deg,#4A1A1A,#2A0F0F);border:1.5px solid #C9A227}.yassarnal-card{background:linear-gradient(135deg,#5A3A0F,#3A2408);border:1.5px solid #C9A227}
+.cover{width:66px;height:90px;border-radius:10px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;font-weight:700}.cover small{font-size:9px;font-weight:400;margin-top:4px}
+.c1{background:linear-gradient(135deg,#1E5A3A,#0F3D26);color:#FFD700;border:1px solid #C9A227}.c2{background:linear-gradient(135deg,#0F3D5E,#0A2A42);color:#fff;border:1px solid #C9A227}.c3{background:linear-gradient(135deg,#5A3A0F,#3A2408);color:#FFD700;border:1px solid #C9A227}.c4{background:linear-gradient(135deg,#4A1A1A,#2A0F0F);color:#FFD700;border:1px solid #C9A227}
+.card p{font-size:13px;color:#9AA3B2;margin:2px 0}.card span{font-size:11px;color:#C9A227;font-weight:600}
 .box{margin:12px;background:#242936;border:1px solid rgba(201,162,39,.4);border-radius:20px;padding:20px;display:none}
-.box h2{color:#C9A227;text-align:center;font-family:'Cinzel',serif}
-.box input,.box select{width:100%;padding:13px;margin:8px 0;border:1px solid rgba(201,162,39,.4);border-radius:12px;background:#1B1F2A;color:#fff;outline:none}
-.box button{width:100%;background:linear-gradient(135deg,#C9A227,#8A6D1A);color:#fff;padding:15px;border:none;border-radius:12px;font-weight:700;font-size:16px}
+.box h2{color:#C9A227;text-align:center;font-family:'Cinzel',serif}.box input,.box select{width:100%;padding:13px;margin:8px 0;border:1px solid rgba(201,162,39,.4);border-radius:12px;background:#1B1F2A;color:#fff;outline:none}.box button{width:100%;background:linear-gradient(135deg,#C9A227,#8A6D1A);color:#fff;padding:15px;border:none;border-radius:12px;font-weight:700;font-size:16px}
 .call-btn{display:block;margin-top:12px;background:#1a73e8;color:#fff;padding:14px;border-radius:12px;text-decoration:none;font-weight:600;text-align:center}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#141821;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid rgba(201,162,39,.4);z-index:99}
-.nav div{text-align:center;font-size:12px;color:#9AA3B2;cursor:pointer}
-.nav .active{color:#C9A227;font-weight:700}
-.surah-item,.dua-item,.lesson-item{background:#242936;border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:13px;margin:0 14px 8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.surah-item b,.dua-item b,.lesson-item b{font-size:15px}
-.surah-item span,.dua-item span,.lesson-item span{color:#C9A227;font-size:18px}
-.surah-item small,.dua-item small,.lesson-item small{color:#9AA3B2;font-size:12px}
-#reader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1B1F2A;display:none;flex-direction:column;z-index:999}
-#readerHeader{background:#C9A227;color:#1B1F2A;padding:13px;display:flex;justify-content:space-between;font-weight:700}
-#readerHeader button{background:#1B1F2A;color:#C9A227;border:none;padding:8px 14px;border-radius:8px;font-weight:700}
-#readerContent{flex:1;overflow-y:auto;padding:14px;padding-bottom:80px}
-.ayah{background:#242936;border:1px solid rgba(201,162,39,.2);border-radius:14px;padding:14px;margin-bottom:10px}
-.ayah .ar{font-size:26px;text-align:right;line-height:2.1;direction:rtl}
-.ayah .num{color:#C9A227;font-size:12px;font-weight:700}
-.tamil{font-size:15px;color:#E8E8E8;line-height:1.7;margin-top:12px;border-top:1px dashed rgba(201,162,39,.3);padding-top:10px}
-.tamil b{color:#C9A227;font-size:11px;display:block;margin-bottom:4px}
-.tajweed-box{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:12px;padding:10px;margin-bottom:12px;display:flex;justify-content:space-around;font-size:11px;text-align:center}
-.tajweed-box b{display:block;font-size:12px}
-.detail-box{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:16px;padding:16px;margin-bottom:12px}
-.detail-box .ar{font-size:26px;text-align:right;line-height:2.1;direction:rtl}
-.repeat{background:#C9A227;color:#1B1F2A;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
-.lesson-title{color:#C9A227;font-size:18px;font-weight:700;margin-bottom:10px;text-align:center}
-.lesson-body{font-size:15px;line-height:1.8;color:#E8E8E8}
-.lesson-body h4{color:#C9A227;margin:14px 0 6px}
-/* LUXURY MUSHAF */
-.mushaf-page{background:#FFFBEB;color:#1A1A1A;border-radius:16px;padding:20px 16px;margin:0 0 14px;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.mushaf-page .mushaf-ar{font-family:'Amiri Quran',serif;font-size:30px;line-height:2.3;text-align:justify;direction:rtl}
-.mushaf-page .ayah-num{display:inline-flex;width:28px;height:28px;background:#0F3D26;color:#FFD700;border:2px solid #C9A227;border-radius:50%;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin:0 4px;vertical-align:middle;cursor:pointer}
-.mushaf-page .bismillah{font-family:'Amiri Quran',serif;font-size:32px;text-align:center;color:#0F3D26;margin:10px 0 14px}
-.page-bar{background:#0F3D26;color:#FFD700;text-align:center;padding:8px;border-radius:20px;font-weight:700;font-size:13px;margin:12px 0}
-.q-tab{display:flex;gap:6px;overflow-x:auto;padding:0 14px 10px}
-.q-tab button{white-space:nowrap;background:#242936;color:#fff;border:1px solid rgba(201,162,39,.4);padding:9px 14px;border-radius:20px;font-weight:700;width:auto}
-.q-tab button.active{background:#C9A227;color:#000}
-.quick-link{display:flex;gap:8px;padding:0 14px 10px;overflow-x:auto}
-.quick-link div{background:#242936;border:1px solid #C9A227;padding:10px 14px;border-radius:12px;white-space:nowrap;font-size:13px;font-weight:600;cursor:pointer}
-.last-read{background:linear-gradient(135deg,#0F3D26,#1E5A3A);border:1.5px solid #C9A227;border-radius:16px;margin:0 14px 12px;padding:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.mushaf-bottom{position:fixed;bottom:0;left:0;right:0;background:#141821;border-top:1px solid #C9A227;display:flex;justify-content:space-around;padding:12px 0;z-index:1000}
-.mushaf-bottom div{text-align:center;font-size:12px;color:#fff;cursor:pointer}
-.mushaf-bottom div b{display:block;font-size:16px}
-.ayah-tamil{display:none;background:#FFF3CD;color:#333;border-radius:10px;padding:10px;margin-top:8px;font-size:14px;line-height:1.7}
-.ayah-tamil.show{display:block}
-.surah-row-new{display:flex;align-items:center;gap:12px;background:#242936;border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:12px;margin:0 14px 8px;cursor:pointer}
-.surah-row-new .num-box{width:42px;height:42px;background:#0F3D26;border:2px solid #C9A227;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:700;flex-shrink:0}
-.surah-row-new .ar-name{margin-left:auto;font-family:'Amiri Quran',serif;font-size:24px;color:#FFD700}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#141821;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid rgba(201,162,39,.4);z-index:100}.nav div{text-align:center;font-size:12px;color:#9AA3B2;cursor:pointer}.nav .active{color:#C9A227;font-weight:700}
+.dua-item{background:#242936;border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:13px;margin:0 14px 8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.dua-item small{color:#9AA3B2;font-size:12px}.dua-item span{color:#C9A227;font-size:18px}
+#reader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1B1F2A;display:none;flex-direction:column;z-index:999}#readerHeader{background:#C9A227;color:#1B1F2A;padding:13px;display:flex;justify-content:space-between;font-weight:700}#readerHeader button{background:#1B1F2A;color:#C9A227;border:none;padding:8px 14px;border-radius:8px;font-weight:700}#readerContent{flex:1;overflow-y:auto;padding:14px;padding-bottom:80px}.detail-box{background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:16px;padding:16px}.detail-box .ar{font-size:26px;text-align:right;line-height:2.1;direction:rtl}.tamil{font-size:15px;color:#E8E8E8;line-height:1.7;margin-top:12px;border-top:1px dashed rgba(201,162,39,.3);padding-top:10px}.tamil b{color:#C9A227;font-size:11px;display:block;margin-bottom:4px}.repeat{background:#C9A227;color:#1B1F2A;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
+.quran-wrap{background:#F5F5F5;color:#222;border-radius:18px;overflow:hidden}.quran-top{background:#2E7D32;color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center}.quran-top b{font-size:18px}.quran-top span{font-size:20px;cursor:pointer}.q-sec{padding:14px 14px 4px;color:#333;font-size:16px;font-weight:600}.q-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 14px 10px}.q-pill{background:#fff;border:1px solid #E0E0E0;padding:9px 16px;border-radius:20px;white-space:nowrap;font-size:13px;font-weight:700;color:#2E7D32;cursor:pointer}.q-tabs{display:flex;gap:6px;padding:6px 14px;background:#EEE}.q-tabs button{border:none;background:transparent;padding:9px 14px;border-radius:20px;font-weight:700;color:#555}.q-tabs button.active{background:#fff;color:#000;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.surah-row{background:#fff;border-bottom:1px solid #EEE;display:flex;align-items:center;gap:14px;padding:13px 14px;cursor:pointer}.surah-row .n{font-size:20px;width:28px;color:#222}.surah-row .nm b{color:#2E7D32;font-size:17px}.surah-row .nm small{color:#777;font-size:13px;display:block}.surah-row .ar{margin-left:auto;font-size:26px;font-family:'Amiri Quran',serif;color:#111}
+#quranReader{position:fixed;top:0;left:0;right:0;bottom:0;background:#FFFDF5;display:none;flex-direction:column;z-index:1000}.qr-head{background:#2E7D32;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.qr-head button{background:rgba(255,255,255,.2);color:#fff;border:none;padding:7px 10px;border-radius:8px;font-size:16px}.qr-body{flex:1;overflow-y:auto;padding:0 0 80px}.page-label{background:#E8F5E9;color:#555;text-align:center;padding:8px;font-size:14px;font-weight:600}
+.mushaf{padding:10px 12px;direction:rtl}.ayah-block{border-bottom:1px solid #F0E6D2;padding:14px 6px;direction:rtl}.ayah-ar{font-family:'Amiri Quran',serif;font-size:31px;line-height:2.2;text-align:justify;color:#111}.ayah-tamil-inline{font-family:'Poppins',sans-serif;direction:ltr;text-align:left;font-size:14px;line-height:1.8;color:#444;background:#FFF8E1;border-left:3px solid #C9A227;padding:10px 12px;border-radius:8px;margin-top:10px}.ayah-tamil-inline b{color:#2E7D32;font-size:11px;display:block;margin-bottom:3px}.ayah-tools{display:flex;gap:8px;justify-content:flex-end;direction:ltr;margin-top:8px}.ayah-tools button{border:1px solid #E0E0E0;background:#fff;padding:6px 10px;border-radius:20px;font-size:12px;cursor:pointer}
+.mushaf .an{display:inline-flex;width:30px;height:30px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:50%;align-items:center;justify-content:center;font-size:14px;color:#333;font-weight:700;margin:0 3px;vertical-align:middle}.bismillah{font-family:'Amiri Quran',serif;font-size:34px;text-align:center;color:#111;padding:10px 0}.surah-head{text-align:center;padding:14px 0 4px}.surah-head .num{width:28px;height:28px;background:#E8F5E9;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}.surah-head h2{font-family:'Cinzel',serif;color:#6D4C41;font-size:28px;margin:6px 0 2px}.surah-head p{color:#333;font-size:16px}.qr-bottom{position:fixed;bottom:0;left:0;right:0;background:#2E7D32;display:flex;justify-content:space-around;padding:10px 0;z-index:1001}.qr-bottom div{color:#fff;text-align:center;font-size:12px;cursor:pointer}.qr-bottom div b{font-size:20px;display:block}
+.profile-card{text-align:center;padding:10px 0}.profile-img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #C9A227;margin:10px auto;display:block}.profile-name{font-family:'Cinzel',serif;color:#C9A227;font-size:22px;margin:6px 0 2px}.profile-sub{color:#9AA3B2;font-size:13px}.profile-icons{display:flex;justify-content:center;gap:20px;margin:22px 0}.icon-btn{width:68px;height:68px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:30px;box-shadow:0 4px 12px rgba(0,0,0,.4)}.icon-btn small{font-size:9px;margin-top:2px;font-weight:700}.icon-audio{background:linear-gradient(135deg,#1a73e8,#0D47A1)}.icon-wa{background:linear-gradient(135deg,#25D366,#128C7E)}.icon-msg{background:linear-gradient(135deg,#FF9800,#E65100)}
+/* PDF READER - APP MAARI - VELIYA POGADHU */
+#pdfReader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1e1e1e;display:none;flex-direction:column;z-index:2000}
+.pdf-top{background:#141821;padding:10px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #C9A227}
+.pdf-top button{background:#242936;color:#fff;border:1px solid rgba(201,162,39,.4);padding:9px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+.pdf-top b{flex:1;text-align:center;color:#C9A227;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdf-controls{background:#242936;padding:10px 12px;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.pdf-controls button{background:#C9A227;color:#fff;border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px}
+.pdf-controls input{width:70px;padding:10px;border-radius:10px;border:1px solid #C9A227;background:#1B1F2A;color:#fff;text-align:center;outline:none;font-weight:700}
+.pdf-controls span{color:#fff;font-size:13px;font-weight:600}
+.pdf-range{width:100%;accent-color:#C9A227}
+.pdf-view{flex:1;overflow:auto;background:#2b2b2b;padding:12px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.pdf-view canvas{max-width:100%;background:#fff;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.pdf-bottom{background:#141821;padding:10px 12px;display:flex;gap:8px;justify-content:center;border-top:1px solid rgba(201,162,39,.4)}
+.pdf-bottom button{flex:1;max-width:180px;background:#242936;color:#fff;border:1px solid rgba(201,162,39,.4);padding:12px;border-radius:12px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
-<img src="logo.jpg" class="top-img">
-<div class="gold-line"></div>
+<img src="logo.jpg" class="top-img"><div class="gold-line"></div>
 <div id="homeSection">
 <div class="search">🔍 <input id="searchInput" onkeyup="searchBooks()" placeholder="Search books..."></div>
 <div class="live" onclick="showClass()"><b>🟢 LIVE CLASS OPEN!</b><p>Madharasathul Ikhlaas</p><div>📹 Join Class - Button-a Click Pannunga!</div></div>
 <div class="adm" onclick="showForm()">📝 STUDENT ADMISSION FORM</div>
 <div class="sec">✦ PREMIUM BOOKS COLLECTION ✦</div>
-<div class="card quran-card" onclick="showQuranList()"><div class="cover c1">القرآن<small>FULL QURAN</small></div><div><h3>Full Quran - 114 Surah</h3><p>Arabic + Tamil (Jan Trust) • Tajweed Colour</p><span>OPEN QURAN →</span></div></div>
-<div class="card hisnul-card" onclick="showHisnulList()"><div class="cover c1">حصن المسلم<small>HISNUL MUSLIM</small></div><div><h3>Hisnul Muslim</h3><p>40 Duas • Arabic + Tamil • No PDF</p><span>OPEN DUAS →</span></div></div>
-<div class="card tajweed-card" onclick="openPDF('tajweed.pdf')"><div class="cover c2">تجويد<small>TAJWEED</small></div><div><h3>Tajweed - Tamil Lessons</h3><p>12 Lessons • Tamil-la • Original PDF</p><span>OPEN LESSONS →</span></div></div>
-<div class="card yassarnal-card" onclick="openPDF('yassarnal.pdf')"><div class="cover c3">يسرنا<small>YASSARNAL</small></div><div><h3>Yassarnal Quran</h3><p>Tamil Lessons • Easy Learning • Original PDF</p><span>OPEN LESSONS →</span></div></div>
-<div class="card seerah-card" onclick="openPDF('ar-raheeq.pdf')"><div class="cover c4">الرحيق<small>AR-RAHEEQ</small></div><div><h3>Ar-Raheeq Al-Makhtum</h3><p>Seerah Tamil Story • Original PDF</p><span>OPEN SEERAH →</span></div></div>
+<div class="card quran-card" onclick="showQuran()"><div class="cover c1">القرآن<small>FULL QURAN</small></div><div><h3>Al Quran - Full Quran</h3><p>114 Surah • Page / Juz / Hizb / Ruku • Mushaf</p><span style="color:#fff">OPEN QURAN →</span></div></div>
+<div class="card hisnul-card" onclick="showHisnulList()"><div class="cover c1">حصن المسلم<small>HISNUL MUSLIM</small></div><div><h3>Hisnul Muslim</h3><p>132 Duas • Arabic + Tamil • No PDF</p><span>OPEN DUAS →</span></div></div>
+<div class="card tajweed-card" onclick="openPDF('tajweed.pdf','Tajweed - Tamil')"><div class="cover c2">تجويد<small>TAJWEED</small></div><div><h3>Tajweed - Tamil</h3><p>Original PDF • Tamil Lessons • In-App Reader</p><span>OPEN PDF →</span></div></div>
+<div class="card yassarnal-card" onclick="openPDF('yassarnal.pdf','Yassarnal Quran')"><div class="cover c3">يسرنا<small>YASSARNAL</small></div><div><h3>Yassarnal Quran</h3><p>Original PDF • Easy Learning • In-App Reader</p><span>OPEN PDF →</span></div></div>
+<div class="card seerah-card" onclick="openPDF('ar-raheeq.pdf','Ar-Raheeq Al-Makhtum')"><div class="cover c4">الرحيق<small>AR-RAHEEQ</small></div><div><h3>Ar-Raheeq Al-Makhtum</h3><p>519 Pages • Original PDF • In-App Reader • 100% Exact</p><span>OPEN BOOK →</span></div></div>
 </div>
-<div class="box" id="quranSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📖 Full Quran - 114 Surah</h2><div class="last-read" onclick="continueLast()"><div><b style="color:#FFD700">▶️ Continue - Last Read</b><br><small id="lastReadText" style="color:#fff">Surah 1 - Al-Fatiha - Ayah 1</small></div><span style="font-size:22px">→</span></div><div class="quick-link"><div onclick="openSurah(1,'Al-Fatiha')">⭐ Fatiha</div><div onclick="openSurah(36,'Ya-Sin')">💛 Yasin</div><div onclick="openSurah(67,'Al-Mulk')">🌙 Mulk</div><div onclick="openSurah(18,'Al-Kahf')">📖 Kahf</div><div onclick="showJuzList()">📖 30 Juz</div></div><div class="q-tab"><button class="active" onclick="switchQTab('surah',this)">Surah</button><button onclick="switchQTab('page',this)">Page</button><button onclick="switchQTab('juz',this)">Juz</button><button onclick="switchQTab('hizb',this)">Hizb</button><button onclick="switchQTab('ruku',this)">Ruku</button></div><div class="search">🔍 <input id="quranSearch" onkeyup="searchSurah()" placeholder="Search Surah... Ex: Yasin, Fatiha"></div><div id="surahList"></div><div id="pageList" style="display:none"></div><div id="juzListTab" style="display:none"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
-<div class="box" id="hisnulSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">🤲 Hisnul Muslim</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">40 Duas • Arabic + Tamil • PDF Illaama</p><div class="search">🔍 <input id="hisnulSearch" onkeyup="searchDua()" placeholder="Search Dua... Ex: Morning, Sleeping"></div><div id="duaList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
-<div class="box" id="tajweedSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📘 Tajweed - Tamil Lessons</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Quran Azhagaa Oodha Kattukkolvom • Tamil-la</p><div class="search">🔍 <input id="tajweedSearch" onkeyup="searchTajweed()" placeholder="Search... Ex: Madd, Ghunnah"></div><div id="tajweedList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
-<div class="box" id="yassarnalSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📗 Yassarnal Quran</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Easy Quran Learning • Tamil-la</p><div id="yassarnalList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
-<div class="box" id="seerahSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">📕 Ar-Raheeq Al-Makhtum</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">Nabi (Sal) Vazhkai Varalaaru • Tamil Story</p><div class="search">🔍 <input id="seerahSearch" onkeyup="searchSeerah()" placeholder="Search... Ex: Hijrat, Badr"></div><div id="seerahList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="quranSection" style="display:none;background:transparent;border:none;padding:0"><div class="quran-wrap"><div class="quran-top"><b>☰ &nbsp; Al Quran</b><span>⚡ 0 &nbsp; 🔍</span></div><div class="q-sec">Last Read</div><div class="q-scroll" id="lastReadRow"><div class="q-pill" onclick="continueLast()">AL-BAQARAH 2:1</div><div class="q-pill" onclick="openSurah(41,'Fussilat','Detailed Explanation')">FUSSILAT 41:39</div><div class="q-pill" onclick="openSurah(67,'Al-Mulk','The Sovereignty')">AL-MULK 67:1</div></div><div class="q-sec">Quick Links</div><div class="q-scroll"><div class="q-pill" onclick="openSurah(67,'Al-Mulk','The Sovereignty')">AL-MULK</div><div class="q-pill" onclick="openSurah(32,'As-Sajdah','The Prostration')">AS-SAJDAH</div><div class="q-pill" onclick="openSurah(18,'Al-Kahf','The Cave')">AL-KAHF</div><div class="q-pill" onclick="openSurah(36,'Ya-Sin','Ya Sin')">YA-SIN</div></div><div class="q-tabs"><button class="active" onclick="switchQTab('surah',this)">Surah</button><button onclick="switchQTab('page',this)">Page</button><button onclick="switchQTab('juz',this)">Juz</button><button onclick="switchQTab('hizb',this)">Hizb</button><button onclick="switchQTab('ruku',this)">Ruku</button></div><div id="qList"></div><div id="qPageList" style="display:none"></div><div id="qJuzList" style="display:none"></div></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="hisnulSection" style="display:none;background:transparent;border:none;padding:0"><h2 style="margin:12px">🤲 Hisnul Muslim</h2><p style="text-align:center;color:#9AA3B2;font-size:12px;margin-bottom:10px">132 Duas • Arabic + Tamil</p><div class="search">🔍 <input id="hisnulSearch" onkeyup="searchDua()" placeholder="Search Dua... Ex: Morning, Sleeping"></div><div id="duaList"></div><p style="text-align:center;color:#888;font-size:12px;margin:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="classSection"><h2>🟢 Live Class</h2><p style="text-align:center;color:#9AA3B2;font-size:13px;margin:6px 0">Aalima M.Syed Ali Fathima</p><div style="background:#1B1F2A;border:1px solid #C9A227;border-radius:16px;padding:20px;text-align:center;margin:15px 0"><div style="font-size:50px">📹</div><h3 style="margin:10px 0">Daily Live Class</h3><p style="color:#cbd5e1;font-size:14px;margin-bottom:15px">Button-a Click Panni Join Pannunga!</p><a href="https://meet.jit.si/Madharasathul-Ikhlaas-Class-123" target="_blank" style="display:block;background:linear-gradient(135deg,#C9A227,#8A6D1A);color:#fff;padding:16px;border-radius:12px;text-decoration:none;font-weight:700">📹 JOIN CLASS - CLICK HERE</a></div><p style="text-align:center;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="formSection"><h2>📝 Admission Form</h2><input id="sName" placeholder="Student Name *"><input id="sAge" placeholder="Age *" type="number"><input id="pName" placeholder="Parent Name *"><input id="pPhone" placeholder="Parent Phone *"><select id="sClass"><option>Select Class</option><option>Quran - Basic</option><option>Quran - Hifz</option><option>Aalima Course</option><option>Tajweed</option><option>Yassarnal Quran</option></select><button onclick="submitAdmission()">Submit via WhatsApp ✅</button><p style="text-align:center;margin-top:10px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
-<div class="box" id="profileSection" style="text-align:center"><h2>Aalima M.Syed Ali Fathima</h2><p style="margin:6px 0">Madharasathul Ikhlaas</p><p>📍 Swamiyarmadam</p><p>📞 7418140608</p><a class="call-btn" href="tel:7418140608">📞 Audio Call</a><a class="call-btn" style="background:#7b1fa2" href="https://wa.me/917418140608?text=Assalamu%20Alaikum%2C%20Video%20Call%20Pannalama%3F">📹 Video Call</a><a class="call-btn" style="background:#25D366" href="https://wa.me/917418140608?text=Assalamu%20Alaikum!">💬 WhatsApp Message</a><a class="call-btn" style="background:#C9A227" onclick="showClass()">📹 Join Live Class</a><p style="margin-top:12px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
+<div class="box" id="profileSection"><div class="profile-card"><img src="profile.jpg" class="profile-img" onerror="this.src='logo.jpg'"><div class="profile-name">Aalima M.Syed Ali Fathima</div><p class="profile-sub">Madharasathul Ikhlaas</p><p style="color:#9AA3B2;font-size:13px;margin-top:4px">📍 Swamiyarmadam &nbsp;•&nbsp; 📞 7418140608</p><div class="profile-icons"><a class="icon-btn icon-audio" href="tel:7418140608">📞<small>CALL</small></a><a class="icon-btn icon-wa" href="https://wa.me/917418140608?text=Assalamu%20Alaikum!" target="_blank">💬<small>WHATSAPP</small></a><a class="icon-btn icon-msg" href="sms:7418140608?body=Assalamu%20Alaikum!">✉️<small>MSG</small></a></div><p style="color:#888;font-size:12px;margin-top:6px">Logo-a Touch Pannunga - Call / WhatsApp / Msg Pogum!</p><p style="text-align:center;color:#888;font-size:12px;margin-top:14px" onclick="showHome()">← Back to Home</p></div></div>
 <div class="nav"><div class="active" onclick="showHome()">🏠<br>Home</div><div onclick="showClass()">📹<br>Class</div><div onclick="showForm()">📝<br>Admission</div><div onclick="showProfile()">👤<br>Profile</div></div>
-<div id="reader">
-  <div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div>
-  <div id="quranTop" style="display:none;padding:10px;background:#242936;border-bottom:1px solid #C9A227">
-    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center">
-      <button onclick="changeFont(2)" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">A+ Perusu</button>
-      <button onclick="changeFont(-2)" style="background:#242936;color:#fff;border:1px solid #555;padding:8px 12px;border-radius:20px">A- Chinnadhu</button>
-      <button onclick="toggleTheme()" id="themeBtn" style="background:#242936;color:#C9A227;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">🌙 Night / ☀️ Day</button>
-      <button onclick="showJuzList()" style="background:#0F3D26;color:#FFD700;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">📖 30 Juz</button>
-      <button onclick="showBookmarks()" style="background:#5A3A0F;color:#FFD700;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">🔖 Bookmark</button>
-      <button onclick="continueLast()" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">▶️ Last Read</button>
-    </div>
-    <div class="search" style="margin:10px 0 0"><input id="quranWordSearch" placeholder="Quran-la Thedunga... Ex: Sabur"><button onclick="searchQuranWord()" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700">Search</button></div>
-  </div>
-  <div id="readerContent"></div>
-  <div class="mushaf-bottom"><div onclick="closeBook()"><b>📚</b>Contents</div><div onclick="toggleAutoScroll()"><b>⏬</b><span id="autoTxt">Auto Scroll</span></div><div onclick="playSurah(currentSurah)"><b>🔊</b>Play Audio</div><div onclick="showPlanner()"><b>📅</b>Planner</div></div>
+
+<!-- PDF READER - APP MAARI - VELIYA POGADHU -->
+<div id="pdfReader">
+<div class="pdf-top"><button onclick="closePDF()">✕ Close</button><b id="pdfTitle">Ar-Raheeq Al-Makhtum</b><button onclick="togglePdfMode()" id="pdfModeBtn">📖 Scroll</button></div>
+<div class="pdf-controls">
+<button onclick="pdfPrev()">← Prev</button>
+<input id="pdfPageInput" type="number" value="1" onchange="pdfGoTo(this.value)"><span id="pdfPageLabel">/ 519</span>
+<button onclick="pdfNext()">Next →</button>
+<button onclick="pdfZoomOut()">−</button><span id="pdfZoomLabel">100%</span><button onclick="pdfZoomIn()">+</button>
 </div>
+<input type="range" class="pdf-range" id="pdfSlider" min="1" max="519" value="1" oninput="pdfGoTo(this.value)">
+<div class="pdf-view" id="pdfView"><p style="color:#fff;padding:30px;text-align:center">⏳ Loading PDF...</p></div>
+<div class="pdf-bottom"><button onclick="pdfPrev()">← Previous Page</button><button onclick="pdfBookmark()">🔖 Bookmark</button><button onclick="pdfNext()">Next Page →</button></div>
+</div>
+
+<div id="reader"><div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div><div id="readerContent"></div></div>
+<div id="quranReader"><div class="qr-head"><span style="cursor:pointer" onclick="closeQuran()">←</span><b id="qrTitle">2. Al-Baqarah ▾</b><span>☰ &nbsp; ⇅</span></div><div class="qr-body" id="qrBody"></div><div class="qr-bottom"><div onclick="closeQuran()"><b>📚</b>Contents</div><div onclick="toggleAuto()"><b>⌄</b><span id="autoTxt">Auto Scroll</span></div><div onclick="playSurahAudio()"><b>▶</b>Play Audio</div><div onclick="showPlanner()"><b>📅</b>Planner</div></div></div>
 <script>
-var surahs=[["1","Al-Fatiha","الفاتحة","7"],["2","Al-Baqarah","البقرة","286"],["3","Aal-e-Imran","آل عمران","200"],["4","An-Nisa","النساء","176"],["5","Al-Ma'idah","المائدة","120"],["6","Al-An'am","الأنعام","165"],["7","Al-A'raf","الأعراف","206"],["8","Al-Anfal","الأنفال","75"],["9","At-Tawbah","التوبة","129"],["10","Yunus","يونس","109"],["11","Hud","هود","123"],["12","Yusuf","يوسف","111"],["13","Ar-Ra'd","الرعد","43"],["14","Ibrahim","ابراهيم","52"],["15","Al-Hijr","الحجر","99"],["16","An-Nahl","النحل","128"],["17","Al-Isra","الإسراء","111"],["18","Al-Kahf","الكهف","110"],["19","Maryam","مريم","98"],["20","Taha","طه","135"],["21","Al-Anbiya","الأنبياء","112"],["22","Al-Hajj","الحج","78"],["23","Al-Mu'minun","المؤمنون","118"],["24","An-Nur","النور","64"],["25","Al-Furqan","الفرقان","77"],["26","Ash-Shu'ara","الشعراء","227"],["27","An-Naml","النمل","93"],["28","Al-Qasas","القصص","88"],["29","Al-Ankabut","العنكبوت","69"],["30","Ar-Rum","الروم","60"],["31","Luqman","لقمان","34"],["32","As-Sajdah","السجدة","30"],["33","Al-Ahzab","الأحزاب","73"],["34","Saba","سبإ","54"],["35","Fatir","فاطر","45"],["36","Ya-Sin","يس","83"],["37","As-Saffat","الصافات","182"],["38","Sad","ص","88"],["39","Az-Zumar","الزمر","75"],["40","Ghafir","غافر","85"],["41","Fussilat","فصلت","54"],["42","Ash-Shura","الشورى","53"],["43","Az-Zukhruf","الزخرف","89"],["44","Ad-Dukhan","الدخان","59"],["45","Al-Jathiyah","الجاثية","37"],["46","Al-Ahqaf","الأحقاف","35"],["47","Muhammad","محمد","38"],["48","Al-Fath","الفتح","29"],["49","Al-Hujurat","الحجرات","18"],["50","Qaf","ق","45"],["51","Adh-Dhariyat","الذاريات","60"],["52","At-Tur","الطور","49"],["53","An-Najm","النجم","62"],["54","Al-Qamar","القمر","55"],["55","Ar-Rahman","الرحمن","78"],["56","Al-Waqi'ah","الواقعة","96"],["57","Al-Hadid","الحديد","29"],["58","Al-Mujadila","المجادلة","22"],["59","Al-Hashr","الحشر","24"],["60","Al-Mumtahanah","الممتحنة","13"],["61","As-Saff","الصف","14"],["62","Al-Jumu'ah","الجمعة","11"],["63","Al-Munafiqun","المنافقون","11"],["64","At-Taghabun","التغابن","18"],["65","At-Talaq","الطلاق","12"],["66","At-Tahrim","التحريم","12"],["67","Al-Mulk","الملك","30"],["68","Al-Qalam","القلم","52"],["69","Al-Haqqah","الحاقة","52"],["70","Al-Ma'arij","المعارج","44"],["71","Nuh","نوح","28"],["72","Al-Jinn","الجن","28"],["73","Al-Muzzammil","المزمل","20"],["74","Al-Muddaththir","المدثر","56"],["75","Al-Qiyamah","القيامة","40"],["76","Al-Insan","الانسان","31"],["77","Al-Mursalat","المرسلات","50"],["78","An-Naba","النبإ","40"],["79","An-Nazi'at","النازعات","46"],["80","Abasa","عبس","42"],["81","At-Takwir","التكوير","29"],["82","Al-Infitar","الانفطار","19"],["83","Al-Mutaffifin","المطففين","36"],["84","Al-Inshiqaq","الانشقاق","25"],["85","Al-Buruj","البروج","22"],["86","At-Tariq","الطارق","17"],["87","Al-A'la","الأعلى","19"],["88","Al-Ghashiyah","الغاشية","26"],["89","Al-Fajr","الفجر","30"],["90","Al-Balad","البلد","20"],["91","Ash-Shams","الشمس","15"],["92","Al-Layl","الليل","21"],["93","Ad-Duha","الضحى","11"],["94","Ash-Sharh","الشرح","8"],["95","At-Tin","التين","8"],["96","Al-Alaq","العلق","19"],["97","Al-Qadr","القدر","5"],["98","Al-Bayyinah","البينة","8"],["99","Az-Zalzalah","الزلزلة","8"],["100","Al-Adiyat","العاديات","11"],["101","Al-Qari'ah","القارعة","11"],["102","At-Takathur","التكاثر","8"],["103","Al-Asr","العصر","3"],["104","Al-Humazah","الهمزة","9"],["105","Al-Fil","الفيل","5"],["106","Quraysh","قريش","4"],["107","Al-Ma'un","الماعون","7"],["108","Al-Kawthar","الكوثر","3"],["109","Al-Kafirun","الكافرون","6"],["110","An-Nasr","النصر","3"],["111","Al-Masad","المسد","5"],["112","Al-Ikhlas","الإخلاص","4"],["113","Al-Falaq","الفلق","5"],["114","An-Nas","الناس","6"]];
+/* ===== PDF READER - IN-APP - VELIYA POGADHU ===== */
+var pdfDoc=null, pdfPage=1, pdfZoom=1.0, pdfMode='single', pdfFile='', pdfTitle='';
+if(window['pdfjsLib']) pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+async function openPDF(file,title){
+  pdfFile=file; pdfTitle=title||file;
+  document.getElementById('pdfTitle').innerText=pdfTitle;
+  document.getElementById('pdfReader').style.display='flex';
+  document.getElementById('pdfView').innerHTML='<p style="color:#fff;padding:30px;text-align:center">⏳ Loading '+pdfTitle+'...</p>';
+  var saved = localStorage.getItem('pdf_'+file);
+  pdfPage = saved ? parseInt(saved) : 1;
+  try{
+    pdfDoc = await pdfjsLib.getDocument(file).promise;
+    document.getElementById('pdfPageLabel').innerText='/ '+pdfDoc.numPages;
+    document.getElementById('pdfSlider').max=pdfDoc.numPages;
+    renderPDF();
+  }catch(e){ document.getElementById('pdfView').innerHTML='<p style="color:#fff;padding:30px;text-align:center">PDF Load Aagala! File Irukka-nu Paaru: '+file+'</p>'; }
+}
+async function renderPDF(){
+  var view=document.getElementById('pdfView'); view.innerHTML='';
+  document.getElementById('pdfPageInput').value=pdfPage;
+  document.getElementById('pdfSlider').value=pdfPage;
+  document.getElementById('pdfPageLabel').innerText='/ '+(pdfDoc?pdfDoc.numPages:'');
+  document.getElementById('pdfZoomLabel').innerText=Math.round(pdfZoom*100)+'%';
+  localStorage.setItem('pdf_'+pdfFile, pdfPage);
+  if(pdfMode=='single'){
+    var page=await pdfDoc.getPage(pdfPage);
+    var canvas=document.createElement('canvas'); var ctx=canvas.getContext('2d');
+    var vp=page.getViewport({scale: pdfZoom*1.4}); canvas.width=vp.width; canvas.height=vp.height;
+    await page.render({canvasContext:ctx, viewport:vp}).promise; view.appendChild(canvas);
+    view.scrollTop=0;
+  }else{
+    for(let i=1;i<=pdfDoc.numPages;i++){
+      var p=await pdfDoc.getPage(i); var c=document.createElement('canvas'); var cx=c.getContext('2d');
+      var v=p.getViewport({scale: pdfZoom*1.2}); c.width=v.width; c.height=v.height;
+      await p.render({canvasContext:cx, viewport:v}).promise; view.appendChild(c);
+      if(i%5==0) await new Promise(r=>setTimeout(r,10));
+    }
+  }
+}
+function pdfNext(){ if(pdfDoc && pdfPage<pdfDoc.numPages){ pdfPage++; renderPDF(); } }
+function pdfPrev(){ if(pdfPage>1){ pdfPage--; renderPDF(); } }
+function pdfGoTo(n){ n=parseInt(n); if(!n) return; if(pdfDoc){ if(n<1)n=1; if(n>pdfDoc.numPages)n=pdfDoc.numPages; pdfPage=n; renderPDF(); } }
+function pdfZoomIn(){ pdfZoom=Math.min(2.5, pdfZoom+0.2); renderPDF(); }
+function pdfZoomOut(){ pdfZoom=Math.max(0.6, pdfZoom-0.2); renderPDF(); }
+function togglePdfMode(){ pdfMode = pdfMode=='single' ? 'scroll' : 'single'; document.getElementById('pdfModeBtn').innerText = pdfMode=='single' ? '📖 Scroll' : '📄 Single'; renderPDF(); }
+function pdfBookmark(){ localStorage.setItem('pdf_'+pdfFile, pdfPage); alert('🔖 Bookmark Saved! Page '+pdfPage+' - Thirumba Vandha Inga Irundhu Thaan Start Aagum!'); }
+function closePDF(){ document.getElementById('pdfReader').style.display='none'; }
+var touchX=0; var pv=document.getElementById('pdfView');
+pv.addEventListener('touchstart',e=>{ touchX=e.touches[0].clientX; });
+pv.addEventListener('touchend',e=>{ var dx=e.changedTouches[0].clientX-touchX; if(pdfMode=='single'){ if(dx<-60) pdfNext(); if(dx>60) pdfPrev(); } });
+document.addEventListener('keydown',e=>{ if(document.getElementById('pdfReader').style.display=='flex'){ if(e.key=='ArrowRight') pdfNext(); if(e.key=='ArrowLeft') pdfPrev(); if(e.key=='Escape') closePDF(); } });
+
+var qSurahs=[["1","Al-Fatihah","The Opening","الفاتحة","7"],["2","Al-Baqarah","The Cow","البقرة","286"],["3","Aal-e-Imran","The Family of Imraan","آل عمران","200"],["4","An-Nisa'","The Women","النساء","176"],["5","Al-Ma'idah","The Table Spread","المائدة","120"],["6","Al-An'am","The Cattle","الأنعام","165"],["7","Al-A'raf","The Heights","الأعراف","206"],["8","Al-Anfal","The Spoils of War","الأنفال","75"],["9","At-Tawbah","The Repentance","التوبة","129"],["10","Yunus","Jonah","يونس","109"],["11","Hud","Hud","هود","123"],["12","Yusuf","Joseph","يوسف","111"],["13","Ar-Ra'd","The Thunder","الرعد","43"],["14","Ibrahim","Abraham","ابراهيم","52"],["15","Al-Hijr","The Rocky Tract","الحجر","99"],["16","An-Nahl","The Bee","النحل","128"],["17","Al-Isra","The Night Journey","الإسراء","111"],["18","Al-Kahf","The Cave","الكهف","110"],["19","Maryam","Mary","مريم","98"],["20","Taha","Ta-Ha","طه","135"],["21","Al-Anbiya","The Prophets","الأنبياء","112"],["22","Al-Hajj","The Pilgrimage","الحج","78"],["23","Al-Mu'minun","The Believers","المؤمنون","118"],["24","An-Nur","The Light","النور","64"],["25","Al-Furqan","The Criterion","الفرقان","77"],["26","Ash-Shu'ara","The Poets","الشعراء","227"],["27","An-Naml","The Ant","النمل","93"],["28","Al-Qasas","The Stories","القصص","88"],["29","Al-Ankabut","The Spider","العنكبوت","69"],["30","Ar-Rum","The Romans","الروم","60"],["31","Luqman","Luqman","لقمان","34"],["32","As-Sajdah","The Prostration","السجدة","30"],["33","Al-Ahzab","The Combined Forces","الأحزاب","73"],["34","Saba","Sheba","سبإ","54"],["35","Fatir","The Originator","فاطر","45"],["36","Ya-Sin","Ya Sin","يس","83"],["37","As-Saffat","Those who set the Ranks","الصافات","182"],["38","Sad","The Letter Sad","ص","88"],["39","Az-Zumar","The Troops","الزمر","75"],["40","Ghafir","The Forgiver","غافر","85"],["41","Fussilat","Explained in Detail","فصلت","54"],["42","Ash-Shura","The Consultation","الشورى","53"],["43","Az-Zukhruf","The Gold Adornments","الزخرف","89"],["44","Ad-Dukhan","The Smoke","الدخان","59"],["45","Al-Jathiyah","The Crouching","الجاثية","37"],["46","Al-Ahqaf","The Wind-Curved Sandhills","الأحقاف","35"],["47","Muhammad","Muhammad","محمد","38"],["48","Al-Fath","The Victory","الفتح","29"],["49","Al-Hujurat","The Rooms","الحجرات","18"],["50","Qaf","The Letter Qaf","ق","45"],["51","Adh-Dhariyat","The Winnowing Winds","الذاريات","60"],["52","At-Tur","The Mount","الطور","49"],["53","An-Najm","The Star","النجم","62"],["54","Al-Qamar","The Moon","القمر","55"],["55","Ar-Rahman","The Beneficent","الرحمن","78"],["56","Al-Waqi'ah","The Inevitable","الواقعة","96"],["57","Al-Hadid","The Iron","الحديد","29"],["58","Al-Mujadila","The Pleading Woman","المجادلة","22"],["59","Al-Hashr","The Exile","الحشر","24"],["60","Al-Mumtahanah","She that is to be examined","الممتحنة","13"],["61","As-Saff","The Ranks","الصف","14"],["62","Al-Jumu'ah","The Congregation","الجمعة","11"],["63","Al-Munafiqun","The Hypocrites","المنافقون","11"],["64","At-Taghabun","The Mutual Disillusion","التغابن","18"],["65","At-Talaq","The Divorce","الطلاق","12"],["66","At-Tahrim","The Prohibition","التحريم","12"],["67","Al-Mulk","The Sovereignty","الملك","30"],["68","Al-Qalam","The Pen","القلم","52"],["69","Al-Haqqah","The Reality","الحاقة","52"],["70","Al-Ma'arij","The Ascending Stairways","المعارج","44"],["71","Nuh","Noah","نوح","28"],["72","Al-Jinn","The Jinn","الجن","28"],["73","Al-Muzzammil","The Enshrouded One","المزمل","20"],["74","Al-Muddaththir","The Cloaked One","المدثر","56"],["75","Al-Qiyamah","The Resurrection","القيامة","40"],["76","Al-Insan","Man","الانسان","31"],["77","Al-Mursalat","The Emissaries","المرسلات","50"],["78","An-Naba","The Tidings","النبإ","40"],["79","An-Nazi'at","Those who drag forth","النازعات","46"],["80","Abasa","He Frowned","عبس","42"],["81","At-Takwir","The Overthrowing","التكوير","29"],["82","Al-Infitar","The Cleaving","الانفطار","19"],["83","Al-Mutaffifin","Defrauding","المطففين","36"],["84","Al-Inshiqaq","The Sundering","الانشقاق","25"],["85","Al-Buruj","The Mansions of the Stars","البروج","22"],["86","At-Tariq","The Nightcomer","الطارق","17"],["87","Al-A'la","The Most High","الأعلى","19"],["88","Al-Ghashiyah","The Overwhelming","الغاشية","26"],["89","Al-Fajr","The Dawn","الفجر","30"],["90","Al-Balad","The City","البلد","20"],["91","Ash-Shams","The Sun","الشمس","15"],["92","Al-Layl","The Night","الليل","21"],["93","Ad-Duha","The Morning Hours","الضحى","11"],["94","Ash-Sharh","The Relief","الشرح","8"],["95","At-Tin","The Fig","التين","8"],["96","Al-Alaq","The Clot","العلق","19"],["97","Al-Qadr","The Power","القدر","5"],["98","Al-Bayyinah","The Clear Proof","البينة","8"],["99","Az-Zalzalah","The Earthquake","الزلزلة","8"],["100","Al-Adiyat","The Courser","العاديات","11"],["101","Al-Qari'ah","The Calamity","القارعة","11"],["102","At-Takathur","The Rivalry in world increase","التكاثر","8"],["103","Al-Asr","The Declining Day","العصر","3"],["104","Al-Humazah","The Traducer","الهمزة","9"],["105","Al-Fil","The Elephant","الفيل","5"],["106","Quraysh","Quraysh","قريش","4"],["107","Al-Ma'un","The Small Kindnesses","الماعون","7"],["108","Al-Kawthar","Abundance","الكوثر","3"],["109","Al-Kafirun","The Disbelievers","الكافرون","6"],["110","An-Nasr","The Divine Support","النصر","3"],["111","Al-Masad","The Palm Fibre","المسد","5"],["112","Al-Ikhlas","Sincerity","الإخلاص","4"],["113","Al-Falaq","The Daybreak","الفلق","5"],["114","An-Nas","Mankind","الناس","6"]];
+function buildQList(){let h='';qSurahs.forEach(s=>{h+='<div class="surah-row" onclick="openSurah('+s[0]+',\''+s[1]+'\',\''+s[2]+'\')"><div class="n">'+s[0]+'</div><div class="nm"><b>'+s[1]+'</b><small>'+s[2]+' • '+s[4]+' Ayahs</small></div><div class="ar">'+s[3]+'</div></div>'});document.getElementById('qList').innerHTML=h}buildQList();
+function showQuran(){hideAll();document.getElementById('quranSection').style.display='block';window.scrollTo(0,0)}
+function switchQTab(type,btn){document.querySelectorAll('.q-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('qList').style.display=type=='surah'?'block':'none';document.getElementById('qPageList').style.display=type=='page'?'block':'none';document.getElementById('qJuzList').style.display=(type=='juz'||type=='hizb'||type=='ruku')?'block':'none';if(type=='page'){let h='';for(let p=1;p<=604;p++){h+='<div class="surah-row" onclick="openQPage('+p+')"><div class="n">📖</div><div class="nm"><b>Page '+p+'</b><small>Mushaf Page</small></div><div class="ar">→</div></div>'}document.getElementById('qPageList').innerHTML=h}if(type=='juz'){let h='';for(let j=1;j<=30;j++){h+='<div class="surah-row" onclick="openJuz('+j+')"><div class="n">'+j+'</div><div class="nm"><b>Juz '+j+' - Para '+j+'</b><small>Click to Read</small></div><div class="ar">→</div></div>'}document.getElementById('qJuzList').innerHTML=h}if(type=='hizb'){let h='';for(let i=1;i<=60;i++){h+='<div class="surah-row" onclick="openJuz(Math.ceil(i/2))"><div class="n">'+i+'</div><div class="nm"><b>Hizb '+i+'</b><small>Juz '+Math.ceil(i/2)+'</small></div><div class="ar">→</div></div>'}document.getElementById('qJuzList').innerHTML=h}if(type=='ruku'){let h='';for(let i=1;i<=556;i++){h+='<div class="surah-row"><div class="n">'+i+'</div><div class="nm"><b>Ruku '+i+'</b><small>Surah '+(Math.ceil(i/5))+'</small></div><div class="ar">→</div></div>'}document.getElementById('qJuzList').innerHTML=h}}
+var curSurah=2,curAudio=new Audio(),autoOn=false,autoTimer=null,curAyahAudio=null;
+function tajweedColor(t){let s=t;s=s.replace(/([نّمّ])/g,'<span style="color:#1B8A3D;font-weight:700">$1</span>');s=s.replace(/([قطبجد])(?=[ْ])/g,'<span style="color:#E65100;font-weight:700">$1</span>');s=s.replace(/([ااوىٰ])(?=[َُِ])/g,'<span style="color:#1565C0;font-weight:700">$1</span>');s=s.replace(/(نْ)(?=[تثجدذزسشصضطظفقك])/g,'<span style="color:#7B1FA2;font-weight:700">$1</span>');s=s.replace(/(نْ)(?=[يرملون])/g,'<span style="color:#00695C;font-weight:700">$1</span>');s=s.replace(/(نْ)(?=[ب])/g,'<span style="color:#C62828;font-weight:700">$1</span>');s=s.replace(/([خصضغطقظ])/g,'<span style="color:#6D4C41;font-weight:700">$1</span>');return s}
+function saveLastQ(s,a){localStorage.setItem('q_last',JSON.stringify({surah:s,ayah:a}));let r=document.getElementById('lastReadRow');if(r) r.innerHTML='<div class="q-pill" onclick="openSurah('+s+',\'Surah '+s+'\',\'\')">SURAH '+s+' : '+a+'</div>'+r.innerHTML}
+function continueLast(){let l=JSON.parse(localStorage.getItem('q_last')||'null');if(!l) openSurah(2,'Al-Baqarah','The Cow');else openSurah(l.surah,'Surah '+l.surah,'')}
+async function openSurah(n,name,meaning){curSurah=n;saveLastQ(n,1);document.getElementById('qrTitle').innerText=n+'. '+name+' ▾';document.getElementById('quranReader').style.display='flex';let b=document.getElementById('qrBody');b.innerHTML='<p style="text-align:center;padding:40px;color:#333">⏳ Loading Madani Mushaf...</p>';try{let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil');let d=await res.json();let ar=d.data[0].ayahs, tm=d.data[1].ayahs;let pages={};ar.forEach((a,i)=>{let p=a.page||1;if(!pages[p])pages[p]=[];pages[p].push({a:a,t:tm[i]})});let h='<div class="surah-head"><span class="num">'+n+'</span><h2>'+name+'</h2><p>'+meaning+'</p></div>';if(n!=1&&n!=9) h+='<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>';Object.keys(pages).forEach(p=>{h+='<div class="page-label">Page '+p+' • Ruku '+pages[p][0].a.ruku+'</div><div class="mushaf">';pages[p].forEach(obj=>{let a=obj.a;h+='<div class="ayah-block" id="ayah-'+a.numberInSurah+'"><div class="ayah-ar">'+tajweedColor(a.text)+' <span class="an">'+a.numberInSurah+'</span></div><div class="ayah-tamil-inline"><b>TAMIL • '+n+':'+a.numberInSurah+'</b>'+obj.t.text+'</div><div class="ayah-tools"><button onclick="playAyahAudio('+a.number+')">🔊 Ayah Audio</button><button onclick="copyAyah('+a.numberInSurah+')">📋 Copy</button><button onclick="bookmarkAyah('+n+','+a.numberInSurah+')">🔖 Bookmark</button></div></div>'});h+='</div>'});b.innerHTML=h;b.scrollTop=0}catch(e){b.innerHTML='<p style="text-align:center;padding:40px">Internet Illa - Check Pannunga</p>'}}
+function playAyahAudio(g){if(curAyahAudio)curAyahAudio.pause();curAyahAudio=new Audio('https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+g+'.mp3');curAyahAudio.play()}
+function copyAyah(num){let el=document.querySelector('#ayah-'+num+' .ayah-ar');if(el){navigator.clipboard.writeText(el.innerText);alert('📋 Ayah Copy Aayiduchu!')}}
+function bookmarkAyah(s,a){let b=JSON.parse(localStorage.getItem('q_book')||'[]');b.push(s+':'+a);localStorage.setItem('q_book',JSON.stringify(b));alert('🔖 Bookmark Saved! Surah '+s+' : '+a)}
+async function openQPage(p){document.getElementById('qrTitle').innerText='Page '+p;document.getElementById('quranReader').style.display='flex';let b=document.getElementById('qrBody');b.innerHTML='<p style="text-align:center;padding:40px">⏳ Loading Madani Page '+p+'...</p>';try{let r=await fetch('https://api.alquran.cloud/v1/page/'+p+'/editions/quran-uthmani,ta.tamil');let d=await r.json();let ar=d.data[0].ayahs, tm=d.data[1].ayahs;let h='<div class="page-label">Page '+p+' • Ruku '+ar[0].ruku+' • Madani Mushaf</div><div class="mushaf">';ar.forEach((a,i)=>{h+='<div class="ayah-block"><div class="ayah-ar">'+tajweedColor(a.text)+' <span class="an">'+a.numberInSurah+'</span></div><div class="ayah-tamil-inline"><b>TAMIL</b>'+(tm[i]?tm[i].text:'')+'</div><div class="ayah-tools"><button onclick="playAyahAudio('+a.number+')">🔊 Ayah Audio</button></div></div>'});h+='</div>';b.innerHTML=h}catch(e){b.innerHTML='<p>Page Load Aagala</p>'}}
+async function openJuz(j){document.getElementById('qrTitle').innerText='Juz '+j;document.getElementById('quranReader').style.display='flex';let b=document.getElementById('qrBody');b.innerHTML='<p style="text-align:center;padding:40px">⏳ Loading Juz '+j+'...</p>';try{let r=await fetch('https://api.alquran.cloud/v1/juz/'+j+'/editions/quran-uthmani,ta.tamil');let d=await r.json();let ar=d.data[0].ayahs, tm=d.data[1].ayahs;let h='<div class="page-label">Juz '+j+' • Para '+j+' • Madani Mushaf</div><div class="mushaf">';ar.forEach((a,i)=>{h+='<div class="ayah-block"><div class="ayah-ar">'+tajweedColor(a.text)+' <span class="an">'+a.numberInSurah+'</span></div><div class="ayah-tamil-inline"><b>TAMIL</b>'+(tm[i]?tm[i].text:'')+'</div><div class="ayah-tools"><button onclick="playAyahAudio('+a.number+')">🔊 Ayah Audio</button></div></div>'});h+='</div>';b.innerHTML=h}catch(e){b.innerHTML='<p>Juz Load Aagala</p>'}}
+function closeQuran(){document.getElementById('quranReader').style.display='none';curAudio.pause();if(curAyahAudio)curAyahAudio.pause();if(autoTimer)clearInterval(autoTimer);autoOn=false}
+function toggleAuto(){autoOn=!autoOn;document.getElementById('autoTxt').innerText=autoOn?'Stop Scroll':'Auto Scroll';if(autoOn){autoTimer=setInterval(()=>{document.getElementById('qrBody').scrollTop+=1},50)}else clearInterval(autoTimer)}
+function playSurahAudio(){curAudio.pause();curAudio.src='https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/'+curSurah+'.mp3';curAudio.play();alert('🔊 Surah Full Audio Playing...')}
+function showPlanner(){let d=prompt('Quran Planner - Oru Naalukku Ethana Page? Ex: 5');if(!d)return;let days=Math.ceil(604/d);alert('📅 Planner:\nOru Naalukku '+d+' Pages\nTotal '+days+' Naal-la Quran Mudiyum!\nMasha Allah!')}
 var duas=[
-{t:"1. காலை துஆ",a:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",tm:"நாங்கள் காலையில் எழுந்தோம், ஆட்சியும் அல்லாஹ்வுக்கே உரியது. புகழ் அனைத்தும் அல்லாஹ்வுக்கே.",r:"1 முறை - காலையில்",cat:"காலை"},
-{t:"2. மாலை துஆ",a:"أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",tm:"நாங்கள் மாலையில் ஆனோம், ஆட்சியும் அல்லாஹ்வுக்கே உரியது.",r:"1 முறை - மாலையில்",cat:"மாலை"},
-{t:"3. தூங்கும் முன்",a:"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",tm:"அல்லாஹ்வே! உன் பெயரால் நான் தூங்குகிறேன், உன் பெயரால் எழுகிறேன்.",r:"1 முறை - தூங்கும் முன்",cat:"தூக்கம்"},
-{t:"4. எழுந்த பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",tm:"எங்களை தூக்கத்திற்கு பின் உயிர் கொடுத்த அல்லாஹ்வுக்கே புகழ்.",r:"1 முறை - காலை",cat:"எழுதல்"},
-{t:"5. சாப்பிடும் முன்",a:"بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ",tm:"அல்லாஹ்வின் பெயரால், அல்லாஹ்வின் பரக்கத்தின் மீது சாப்பிடுகிறேன்.",r:"1 முறை",cat:"உணவு"},
-{t:"6. சாப்பிட்ட பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",tm:"எங்களுக்கு உணவு அளித்து, நீர் அளித்து, எங்களை முஸ்லிமாக்கிய அல்லாஹ்வுக்கே புகழ்.",r:"1 முறை",cat:"உணவு"},
-{t:"7. கழிவறைக்குள் நுழையும் போது",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ",tm:"அல்லாஹ்வே! அசுத்தமான ஆண்-பெண் ஜின்களிடமிருந்து உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"1 முறை",cat:"கழிவறை"},
-{t:"8. கழிவறையை விட்டு வெளியேறும் போது",a:"غُفْرَانَكَ",tm:"அல்லாஹ்வே! உன் மன்னிப்பை தேடுகிறேன்.",r:"1 முறை",cat:"கழிவறை"},
-{t:"9. வீட்டிற்குள் நுழையும் போது",a:"بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا",tm:"அல்லாஹ்வின் பெயரால் நுழைந்தோம், அல்லாஹ்வின் பெயரால் வெளியேறுகிறோம்.",r:"1 முறை",cat:"வீடு"},
-{t:"10. வீட்டை விட்டு வெளியேறும் போது",a:"بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",tm:"அல்லாஹ்வின் பெயரால் வெளியேறுகிறேன், அல்லாஹ்வின் மீது நம்பிக்கை வைத்தேன்.",r:"1 முறை",cat:"வீடு"},
-{t:"11. உளூவுக்கு முன்",a:"بِسْمِ اللَّهِ",tm:"அல்லாஹ்வின் பெயரால் உளூ செய்கிறேன்.",r:"1 முறை",cat:"உளூ"},
-{t:"12. உளூவுக்கு பின்",a:"أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",tm:"அல்லாஹ்வை தவிர இறைவன் இல்லை என்று சாட்சி சொல்கிறேன்.",r:"1 முறை",cat:"உளூ"},
-{t:"13. ஆயத்துல் குர்ஸி",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ",tm:"அல்லாஹ் - அவனை தவிர இறைவன் இல்லை. அவன் உயிருள்ளவன்.",r:"தொழுகைக்கு பின்",cat:"குர்ஆன் துஆ"},
-{t:"14. பெற்றோருக்காக துஆ",a:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",tm:"என் இறைவனே! என்னை சின்ன வயதில் வளர்த்தது போல, என் பெற்றோருக்கு கருணை காட்டுவாயாக!",r:"தினமும்",cat:"பெற்றோர்"},
-{t:"15. கல்விக்காக துஆ",a:"رَبِّ زِدْنِي عِلْمًا",tm:"என் இறைவனே! எனக்கு கல்வியை அதிகப்படுத்துவாயாக!",r:"தினமும்",cat:"கல்வி"},
-{t:"16. பயண துஆ",a:"سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",tm:"இதை எங்களுக்கு வசப்படுத்தி தந்தவன் தூய்மையானவன்.",r:"பயணம் தொடங்கும் போது",cat:"பயணம்"},
-{t:"17. கஷ்டத்திற்கு துஆ",a:"اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا",tm:"அல்லாஹ்வே! நீ எளிதாக்கியது தவிர எளிதான ஒன்றும் இல்லை.",r:"தேவையான போது",cat:"கஷ்டம்"},
-{t:"18. படிக்கும் முன்",a:"اللَّهُمَّ افْتَحْ عَلَيْنَا حِكْمَتَكَ وَانْشُرْ عَلَيْنَا رَحْمَتَكَ",tm:"அல்லாஹ்வே! எங்களுக்கு உன் ஞான கதவை திறப்பாயாக!",r:"படிக்கும் முன்",cat:"கல்வி"},
-{t:"19. இஸ்திஃபார்",a:"أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ",tm:"மகா பெரிய அல்லாஹ்விடம் மன்னிப்பு தேடுகிறேன்.",r:"தினமும் 100 முறை",cat:"இஸ்திஃபார்"},
-{t:"20. பாதுகாப்பு துஆ",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",tm:"அல்லாஹ்வின் முழுமையான வார்த்தைகளை கொண்டு பாதுகாவல் தேடுகிறேன்.",r:"காலை / மாலை 3 முறை",cat:"பாதுகாப்பு"},
-{t:"21. மஸ்ஜிதிற்குள் நுழையும் போது",a:"أَعُوذُ بِاللَّهِ الْعَظِيمِ وَبِوَجْهِهِ الْكَرِيمِ وَسُلْطَانِهِ الْقَدِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ، بِسْمِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",tm:"மகா பெரிய அல்லாஹ்விடம் பாதுகாவல் தேடுகிறேன்.",r:"மஸ்ஜித் நுழையும் போது",cat:"மஸ்ஜித்"},
-{t:"22. மஸ்ஜிதை விட்டு வெளியேறும் போது",a:"بِسْمِ اللَّهِ، وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",tm:"அல்லாஹ்வின் பெயரால் வெளியேறுகிறேன்.",r:"மஸ்ஜிதை விட்டு வரும் போது",cat:"மஸ்ஜித்"},
-{t:"23. பாங்கிற்கு பின் துஆ",a:"اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",tm:"அல்லாஹ்வே! முஹம்மது (ஸல்) அவர்களுக்கு வஸீலாவையும் கொடுப்பாயாக!",r:"பாங்கிற்கு பின்",cat:"பாங்கு"},
-{t:"24. தூங்கும் முன் - இக்லாஸ், ஃபலக், நாஸ்",a:"قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ",tm:"இக்லாஸ், ஃபலக், நாஸ் - மூன்று சூராக்களும் 3 முறை ஓதி.",r:"3 முறை - தூங்கும் முன்",cat:"தூக்கம்"},
-{t:"25. கடனுக்காக துஆ",a:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",tm:"அல்லாஹ்வே! உன் ஹலாலை கொண்டு போதுமானதாக்குவாயாக!",r:"கடன் இருந்தால்",cat:"கடன்"},
-{t:"26. கவலைக்கு துஆ",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",tm:"அல்லாஹ்வே! கவலை, துயரம், இயலாமை - இவை அனைத்திலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"கவலை இருக்கும் போது",cat:"கவலை"},
-{t:"27. நல்ல முடிவுக்காக",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ حُسْنَ الْخَاتِمَةِ",tm:"அல்லாஹ்வே! எங்களுக்கு நல்ல முடிவை தருவாயாக!",r:"தினமும்",cat:"ஆகிரா"},
-{t:"28. மழைக்காக",a:"اللَّهُمَّ صَيِّبًا نَافِعًا",tm:"அல்லாஹ்வே! பயனுள்ள மழையை கொடுப்பாயாக!",r:"மழை வரும் போது",cat:"மழை"},
-{t:"29. இடி இடிக்கும் போது",a:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ",tm:"இடியும், மலக்குகளும் - அவன் புகழை கொண்டு தஸ்பீஹ் செய்யும் அல்லாஹ் தூய்மையானவன்.",r:"இடி இடிக்கும் போது",cat:"மழை"},
-{t:"30. புது ஆடை அணியும் போது",a:"الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",tm:"என் சக்தி இல்லாமல் இதை எனக்கு அணிவித்த அல்லாஹ்வுக்கே புகழ்.",r:"புது ஆடை அணியும் போது",cat:"ஆடை"},
-{t:"31. கண்ணாடி பார்க்கும் போது",a:"اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",tm:"அல்லாஹ்வே! என் தோற்றத்தை அழகாக்கியது போல, என் குணத்தையும் அழகாக்குவாயாக!",r:"கண்ணாடி பார்க்கும் போது",cat:"தினசரி"},
-{t:"32. கோபம் வரும் போது",a:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",tm:"கல்லெறியப்பட்ட ஷைத்தானிடமிருந்து அல்லாஹ்விடம் பாதுகாவல் தேடுகிறேன்.",r:"கோபம் வரும் போது",cat:"கோபம்"},
-{t:"33. நோயாளிக்காக",a:"أَذْهِبِ الْبَأْسَ رَبَّ النَّاسِ، اشْفِ وَأَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا",tm:"மனிதர்களின் இறைவனே! நோயை நீக்குவாயாக! நீ தான் குணப்படுத்துபவன்.",r:"நோயாளியை பார்க்கும் போது",cat:"நோய்"},
-{t:"34. கப்ருஸ்தானுக்கு போகும் போது",a:"السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَإِنَّا إِنْ شَاءَ اللَّهُ بِكُمْ لَاحِقُونَ",tm:"மூஃமின்கள், முஸ்லிம்களான இந்த வீட்டின் மக்களுக்கே - உங்கள் மீது ஸலாம்.",r:"கப்ருஸ்தானுக்கு போகும் போது",cat:"கப்ருஸ்தான்"},
-{t:"35. திருமணத்திற்கு",a:"بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",tm:"அல்லாஹ் உனக்கு பரக்கத் செய்வானாக!",r:"திருமணம் நடக்கும் போது",cat:"திருமணம்"},
-{t:"36. புது குழந்தைக்காக",a:"أُعِيذُكَ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ",tm:"அல்லாஹ்வின் முழுமையான வார்த்தைகளை கொண்டு பாதுகாவல் தேடுகிறேன்.",r:"குழந்தை பிறந்த பின்",cat:"குழந்தை"},
-{t:"37. கஷ்டத்தில் உள்ளவரை பார்க்கும் போது",a:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي مِمَّا ابْتَلَاكَ بِهِ، وَفَضَّلَنِي عَلَى كَثِيرٍ مِمَّنْ خَلَقَ تَفْضِيلًا",tm:"உனக்கு கொடுத்த சோதனையிலிருந்து என்னை காப்பாற்றிய அல்லாஹ்வுக்கே புகழ்.",r:"கஷ்டத்தில் உள்ள ஒருவரை பார்க்கும் போது",cat:"கஷ்டம்"},
-{t:"38. பெற்றோர் + அனைத்து முஸ்லிம்களுக்காக",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",tm:"எங்கள் இறைவனே! என்னையும், என் பெற்றோரையும் மன்னிப்பாயாக!",r:"தினமும் - தொழுகையில்",cat:"பெற்றோர்"},
-{t:"39. சொர்க்கத்திற்காக",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ الْجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ",tm:"அல்லாஹ்வே! சொர்க்கத்தையும் கேட்கிறோம்!",r:"தினமும் - 3 முறை",cat:"சொர்க்கம்"},
-{t:"40. நரகத்திலிருந்து பாதுகாப்பு",a:"اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",tm:"அல்லாஹ்வே! என்னை நரகத்திலிருந்து காப்பாற்றுவாயாக!",r:"தினமும் - 7 முறை",cat:"பாதுகாப்பு"},
-{t:"41. ஃபஜ்ருக்கு பின் துஆ",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا",tm:"அல்லாஹ்வே! பயனுள்ள கல்வியையும், நல்ல ரிஸ்க்கையும், ஏற்றுக்கொள்ளப்படும் அமலையும் உன்னிடம் கேட்கிறோம்!",r:"ஃபஜ்ருக்கு பின் - 1 முறை",cat:"காலை"},
-{t:"42. ரிஸ்க்குக்காக துஆ",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ وَرَحْمَتِكَ، فَإِنَّهُ لَا يَمْلِكُهَا إِلَّا أَنْتَ",tm:"அல்லாஹ்வே! உன் அருளிலிருந்தும் கருணையிலிருந்தும் கேட்கிறோம். அதை உன்னை தவிர யாரும் கொடுக்க முடியாது.",r:"தினமும்",cat:"ரிஸ்க்"},
-{t:"43. புது ஆடை அணியும் போது",a:"اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ",tm:"அல்லாஹ்வே! உனக்கே புகழ் - நீ தான் இதை எனக்காக அணிவித்தாய். இதன் நன்மையையும் கேட்கிறோம். இதன் தீங்கிலிருந்தும் பாதுகாவல் தேடுகிறோம்.",r:"புது ஆடை அணியும் போது",cat:"ஆடை"},
-{t:"44. மார்க்கெட்டுக்கு போகும் போது",a:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، يُحْيِي وَيُمِيتُ، وَهُوَ حَيٌّ لَا يَمُوتُ",tm:"அல்லாஹ்வை தவிர இறைவன் இல்லை. அவன் தனித்தவன். ஆட்சியும் புகழும் அவனுக்கே. அவன் உயிர் கொடுக்கிறான், மரணம் கொடுக்கிறான். அவன் உயிருள்ளவன், மரணிக்கவே மாட்டான்.",r:"மார்க்கெட் போகும் போது",cat:"மார்க்கெட்"},
-{t:"45. பயணத்திலிருந்து திரும்பும் போது",a:"آيِبُونَ، تَائِبُونَ، عَابِدُونَ، لِرَبِّنَا حَامِدُونَ",tm:"நாங்கள் திரும்பி வருபவர்கள், தவ்பா செய்பவர்கள், இபாதத் செய்பவர்கள், எங்கள் ரப்பை புகழ்ந்தவர்கள்.",r:"பயணத்திலிருந்து திரும்பும் போது",cat:"பயணம்"},
-{t:"46. ஒருவர் நல்லது செய்தால்",a:"جَزَاكَ اللَّهُ خَيْرًا",tm:"அல்லாஹ் உனக்கு நல்ல கூலி கொடுப்பானாக!",r:"ஒருவர் நல்லது செய்தால்",cat:"தினசரி"},
-{t:"47. அதிக மழை வரும் போது",a:"اللَّهُمَّ حَوَالَيْنَا وَلَا عَلَيْنَا",tm:"அல்லாஹ்வே! எங்களை சுற்றி மழையை கொடுப்பாயாக, எங்கள் மீது அல்ல.",r:"அதிக மழை வரும் போது",cat:"மழை"},
-{t:"48. மழைக்கு பின்",a:"مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ",tm:"அல்லாஹ்வின் அருளாலும் கருணையாலும் நமக்கு மழை கொடுக்கப்பட்டது.",r:"மழைக்கு பின்",cat:"மழை"},
-{t:"49. பிறை பார்க்கும் போது",a:"اللَّهُ أَكْبَرُ، اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيمَانِ، وَالسَّلَامَةِ وَالْإِسْلَامِ",tm:"அல்லாஹ் பெரியவன்! அல்லாஹ்வே! இந்த பிறையை எங்கள் மீது அமைதி, ஈமான், பாதுகாவல், இஸ்லாமோடு கொண்டு வருவாயாக!",r:"பிறை பார்க்கும் போது",cat:"நிலவு"},
-{t:"50. நோன்பு திறக்கும் போது",a:"ذَهَبَ الظَّمَأُ، وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ",tm:"தாகம் போய்விட்டது, நரம்புகள் ஈரம் ஆனது, அல்லாஹ் நாடினால் கூலி உறுதி ஆனது.",r:"இஃப்தார் நேரத்தில்",cat:"ரமலான்"},
-{t:"51. லைலத்துல் கத்ர் துஆ",a:"اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",tm:"அல்லாஹ்வே! நீ மன்னிப்பவன், மன்னிப்பை தான் விரும்புகிறாய், என்னை மன்னிப்பாயாக!",r:"ரமலான் கடைசி 10 நாள்",cat:"ரமலான்"},
-{t:"52. பெற்றோருக்காக - முழு துஆ",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ، رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",tm:"எங்கள் ரப்பே! என்னையும் என் பெற்றோரையும் மூஃமின்களையும் ஹிஸாப் நாளில் மன்னிப்பாயாக! என்னை சின்ன வயதில் வளர்த்தது போல அவர்களுக்கு கருணை காட்டுவாயாக!",r:"தினமும்",cat:"பெற்றோர்"},
-{t:"53. குழந்தைகளுக்காக துஆ",a:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",tm:"எங்கள் ரப்பே! எங்கள் மனைவிமாரிலிருந்தும், எங்கள் சந்ததியிலிருந்தும் எங்கள் கண்ணுக்கு குளிர்ச்சியானவர்களை தருவாயாக! எங்களை முத்தக்கீன்களுக்கு தலைவராக்குவாயாக!",r:"தினமும்",cat:"குழந்தை"},
-{t:"54. நல்ல குடும்பத்திற்காக",a:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",tm:"எங்கள் ரப்பே! இந்த உலகிலும் நன்மையை கொடுப்பாயாக, மறுமையிலும் நன்மையை கொடுப்பாயாக, நரக வேதனையிலிருந்து எங்களை காப்பாற்றுவாயாக!",r:"தினமும்",cat:"குடும்பம்"},
-{t:"55. பெரிய கடன் இருந்தால்",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَغَلَبَةِ الْعَدُوِّ وَشَمَاتَةِ الْأَعْدَاءِ",tm:"அல்லாஹ்வே! கடன் சுமை, எதிரியின் அடக்கம், எதிரிகள் கேலிப்படுத்தல் - இவை அனைத்திலிருந்தும் உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"கடன் இருந்தால்",cat:"கடன்"},
-{t:"56. தேர்வு வெற்றிக்காக",a:"رَبِّ اشْرَحْ لِي صَدْرِي، وَيَسِّرْ لِي أَمْرِي، وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي، يَفْقَهُوا قَوْلِي",tm:"என் ரப்பே! என் நெஞ்சை விரிவுபடுத்துவாயாக! என் காரியத்தை எளிதாக்குவாயாக! என் நாக்கின் முடிச்சை அவிழ்ப்பாயாக! என் சொல்லை அவர்கள் புரிந்து கொள்வார்கள்!",r:"தேர்வுக்கு முன்",cat:"தேர்வு"},
-{t:"57. உடல் நலத்திற்காக",a:"اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي",tm:"அல்லாஹ்வே! என் உடலில் ஆரோக்கியம் கொடுப்பாயாக! என் செவியில் ஆரோக்கியம் கொடுப்பாயாக! என் பார்வையில் ஆரோக்கியம் கொடுப்பாயாக!",r:"தினமும் - 3 முறை",cat:"ஆரோக்கியம்"},
-{t:"58. கண் திருஷ்டிக்காக",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ",tm:"அல்லாஹ்வின் முழுமையான வார்த்தைகளை கொண்டு - ஒவ்வொரு ஷைத்தானிடமும், விஷமுள்ள உயிரினங்களிடமும், கெட்ட கண்ணிலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"தினமும் - 3 முறை",cat:"பாதுகாப்பு"},
-{t:"59. தூங்கும் முன் - முழு துஆ",a:"بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",tm:"என் ரப்பே! உன் பெயரால் என் விலாவை வைத்தேன், உன்னாலே தான் எடுக்கிறோம். என் உயிரை நீ பிடித்தால் கருணை காட்டுவாயாக, அனுப்பினால் உன் நல்ல அடியாரை காப்பது போல காப்பாயாக!",r:"தூங்கும் முன்",cat:"தூக்கம்"},
-{t:"60. காலை எழுந்ததும் - முழு",a:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي فِي جَسَدِي، وَرَدَّ عَلَيَّ رُوحِي، وَأَذِنَ لِي بِذِكْرِهِ",tm:"என் உடலில் ஆரோக்கியம் தந்து, என் உயிரை திரும்பி தந்து, அவனை நினைக்க அனுமதி தந்த அல்லாஹ்வுக்கே புகழ்.",r:"காலை எழுந்த உடனே",cat:"எழுதல்"},
-{t:"61. வீட்டிற்குள் நுழையும் போது - முழு",a:"بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلَجِ وَخَيْرَ الْمَخْرَجِ",tm:"அல்லாஹ்வின் பெயரால் நுழைந்தோம், அல்லாஹ்வின் பெயரால் வெளியேறுகிறோம். அல்லாஹ்வே! நுழைவதில் நன்மையையும் வெளியேறுவதில் நன்மையையும் கேட்கிறோம்.",r:"வீட்டிற்குள் நுழையும் போது",cat:"வீடு"},
-{t:"62. பக்கத்து வீட்டுக்காரருக்காக",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَارِ السُّوءِ فِي دَارِ الْمُقَامَةِ",tm:"அல்லாஹ்வே! நிலையான வீட்டில் கெட்ட பக்கத்து வீட்டுக்காரனிடமிருந்து உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"தினமும்",cat:"அண்டை வீடு"},
-{t:"63. கல்விக்காக - முழு துஆ",a:"اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا",tm:"அல்லாஹ்வே! நீ எனக்காக கற்று கொடுத்ததை எனக்காக பயனுள்ளதாக்குவாயாக! எனக்காக பயனுள்ள விஷயத்தை கற்று கொடுப்பாயாக! என் கல்வியை அதிகப்படுத்துவாயாக!",r:"படிக்கும் முன்",cat:"கல்வி"},
-{t:"64. உஸ்தாதுக்காக துஆ",a:"جَزَاكُمُ اللَّهُ خَيْرًا وَبَارَكَ اللَّهُ فِيكُمْ",tm:"அல்லாஹ் உங்களுக்கு நல்ல கூலி கொடுப்பானாக, உங்களில் பரக்கத் செய்வானாக!",r:"உஸ்தாதுக்கு சொல்லும் போது",cat:"ஆசிரியர்"},
-{t:"65. நண்பர்களுக்காக துஆ",a:"اللَّهُمَّ أَلِّفْ بَيْنَ قُلُوبِنَا، وَأَصْلِحْ ذَاتَ بَيْنِنَا",tm:"அல்லாஹ்வே! எங்கள் உள்ளங்களை ஒன்றிணையப்படுத்துவாயாக! எங்களுக்குள் உள்ள உறவை சீர்படுத்துவாயாக!",r:"தினமும்",cat:"நண்பர்கள்"},
-{t:"66. உம்மத்திற்காக துஆ",a:"اللَّهُمَّ أَعِزَّ الْإِسْلَامَ وَالْمُسْلِمِينَ، وَأَذِلَّ الشِّرْكَ وَالْمُشْرِكِينَ",tm:"அல்லாஹ்வே! இஸ்லாத்தையும் முஸ்லிம்களையும் உயர்த்துவாயாக! ஷிர்க்கையும் முஷ்ரிக்குகளையும் தாழ்த்துவாயாக!",r:"தினமும்",cat:"உம்மத்"},
-{t:"67. பாலஸ்தீனம் / காஸா-வுக்காக",a:"اللَّهُمَّ انْصُرْ إِخْوَانَنَا فِي فِلَسْطِينَ، اللَّهُمَّ احْفَظْهُمْ وَارْحَمْهُمْ",tm:"அல்லாஹ்வே! பாலஸ்தீனத்தில் உள்ள எங்கள் சகோதரர்களுக்கு உதவி செய்வாயாக! அவர்களை காப்பாயாக, கருணை காட்டுவாயாக!",r:"தினமும்",cat:"உம்மத்"},
-{t:"68. மழை வேண்டி - முழு துஆ",a:"اللَّهُمَّ أَغِثْنَا، اللَّهُمَّ أَغِثْنَا، اللَّهُمَّ أَغِثْنَا",tm:"அல்லாஹ்வே! எங்களுக்கு மழையை கொடுப்பாயாக! மழையை கொடுப்பாயாக! மழையை கொடுப்பாயாக!",r:"மழை இல்லாமல்",cat:"மழை"},
-{t:"69. காற்று அடிக்கும் போது",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّهَا",tm:"அல்லாஹ்வே! இந்த காற்றின் நன்மையை கேட்கிறோம், இதன் தீங்கிலிருந்து பாதுகாவல் தேடுகிறோம்.",r:"காற்று அடிக்கும் போது",cat:"வானிலை"},
-{t:"70. பயம் வரும் போது",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ، وَتَحَوُّلِ عَافِيَتِكَ، وَفُجَاءَةِ نِقْمَتِكَ",tm:"அல்லாஹ்வே! உன் அருள் நீங்கி போவதிலிருந்தும், ஆரோக்கியம் மாறி போவதிலிருந்தும், திடீர் வேதனையிலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"பயம் வரும் போது",cat:"பயம்"},
-{t:"71. பயண பாதுகாப்புக்காக",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى",tm:"அல்லாஹ்வே! இந்த பயணத்தில் நல்லது, தக்வா, நீ விரும்பும் அமலை கேட்கிறோம்.",r:"பயணம் தொடங்கும் போது",cat:"பயணம்"},
-{t:"72. வீட்டுக்கு திரும்பும் போது",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ",tm:"அல்லாஹ்வே! பயண கஷ்டம், மோசமான காட்சி, மோசமான திரும்புதல் - இவை அனைத்திலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"வீட்டுக்கு திரும்பும் போது",cat:"பயணம்"},
-{t:"73. புது தொழில் / வேலைக்காக",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ، فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ",tm:"அல்லாஹ்வே! இந்த நாளின் நன்மை, வெற்றி, ஒளி, பரக்கத் - இவை அனைத்தையும் கேட்கிறோம்.",r:"வேலை தொடங்கும் போது",cat:"வேலை"},
-{t:"74. ஹிஃப்ழ் - குர்ஆன் மனனத்திற்காக",a:"اللَّهُمَّ اجْعَلِ الْقُرْآنَ رَبِيعَ قَلْبِي، وَنُورَ صَدْرِي، وَجَلَاءَ حُزْنِي",tm:"அல்லாஹ்வே! குர்ஆனை என் உள்ளத்தின் வசந்தம், என் நெஞ்சின் ஒளி, என் கவலையை நீக்குவதாக ஆக்குவாயாக!",r:"குர்ஆன் படிக்கும் போது",cat:"குர்ஆன்"},
-{t:"75. நல்ல மரணத்திற்காக",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِيشَةً هَنِيَّةً، وَمِيتَةً سَوِيَّةً، وَمَرَدًّا غَيْرَ مُخْزٍ",tm:"அல்லாஹ்வே! இன்பமான வாழ்வு, சீரான மரணம், கேவலம் இல்லாத திரும்புதல் - இவை அனைத்தையும் கேட்கிறோம்.",r:"தினமும்",cat:"ஆகிரா"},
-{t:"76. கப்ரு வேதனையிலிருந்து",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، وَعَذَابِ النَّارِ، وَفِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",tm:"அல்லாஹ்வே! கப்ரு வேதனை, நரக வேதனை, வாழ்வு மரணத்தின் சோதனை - இவை அனைத்திலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"தொழுகையில் - அத்தஹிய்யாத்துக்கு பின்",cat:"ஆகிரா"},
-{t:"77. பெற்றோர் மரணித்தால்",a:"اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ",tm:"அல்லாஹ்வே! அவரை மன்னிப்பாயாக, கருணை காட்டுவாயாக, ஆரோக்கியம் கொடுப்பாயாக, மன்னிப்பாயாக, அவரின் இடத்தை சிறப்பாக்குவாயாக!",r:"ஜனாஸாவில்",cat:"பெற்றோர்"},
-{t:"78. எல்லா முஸ்லிம்களுக்காக - முழு",a:"اللَّهُمَّ اغْفِرْ لِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ، وَالْمُسْلِمِينَ وَالْمُسْلِمَاتِ، الْأَحْيَاءِ مِنْهُمْ وَالْأَمْوَاتِ",tm:"அல்லாஹ்வே! மூஃமின் ஆண் பெண், முஸ்லிம் ஆண் பெண் - உயிருள்ளவர்கள், மரணித்தவர்கள் - அனைவரையும் மன்னிப்பாயாக!",r:"தினமும்",cat:"உம்மத்"},
-{t:"79. இஸ்திகாரா துஆ",a:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ",tm:"அல்லாஹ்வே! உன் ஞானத்தை கொண்டு உன்னிடம் நல்லதை தேடுகிறேன், உன் ஆற்றலை கொண்டு உன்னிடம் சக்தியை கேட்கிறேன், உன் பெரிய அருளிலிருந்து கேட்கிறேன்.",r:"இஸ்திகாரா தொழுகைக்கு பின்",cat:"இஸ்திகாரா"},
-{t:"80. தினசரி திக்ர் - தஸ்பீஹ்",a:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",tm:"அல்லாஹ் தூய்மையானவன், அவனுக்கே புகழ். மகா பெரிய அல்லாஹ் தூய்மையானவன்.",r:"தினமும் - 100 முறை",cat:"திக்ர்"},
-{t:"81. காலை திக்ர் - சுப்ஹானல்லாஹி வபிஹம்திஹி",a:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",tm:"அல்லாஹ் தூய்மையானவன், அவனுக்கே புகழ் அனைத்தும்.",r:"காலையில் - 100 முறை",cat:"திக்ர்"},
-{t:"82. மாலை திக்ர் - லாயிலாஹ இல்லல்லாஹ்",a:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",tm:"அல்லாஹ்வை தவிர வணக்கத்திற்குரியவன் யாரும் இல்லை. அவன் தனித்தவன். ஆட்சியும் புகழும் அவனுக்கே. அவன் அனைத்தின் மீதும் ஆற்றல் உள்ளவன்.",r:"காலை / மாலை - 100 முறை",cat:"திக்ர்"},
-{t:"83. தூங்கும் முன் - ஆயத்துல் குர்ஸி முழு",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",tm:"அல்லாஹ் - அவனை தவிர இறைவன் இல்லை. அவன் உயிருள்ளவன், அனைத்தையும் நிர்வகிப்பவன். அவனை தூக்கமும், அசதியும் பிடிப்பதில்லை. வானங்களிலும் பூமியிலும் உள்ள அனைத்தும் அவனுக்கே.",r:"தூங்கும் முன் - 1 முறை",cat:"தூக்கம்"},
-{t:"84. தூங்கும் முன் - கடைசி 2 ஆயத்துகள்",a:"آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ",tm:"தூதரும் மூஃமின்களும் தங்கள் இறைவனிடமிருந்து இறக்கப்பட்டதை நம்பினார்கள்.",r:"தூங்கும் முன் - சூரா பகரா கடைசி 2",cat:"தூக்கம்"},
-{t:"85. காலையில் எழுந்ததும் - முழு துஆ",a:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ، الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي فِي جَسَدِي",tm:"எங்களை தூக்கத்திற்கு பின் உயிர் கொடுத்த அல்லாஹ்வுக்கே புகழ் அனைத்தும். என் உடலில் ஆரோக்கியம் தந்த அல்லாஹ்வுக்கே புகழ்.",r:"காலையில் எழுந்ததும்",cat:"காலை"},
-{t:"86. உணவு உண்ணும் முன் மறந்தால்",a:"بِسْمِ اللَّهِ فِي أَوَّلِهِ وَآخِرِهِ",tm:"அல்லாஹ்வின் பெயரால் - ஆரம்பத்திலும் முடிவிலும்.",r:"நடுவில் நினைவு வந்தால்",cat:"உணவு"},
-{t:"87. விருந்து கொடுத்தவருக்காக துஆ",a:"اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ، وَاغْفِرْ لَهُمْ وَارْحَمْهُمْ",tm:"அல்லாஹ்வே! நீ அவர்களுக்கு கொடுத்த உணவில் பரக்கத் செய்வாயாக! அவர்களை மன்னித்து கருணை காட்டுவாயாக!",r:"விருந்து சாப்பிட்ட பின்",cat:"உணவு"},
-{t:"88. தண்ணீர் குடிக்கும் முன்",a:"بِسْمِ اللَّهِ",tm:"அல்லாஹ்வின் பெயரால் குடிக்கிறேன்.",r:"தண்ணீர் குடிக்கும் முன்",cat:"உணவு"},
-{t:"89. தண்ணீர் குடித்த பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي سَقَانَا عَذْبًا فُرَاتًا بِرَحْمَتِهِ",tm:"தன் கருணையால் இனிமையான தண்ணீரை எங்களுக்கு குடிக்க கொடுத்த அல்லாஹ்வுக்கே புகழ்.",r:"தண்ணீர் குடித்த பின்",cat:"உணவு"},
-{t:"90. வீட்டை விட்டு வெளியேறும் போது - முழு",a:"بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ أَنْ أَضِلَّ أَوْ أُضَلَّ",tm:"அல்லாஹ்வின் பெயரால் வெளியேறுகிறேன், அல்லாஹ்வின் மீது நம்பிக்கை வைத்தேன். அல்லாஹ்வே! நான் வழிதவறுவதிலிருந்தும், வழிதவற செய்யப்படுவதிலிருந்தும் உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"வீட்டை விட்டு வெளியேறும் போது",cat:"வீடு"},
-{t:"91. வீட்டிற்குள் நுழையும் போது - ஸலாம்",a:"السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ",tm:"உங்கள் மீது ஸலாமும், அல்லாஹ்வின் கருணையும், பரக்கத்தும் உண்டாகட்டும்.",r:"வீட்டிற்குள் நுழையும் போது",cat:"வீடு"},
-{t:"92. மஸ்ஜிதிற்குள் நுழையும் போது - முழு",a:"أَعُوذُ بِاللَّهِ الْعَظِيمِ وَبِوَجْهِهِ الْكَرِيمِ وَسُلْطَانِهِ الْقَدِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ",tm:"மகா பெரிய அல்லாஹ்விடமும், அவன் கண்ணியமான முகத்திடமும், அவன் பழமையான ஆட்சியிடமும் - கல்லெறியப்பட்ட ஷைத்தானிடமிருந்து பாதுகாவல் தேடுகிறேன்.",r:"மஸ்ஜித் நுழையும் போது",cat:"மஸ்ஜித்"},
-{t:"93. பாங்கு கேட்டதும்",a:"اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ",tm:"அல்லாஹ்வே! இந்த முழுமையான அழைப்பின் இறைவனே! நிலையான தொழுகையின் இறைவனே! முஹம்மது (ஸல்) அவர்களுக்கு வஸீலாவையும், ஃபழீலத்தையும் கொடுப்பாயாக!",r:"பாங்கிற்கு பின்",cat:"பாங்கு"},
-{t:"94. தொழுகைக்கு பின் - தஸ்பீஹ்",a:"سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ، اللَّهُ أَكْبَرُ",tm:"அல்லாஹ் தூய்மையானவன், அல்லாஹ்வுக்கே புகழ், அல்லாஹ் மிக பெரியவன்.",r:"தொழுகைக்கு பின் - 33 முறை",cat:"தொழுகை"},
-{t:"95. தொழுகைக்கு பின் - ஆயத்துல் குர்ஸி",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",tm:"அல்லாஹ் - அவனை தவிர இறைவன் இல்லை. அவன் உயிருள்ளவன், நிர்வகிப்பவன்.",r:"ஒவ்வொரு தொழுகைக்கு பின்",cat:"தொழுகை"},
-{t:"96. வித்ர் தொழுகைக்கு பின்",a:"سُبْحَانَ الْمَلِكِ الْقُدُّوسِ",tm:"பரிசுத்தமான அரசன் தூய்மையானவன்.",r:"வித்ருக்கு பின் - 3 முறை",cat:"தொழுகை"},
-{t:"97. ஜும்ஆ நாள் துஆ",a:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ",tm:"அல்லாஹ்வே! முஹம்மது (ஸல்) அவர்கள் மீதும், அவர்கள் குடும்பத்தினர் மீதும் ஸலவாத் சொல்வாயாக!",r:"ஜும்ஆ நாளில் அதிகம்",cat:"ஜும்ஆ"},
-{t:"98. நோயாளியை பார்க்கும் போது",a:"لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ",tm:"பரவாயில்லை, அல்லாஹ் நாடினால் இது சுத்தமாக்கும் நோய்.",r:"நோயாளியை பார்க்கும் போது",cat:"நோய்"},
-{t:"99. நோய் தனக்கு வந்தால்",a:"اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ، اشْفِ أَنْتَ الشَّافِي",tm:"மனிதர்களின் இறைவனே! நோயை நீக்குவாயாக! நீ தான் குணப்படுத்துபவன்.",r:"நோய் வந்தால்",cat:"நோய்"},
-{t:"100. கண் திருஷ்டிக்கு",a:"بِسْمِ اللَّهِ أَرْقِيكَ، مِنْ كُلِّ شَيْءٍ يُؤْذِيكَ",tm:"அல்லாஹ்வின் பெயரால் உனக்கு ஓதுகிறேன், உன்னை துன்புறுத்தும் அனைத்திலிருந்தும்.",r:"திருஷ்டி பட்டால்",cat:"பாதுகாப்பு"},
-{t:"101. கனவு நல்லதாக இருந்தால்",a:"الْحَمْدُ لِلَّهِ",tm:"அல்லாஹ்வுக்கே புகழ் அனைத்தும்.",r:"நல்ல கனவு கண்டால்",cat:"கனவு"},
-{t:"102. கனவு கெட்டதாக இருந்தால்",a:"أَعُوذُ بِاللَّهِ مِنْ شَرِّهَا وَمِنْ شَرِّ الشَّيْطَانِ",tm:"இந்த கனவின் தீங்கிலிருந்தும், ஷைத்தானின் தீங்கிலிருந்தும் அல்லாஹ்விடம் பாதுகாவல் தேடுகிறேன்.",r:"கெட்ட கனவு கண்டால்",cat:"கனவு"},
-{t:"103. கோபம் வரும் போது - முழு",a:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ، اللَّهُمَّ أَذْهِبْ غَيْظَ قَلْبِي",tm:"கல்லெறியப்பட்ட ஷைத்தானிடமிருந்து அல்லாஹ்விடம் பாதுகாவல் தேடுகிறேன். அல்லாஹ்வே! என் உள்ளத்தின் கோபத்தை நீக்குவாயாக!",r:"கோபம் வரும் போது",cat:"கோபம்"},
-{t:"104. கடன் தொல்லை - முழு",a:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",tm:"அல்லாஹ்வே! உன் ஹலாலை கொண்டு ஹராமை விட்டு எனக்கு போதுமானதாக்குவாயாக! உன் அருளால் மற்றவர்களை விட்டு என்னை தேவையற்றவனாக்குவாயாக!",r:"கடன் இருந்தால்",cat:"கடன்"},
-{t:"105. பயணம் - வாகனத்தில் ஏறும் போது",a:"بِسْمِ اللَّهِ، الْحَمْدُ لِلَّهِ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا",tm:"அல்லாஹ்வின் பெயரால், அல்லாஹ்வுக்கே புகழ். இதை எங்களுக்கு வசப்படுத்தி தந்தவன் தூய்மையானவன்.",r:"வாகனத்தில் ஏறும் போது",cat:"பயணம்"},
-{t:"106. பயணத்தில் கஷ்டம் வந்தால்",a:"اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا، وَاطْوِ عَنَّا بُعْدَهُ",tm:"அல்லாஹ்வே! எங்கள் இந்த பயணத்தை எங்களுக்கு எளிதாக்குவாயாக! இதன் தூரத்தை எங்களுக்கு சுருக்குவாயாக!",r:"பயணத்தில் கஷ்டம்",cat:"பயணம்"},
-{t:"107. புது ஊருக்கு போகும் போது",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ أَهْلِهَا",tm:"அல்லாஹ்வே! இந்த ஊரின் நன்மையையும், இதன் மக்களின் நன்மையையும் உன்னிடம் கேட்கிறேன்.",r:"புது ஊருக்கு போகும் போது",cat:"பயணம்"},
-{t:"108. மழை வேண்டி",a:"اللَّهُمَّ اسْقِنَا غَيْثًا مُغِيثًا، مَرِيئًا مَرِيعًا، نَافِعًا غَيْرَ ضَارٍّ",tm:"அல்லாஹ்வே! எங்களுக்கு உதவும் மழையை, இனிமையான மழையை, பயனுள்ள மழையை, தீங்கு இல்லாத மழையை கொடுப்பாயாக!",r:"மழை இல்லாத போது",cat:"மழை"},
-{t:"109. இடி இடிக்கும் போது - முழு",a:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ",tm:"இடியும், மலக்குகளும் அவன் புகழை கொண்டு தஸ்பீஹ் செய்யும் அல்லாஹ் தூய்மையானவன்.",r:"இடி இடிக்கும் போது",cat:"மழை"},
-{t:"110. புது ஆடை அணியும் போது - முழு",a:"الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا الثَّوْبَ وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",tm:"என் சக்தி இல்லாமல், என் ஆற்றல் இல்லாமல் இந்த ஆடையை எனக்கு அணிவித்து, எனக்கு உணவு அளித்த அல்லாஹ்வுக்கே புகழ்.",r:"புது ஆடை அணியும் போது",cat:"ஆடை"},
-{t:"111. கண்ணாடி பார்க்கும் போது",a:"اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي وَحَرِّمْ وَجْهِي عَلَى النَّارِ",tm:"அல்லாஹ்வே! என் தோற்றத்தை அழகாக்கியது போல, என் குணத்தையும் அழகாக்குவாயாக! என் முகத்தை நரகத்திற்கு ஹராமாக்குவாயாக!",r:"கண்ணாடி பார்க்கும் போது",cat:"தினசரி"},
-{t:"112. திருமணம் - மணமக்களுக்காக",a:"بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",tm:"அல்லாஹ் உங்கள் இருவருக்கும் பரக்கத் செய்வானாக! உங்களை நல்ல விஷயத்தில் சேர்த்து வைப்பானாக!",r:"திருமணத்தில்",cat:"திருமணம்"},
-{t:"113. குழந்தை பிறந்ததும் - காதில் பாங்கு",a:"اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ",tm:"அல்லாஹ் மிக பெரியவன்! அல்லாஹ்வை தவிர இறைவன் இல்லை என்று சாட்சி சொல்கிறேன்.",r:"குழந்தை பிறந்ததும் வலது காதில்",cat:"குழந்தை"},
-{t:"114. குழந்தைக்காக துஆ - அகீகா",a:"اللَّهُمَّ إِنَّ هَذَا عَقِيقَةٌ عَنْ وَلَدِي، فَتَقَبَّلْهُ مِنَّا",tm:"அல்லாஹ்வே! இது என் குழந்தைக்கான அகீகா, இதை எங்களிடமிருந்து ஏற்றுக்கொள்வாயாக!",r:"அகீகா கொடுக்கும் போது",cat:"குழந்தை"},
-{t:"115. பெற்றோருக்காக - முழு",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",tm:"எங்கள் இறைவனே! என்னையும், என் பெற்றோரையும், மூஃமின்கள் அனைவரையும் ஹிஸாப் நாளில் மன்னிப்பாயாக!",r:"தினமும் - தொழுகையில்",cat:"பெற்றோர்"},
-{t:"116. ஆசிரியருக்காக",a:"اللَّهُمَّ اجْزِ مُعَلِّمِي خَيْرَ الْجَزَاءِ، وَبَارِكْ فِي عِلْمِهِ وَعَمَلِهِ",tm:"அல்லாஹ்வே! என் ஆசிரியருக்கு நல்ல கூலியை கொடுப்பாயாக! அவர் கல்வியிலும், அமலிலும் பரக்கத் செய்வாயாக!",r:"ஆசிரியருக்காக",cat:"ஆசிரியர்"},
-{t:"117. நண்பனுக்காக",a:"اللَّهُمَّ احْفَظْ صَدِيقِي وَوَفِّقْهُ لِمَا تُحِبُّ وَتَرْضَى",tm:"அல்லாஹ்வே! என் நண்பனை காப்பாயாக! நீ விரும்பும், நீ பொருந்தும் விஷயத்திற்கு அவனுக்கு உதவுவாயாக!",r:"நண்பனுக்காக",cat:"நண்பன்"},
-{t:"118. உம்மத்திற்காக",a:"اللَّهُمَّ أَصْلِحْ أُمَّةَ مُحَمَّدٍ، اللَّهُمَّ فَرِّجْ عَنْ أُمَّةِ مُحَمَّدٍ",tm:"அல்லாஹ்வே! முஹம்மது (ஸல்) அவர்களின் உம்மத்தை சீர்படுத்துவாயாக! அவர்களின் கஷ்டத்தை நீக்குவாயாக!",r:"தினமும்",cat:"உம்மத்"},
-{t:"119. கஸா - கஷ்டத்தில்",a:"يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ",tm:"உயிருள்ளவனே! நிர்வகிப்பவனே! உன் கருணையை கொண்டு உதவி தேடுகிறேன், என் காரியம் அனைத்தையும் சீர்படுத்துவாயாக!",r:"கஷ்டம் வரும் போது",cat:"கஷ்டம்"},
-{t:"120. கவலை - முழு துஆ",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ",tm:"அல்லாஹ்வே! கவலை, துயரம், இயலாமை, சோம்பல், கஞ்சத்தனம், கோழைத்தனம் - இவை அனைத்திலிருந்தும் உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"கவலை வரும் போது",cat:"கவலை"},
-{t:"121. சொர்க்கம் வேண்டி",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ",tm:"அல்லாஹ்வே! உன்னிடம் சொர்க்கத்தை கேட்கிறேன், நரகத்திலிருந்து உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"தினமும் - 3 முறை",cat:"சொர்க்கம்"},
-{t:"122. நரகத்திலிருந்து பாதுகாப்பு",a:"اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ، اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",tm:"அல்லாஹ்வே! என்னை நரகத்திலிருந்து காப்பாற்றுவாயாக!",r:"தினமும் - 7 முறை",cat:"பாதுகாப்பு"},
-{t:"123. கப்ரு வேதனையிலிருந்து",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ جَهَنَّمَ",tm:"அல்லாஹ்வே! கப்ரு வேதனையிலிருந்தும், ஜஹன்னம் வேதனையிலிருந்தும் உன்னிடம் பாதுகாவல் தேடுகிறேன்.",r:"தொழுகையில் - அத்தஹிய்யாத்திற்கு பின்",cat:"ஆகிரா"},
-{t:"124. நல்ல முடிவு - ஹுஸ்னுல் காத்திமா",a:"اللَّهُمَّ اخْتِمْ لَنَا بِالْخَيْرِ، وَاجْعَلْ خَيْرَ أَعْمَالِنَا خَوَاتِيمَهَا",tm:"அல்லாஹ்வே! எங்களுக்கு நன்மையால் முடிவு செய்வாயாக! எங்கள் அமல்களில் சிறந்ததை கடைசி அமலாக்குவாயாக!",r:"தினமும்",cat:"ஆகிரா"},
-{t:"125. இஸ்திகாரா - முழு",a:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ",tm:"அல்லாஹ்வே! உன் ஞானத்தை கொண்டு உன்னிடம் நல்லதை தேடுகிறேன், உன் ஆற்றலை கொண்டு உன்னிடம் சக்தியை கேட்கிறேன்.",r:"இஸ்திகாரா தொழுகைக்கு பின்",cat:"இஸ்திகாரா"},
-{t:"126. தொழுகைக்கு பின் - இஸ்திஃபார்",a:"أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ، اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ",tm:"அல்லாஹ்விடம் மன்னிப்பு தேடுகிறேன். அல்லாஹ்வே! நீ தான் ஸலாம், உன்னிடமிருந்தே ஸலாம்.",r:"தொழுகைக்கு பின்",cat:"தொழுகை"},
-{t:"127. காலை - சையிதுல் இஸ்திஃபார்",a:"اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ",tm:"அல்லாஹ்வே! நீ தான் என் இறைவன், உன்னை தவிர இறைவன் இல்லை. நீ என்னை படைத்தாய், நான் உன் அடியான்.",r:"காலை / மாலை - 1 முறை",cat:"இஸ்திஃபார்"},
-{t:"128. மாலை - பாதுகாப்பு துஆ",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",tm:"அல்லாஹ்வின் முழுமையான வார்த்தைகளை கொண்டு, அவன் படைத்த அனைத்தின் தீங்கிலிருந்தும் பாதுகாவல் தேடுகிறேன்.",r:"மாலையில் - 3 முறை",cat:"பாதுகாப்பு"},
-{t:"129. உடல் நலம் - முழு",a:"اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ",tm:"அல்லாஹ்வே! என் உடலில் ஆரோக்கியம் கொடுப்பாயாக! என் செவியில் ஆரோக்கியம் கொடுப்பாயாக! என் பார்வையில் ஆரோக்கியம் கொடுப்பாயாக! உன்னை தவிர இறைவன் இல்லை.",r:"காலை / மாலை - 3 முறை",cat:"ஆரோக்கியம்"},
-{t:"130. ரிஸ்க் - முழு",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ رِزْقًا وَاسِعًا طَيِّبًا مُبَارَكًا فِيهِ",tm:"அல்லாஹ்வே! விசாலமான, தூய்மையான, பரக்கத் உள்ள ரிஸ்க்கை உன்னிடம் கேட்கிறேன்.",r:"தினமும்",cat:"ரிஸ்க்"},
-{t:"131. குர்ஆன் முடித்ததும்",a:"اللَّهُمَّ ارْحَمْنِي بِالْقُرْآنِ وَاجْعَلْهُ لِي إِمَامًا وَنُورًا وَهُدًى وَرَحْمَةً",tm:"அல்லாஹ்வே! குர்ஆனை கொண்டு எனக்கு கருணை காட்டுவாயாக!",r:"குர்ஆன் முடித்ததும்",cat:"குர்ஆன்"},
-{t:"132. கடைசி துஆ - அனைத்திற்கும்",a:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",tm:"எங்கள் இறைவனே! இந்த உலகிலும் நன்மையை கொடுப்பாயாக, மறுமையிலும் நன்மையை கொடுப்பாயாக, நரக வேதனையிலிருந்து எங்களை காப்பாற்றுவாயாக!",r:"தினமும் - எப்போதும்",cat:"முழு துஆ"}
+{t:"1. காலை துஆ",a:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",tm:"நாங்கள் காலையில் எழுந்தோம், ஆட்சியும் அல்லாஹ்வுக்கே.",r:"1 முறை - காலை",cat:"காலை"},
+{t:"2. மாலை துஆ",a:"أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ",tm:"நாங்கள் மாலையில் ஆனோம்.",r:"1 முறை - மாலை",cat:"மாலை"},
+{t:"3. தூங்கும் முன்",a:"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",tm:"அல்லாஹ்வே! உன் பெயரால் தூங்குகிறேன்.",r:"1 முறை",cat:"தூக்கம்"},
+{t:"4. எழுந்த பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا",tm:"எங்களை உயிர் கொடுத்த அல்லாஹ்வுக்கே புகழ்.",r:"1 முறை",cat:"எழுதல்"},
+{t:"5. சாப்பிடும் முன்",a:"بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ",tm:"அல்லாஹ்வின் பெயரால் சாப்பிடுகிறேன்.",r:"1 முறை",cat:"உணவு"},
+{t:"6. சாப்பிட்ட பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا",tm:"உணவு அளித்த அல்லாஹ்வுக்கே புகழ்.",r:"1 முறை",cat:"உணவு"},
+{t:"7. கழிவறை நுழையும் போது",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ",tm:"அசுத்த ஜின்களிடமிருந்து பாதுகாவல்.",r:"1 முறை",cat:"கழிவறை"},
+{t:"8. கழிவறை வெளியேறும் போது",a:"غُفْرَانَكَ",tm:"உன் மன்னிப்பை தேடுகிறேன்.",r:"1 முறை",cat:"கழிவறை"},
+{t:"9. வீட்டிற்குள் நுழையும் போது",a:"بِسْمِ اللَّهِ وَلَجْنَا",tm:"அல்லாஹ்வின் பெயரால் நுழைந்தோம்.",r:"1 முறை",cat:"வீடு"},
+{t:"10. வீட்டை விட்டு வெளியேறும் போது",a:"بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ",tm:"அல்லாஹ்வின் மீது நம்பிக்கை.",r:"1 முறை",cat:"வீடு"},
+{t:"11. உளூவுக்கு முன்",a:"بِسْمِ اللَّهِ",tm:"அல்லாஹ்வின் பெயரால்.",r:"1 முறை",cat:"உளூ"},
+{t:"12. உளூவுக்கு பின்",a:"أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ",tm:"அல்லாஹ்வை தவிர இறைவன் இல்லை.",r:"1 முறை",cat:"உளூ"},
+{t:"13. ஆயத்துல் குர்ஸி",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",tm:"அல்லாஹ் உயிருள்ளவன்.",r:"தொழுகைக்கு பின்",cat:"குர்ஆன்"},
+{t:"14. பெற்றோருக்காக",a:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",tm:"பெற்றோருக்கு கருணை காட்டு!",r:"தினமும்",cat:"பெற்றோர்"},
+{t:"15. கல்விக்காக",a:"رَبِّ زِدْنِي عِلْمًا",tm:"கல்வியை அதிகப்படுத்து!",r:"தினமும்",cat:"கல்வி"},
+{t:"16. பயண துஆ",a:"سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا",tm:"இதை வசப்படுத்தி தந்தவன் தூய்மையானவன்.",r:"பயணம்",cat:"பயணம்"},
+{t:"17. கஷ்டத்திற்கு",a:"اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا",tm:"நீ எளிதாக்கியது தவிர எளிதில்லை.",r:"தேவையான போது",cat:"கஷ்டம்"},
+{t:"18. படிக்கும் முன்",a:"اللَّهُمَّ افْتَحْ عَلَيْنَا حِكْمَتَكَ",tm:"ஞான கதவை திறப்பாயாக!",r:"படிக்கும் முன்",cat:"கல்வி"},
+{t:"19. இஸ்திஃபார்",a:"أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ",tm:"மன்னிப்பு தேடுகிறேன்.",r:"100 முறை",cat:"இஸ்திஃபார்"},
+{t:"20. பாதுகாப்பு",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"3 முறை",cat:"பாதுகாப்பு"},
+{t:"21. மஸ்ஜித் நுழையும் போது",a:"أَعُوذُ بِاللَّهِ الْعَظِيمِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"மஸ்ஜித்",cat:"மஸ்ஜித்"},
+{t:"22. மஸ்ஜித் வெளியேறும் போது",a:"بِسْمِ اللَّهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",tm:"உன் அருளை கேட்கிறேன்.",r:"மஸ்ஜித்",cat:"மஸ்ஜித்"},
+{t:"23. பாங்கிற்கு பின்",a:"اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ",tm:"முஹம்மது (ஸல்)-க்கு வஸீலா கொடு!",r:"பாங்கிற்கு பின்",cat:"பாங்கு"},
+{t:"24. தூங்கும் முன் - 3 குல்",a:"قُلْ هُوَ اللَّهُ أَحَدٌ",tm:"இக்லாஸ், ஃபலக், நாஸ் 3 முறை.",r:"3 முறை",cat:"தூக்கம்"},
+{t:"25. கடனுக்காக",a:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ",tm:"ஹலாலை கொண்டு போதுமாக்கு!",r:"கடன்",cat:"கடன்"},
+{t:"26. கவலைக்கு",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ",tm:"கவலையிலிருந்து பாதுகாவல்.",r:"கவலை",cat:"கவலை"},
+{t:"27. நல்ல முடிவு",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ حُسْنَ الْخَاتِمَةِ",tm:"நல்ல முடிவை தருவாயாக!",r:"தினமும்",cat:"ஆகிரா"},
+{t:"28. மழைக்காக",a:"اللَّهُمَّ صَيِّبًا نَافِعًا",tm:"பயனுள்ள மழை கொடு!",r:"மழை",cat:"மழை"},
+{t:"29. இடி",a:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ",tm:"இடி தஸ்பீஹ் செய்யும் அல்லாஹ்.",r:"இடி",cat:"மழை"},
+{t:"30. புது ஆடை",a:"الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي",tm:"ஆடை அணிவித்த அல்லாஹ்வுக்கே புகழ்.",r:"புது ஆடை",cat:"ஆடை"},
+{t:"31. கண்ணாடி",a:"اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي",tm:"குணத்தையும் அழகாக்கு!",r:"கண்ணாடி",cat:"தினசரி"},
+{t:"32. கோபம்",a:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ",tm:"ஷைத்தானிடமிருந்து பாதுகாவல்.",r:"கோபம்",cat:"கோபம்"},
+{t:"33. நோயாளிக்காக",a:"أَذْهِبِ الْبَأْسَ رَبَّ النَّاسِ",tm:"நோயை நீக்குவாயாக!",r:"நோய்",cat:"நோய்"},
+{t:"34. கப்ருஸ்தான்",a:"السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ",tm:"உங்கள் மீது ஸலாம்.",r:"கப்ருஸ்தான்",cat:"கப்ரு"},
+{t:"35. திருமணம்",a:"بَارَكَ اللَّهُ لَكَ",tm:"பரக்கத் செய்வானாக!",r:"திருமணம்",cat:"திருமணம்"},
+{t:"36. குழந்தைக்காக",a:"أُعِيذُكَ بِكَلِمَاتِ اللَّهِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"குழந்தை",cat:"குழந்தை"},
+{t:"37. கஷ்டத்தில் உள்ளவர்",a:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي",tm:"காப்பாற்றிய அல்லாஹ்வுக்கே புகழ்.",r:"கஷ்டம்",cat:"கஷ்டம்"},
+{t:"38. பெற்றோர் + முஸ்லிம்",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ",tm:"என்னையும் பெற்றோரையும் மன்னி!",r:"தினமும்",cat:"பெற்றோர்"},
+{t:"39. சொர்க்கம்",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ الْجَنَّةَ",tm:"சொர்க்கம் கேட்கிறோம்!",r:"3 முறை",cat:"சொர்க்கம்"},
+{t:"40. நரக பாதுகாப்பு",a:"اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",tm:"நரகத்திலிருந்து காப்பாற்று!",r:"7 முறை",cat:"பாதுகாப்பு"},
+{t:"41. ஃபஜ்ருக்கு பின்",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا",tm:"பயனுள்ள கல்வி கேட்கிறோம்.",r:"ஃபஜ்ர்",cat:"காலை"},
+{t:"42. ரிஸ்க்",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",tm:"உன் அருளை கேட்கிறோம்.",r:"தினமும்",cat:"ரிஸ்க்"},
+{t:"43. புது ஆடை 2",a:"اللَّهُمَّ لَكَ الْحَمْدُ",tm:"உனக்கே புகழ்.",r:"புது ஆடை",cat:"ஆடை"},
+{t:"44. மார்க்கெட்",a:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ",tm:"அல்லாஹ் தனித்தவன்.",r:"மார்க்கெட்",cat:"மார்க்கெட்"},
+{t:"45. பயண திரும்புதல்",a:"آيِبُونَ، تَائِبُونَ",tm:"திரும்பி வருபவர்கள்.",r:"பயணம்",cat:"பயணம்"},
+{t:"46. நன்றி",a:"جَزَاكَ اللَّهُ خَيْرًا",tm:"நல்ல கூலி கொடுப்பானாக!",r:"நன்றி",cat:"தினசரி"},
+{t:"47. அதிக மழை",a:"اللَّهُمَّ حَوَالَيْنَا",tm:"எங்களை சுற்றி மழை கொடு!",r:"மழை",cat:"மழை"},
+{t:"48. மழைக்கு பின்",a:"مُطِرْنَا بِفَضْلِ اللَّهِ",tm:"அல்லாஹ் அருளால் மழை.",r:"மழை",cat:"மழை"},
+{t:"49. பிறை",a:"اللَّهُ أَكْبَرُ، اللَّهُمَّ أَهِلَّهُ",tm:"அமைதியோடு பிறை கொண்டு வா!",r:"பிறை",cat:"நிலவு"},
+{t:"50. நோன்பு திறக்கும் போது",a:"ذَهَبَ الظَّمَأُ",tm:"தாகம் போய்விட்டது.",r:"இஃப்தார்",cat:"ரமலான்"},
+{t:"51. லைலத்துல் கத்ர்",a:"اللَّهُمَّ إِنَّكَ عَفُوٌّ",tm:"என்னை மன்னிப்பாயாக!",r:"ரமலான்",cat:"ரமலான்"},
+{t:"52. பெற்றோர் முழு",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ",tm:"பெற்றோரை மன்னி!",r:"தினமும்",cat:"பெற்றோர்"},
+{t:"53. குழந்தைகள்",a:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا",tm:"கண் குளிர்ச்சி தருவாயாக!",r:"தினமும்",cat:"குழந்தை"},
+{t:"54. குடும்பம்",a:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً",tm:"உலகிலும் மறுமையிலும் நன்மை.",r:"தினமும்",cat:"குடும்பம்"},
+{t:"55. பெரிய கடன்",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ",tm:"கடன் சுமையிலிருந்து பாதுகாவல்.",r:"கடன்",cat:"கடன்"},
+{t:"56. தேர்வு",a:"رَبِّ اشْرَحْ لِي صَدْرِي",tm:"நெஞ்சை விரிவுபடுத்து!",r:"தேர்வு",cat:"தேர்வு"},
+{t:"57. உடல் நலம்",a:"اللَّهُمَّ عَافِنِي فِي بَدَنِي",tm:"ஆரோக்கியம் கொடு!",r:"3 முறை",cat:"ஆரோக்கியம்"},
+{t:"58. கண் திருஷ்டி",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"3 முறை",cat:"பாதுகாப்பு"},
+{t:"59. தூங்கும் முன் முழு",a:"بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي",tm:"உன் பெயரால் தூங்குகிறேன்.",r:"தூக்கம்",cat:"தூக்கம்"},
+{t:"60. காலை எழுந்ததும்",a:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي",tm:"ஆரோக்கியம் தந்த அல்லாஹ்வுக்கே புகழ்.",r:"காலை",cat:"எழுதல்"},
+{t:"61. வீடு முழு",a:"بِسْمِ اللَّهِ وَلَجْنَا",tm:"அல்லாஹ் பெயரால் நுழைந்தோம்.",r:"வீடு",cat:"வீடு"},
+{t:"62. அண்டை வீடு",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَارِ السُّوءِ",tm:"கெட்ட அண்டை வீட்டிலிருந்து பாதுகாவல்.",r:"தினமும்",cat:"அண்டை"},
+{t:"63. கல்வி முழு",a:"اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي",tm:"கல்வியை பயனுள்ளதாக்கு!",r:"படிப்பு",cat:"கல்வி"},
+{t:"64. உஸ்தாத்",a:"جَزَاكُمُ اللَّهُ خَيْرًا",tm:"நல்ல கூலி கொடுப்பானாக!",r:"உஸ்தாத்",cat:"ஆசிரியர்"},
+{t:"65. நண்பர்கள்",a:"اللَّهُمَّ أَلِّفْ بَيْنَ قُلُوبِنَا",tm:"உள்ளங்களை ஒன்றிணை!",r:"தினமும்",cat:"நண்பர்"},
+{t:"66. உம்மத்",a:"اللَّهُمَّ أَعِزَّ الْإِسْلَامَ",tm:"இஸ்லாத்தை உயர்த்து!",r:"தினமும்",cat:"உம்மத்"},
+{t:"67. பாலஸ்தீனம்",a:"اللَّهُمَّ انْصُرْ إِخْوَانَنَا فِي فِلَسْطِينَ",tm:"பாலஸ்தீன சகோதரருக்கு உதவு!",r:"தினமும்",cat:"உம்மத்"},
+{t:"68. மழை முழு",a:"اللَّهُمَّ أَغِثْنَا",tm:"மழை கொடு!",r:"மழை",cat:"மழை"},
+{t:"69. காற்று",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا",tm:"காற்றின் நன்மை கேட்கிறோம்.",r:"காற்று",cat:"வானிலை"},
+{t:"70. பயம்",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ",tm:"அருள் நீங்காமல் காப்பாயாக!",r:"பயம்",cat:"பயம்"},
+{t:"71. பயண பாதுகாப்பு",a:"اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا",tm:"பயணத்தில் நல்லது கேட்கிறோம்.",r:"பயணம்",cat:"பயணம்"},
+{t:"72. வீடு திரும்புதல்",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ",tm:"பயண கஷ்டத்திலிருந்து பாதுகாவல்.",r:"பயணம்",cat:"பயணம்"},
+{t:"73. வேலை",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ",tm:"இந்த நாள் நன்மை கேட்கிறோம்.",r:"வேலை",cat:"வேலை"},
+{t:"74. ஹிஃப்ழ்",a:"اللَّهُمَّ اجْعَلِ الْقُرْآنَ رَبِيعَ قَلْبِي",tm:"குர்ஆனை உள்ள ஒளியாக்கு!",r:"குர்ஆன்",cat:"குர்ஆன்"},
+{t:"75. நல்ல மரணம்",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِيشَةً هَنِيَّةً",tm:"இன்பமான வாழ்வு கேட்கிறோம்.",r:"தினமும்",cat:"ஆகிரா"},
+{t:"76. கப்ரு வேதனை",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ",tm:"கப்ரு வேதனையிலிருந்து பாதுகாவல்.",r:"தொழுகை",cat:"ஆகிரா"},
+{t:"77. பெற்றோர் மரணம்",a:"اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ",tm:"மன்னித்து கருணை காட்டு!",r:"ஜனாஸா",cat:"பெற்றோர்"},
+{t:"78. முஸ்லிம் அனைவருக்கும்",a:"اللَّهُمَّ اغْفِرْ لِلْمُؤْمِنِينَ",tm:"அனைவரையும் மன்னி!",r:"தினமும்",cat:"உம்மத்"},
+{t:"79. இஸ்திகாரா",a:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ",tm:"நல்லதை தேடுகிறேன்.",r:"இஸ்திகாரா",cat:"இஸ்திகாரா"},
+{t:"80. திக்ர்",a:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",tm:"அல்லாஹ் தூய்மையானவன்.",r:"100 முறை",cat:"திக்ர்"},
+{t:"81. காலை திக்ர்",a:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",tm:"அல்லாஹ்வுக்கே புகழ்.",r:"100 முறை",cat:"திக்ர்"},
+{t:"82. மாலை திக்ர்",a:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ",tm:"அல்லாஹ் தனித்தவன்.",r:"100 முறை",cat:"திக்ர்"},
+{t:"83. தூக்கம் - குர்ஸி",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ",tm:"அல்லாஹ் உயிருள்ளவன்.",r:"தூக்கம்",cat:"தூக்கம்"},
+{t:"84. தூக்கம் - பகரா",a:"آمَنَ الرَّسُولُ",tm:"தூதர் நம்பினார்.",r:"தூக்கம்",cat:"தூக்கம்"},
+{t:"85. காலை முழு",a:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا",tm:"உயிர் கொடுத்த அல்லாஹ்வுக்கே புகழ்.",r:"காலை",cat:"காலை"},
+{t:"86. உணவு மறந்தால்",a:"بِسْمِ اللَّهِ فِي أَوَّلِهِ",tm:"ஆரம்பத்திலும் முடிவிலும்.",r:"உணவு",cat:"உணவு"},
+{t:"87. விருந்து",a:"اللَّهُمَّ بَارِكْ لَهُمْ",tm:"பரக்கத் செய்வாயாக!",r:"விருந்து",cat:"உணவு"},
+{t:"88. தண்ணீர் முன்",a:"بِسْمِ اللَّهِ",tm:"அல்லாஹ் பெயரால்.",r:"தண்ணீர்",cat:"உணவு"},
+{t:"89. தண்ணீர் பின்",a:"الْحَمْدُ لِلَّهِ الَّذِي سَقَانَا",tm:"தண்ணீர் கொடுத்த அல்லாஹ்வுக்கே புகழ்.",r:"தண்ணீர்",cat:"உணவு"},
+{t:"90. வீடு வெளியேறுதல்",a:"بِسْمِ اللَّهِ، تَوَكَّلْتُ",tm:"நம்பிக்கை வைத்தேன்.",r:"வீடு",cat:"வீடு"},
+{t:"91. வீடு ஸலாம்",a:"السَّلَامُ عَلَيْكُمْ",tm:"உங்கள் மீது ஸலாம்.",r:"வீடு",cat:"வீடு"},
+{t:"92. மஸ்ஜித் முழு",a:"أَعُوذُ بِاللَّهِ الْعَظِيمِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"மஸ்ஜித்",cat:"மஸ்ஜித்"},
+{t:"93. பாங்கு",a:"اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ",tm:"வஸீலா கொடு!",r:"பாங்கு",cat:"பாங்கு"},
+{t:"94. தொழுகை தஸ்பீஹ்",a:"سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ",tm:"அல்லாஹ் தூய்மையானவன்.",r:"33 முறை",cat:"தொழுகை"},
+{t:"95. தொழுகை குர்ஸி",a:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ",tm:"அல்லாஹ் உயிருள்ளவன்.",r:"தொழுகை",cat:"தொழுகை"},
+{t:"96. வித்ர்",a:"سُبْحَانَ الْمَلِكِ الْقُدُّوسِ",tm:"பரிசுத்த அரசன்.",r:"3 முறை",cat:"தொழுகை"},
+{t:"97. ஜும்ஆ",a:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ",tm:"ஸலவாத் சொல்வாயாக!",r:"ஜும்ஆ",cat:"ஜும்ஆ"},
+{t:"98. நோயாளி",a:"لَا بَأْسَ طَهُورٌ",tm:"சுத்தமாக்கும் நோய்.",r:"நோய்",cat:"நோய்"},
+{t:"99. நோய் தனக்கு",a:"اللَّهُمَّ رَبَّ النَّاسِ",tm:"நோயை நீக்கு!",r:"நோய்",cat:"நோய்"},
+{t:"100. திருஷ்டி",a:"بِسْمِ اللَّهِ أَرْقِيكَ",tm:"ஓதுகிறேன்.",r:"திருஷ்டி",cat:"பாதுகாப்பு"},
+{t:"101. கனவு நல்லது",a:"الْحَمْدُ لِلَّهِ",tm:"அல்லாஹ்வுக்கே புகழ்.",r:"கனவு",cat:"கனவு"},
+{t:"102. கனவு கெட்டது",a:"أَعُوذُ بِاللَّهِ مِنْ شَرِّهَا",tm:"கனவு தீங்கிலிருந்து பாதுகாவல்.",r:"கனவு",cat:"கனவு"},
+{t:"103. கோபம் முழு",a:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ",tm:"கோபம் நீக்கு!",r:"கோபம்",cat:"கோபம்"},
+{t:"104. கடன் முழு",a:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ",tm:"ஹலால் போதுமாக்கு!",r:"கடன்",cat:"கடன்"},
+{t:"105. வாகனம்",a:"بِسْمِ اللَّهِ، الْحَمْدُ لِلَّهِ",tm:"அல்லாஹ்வுக்கே புகழ்.",r:"வாகனம்",cat:"பயணம்"},
+{t:"106. பயண கஷ்டம்",a:"اللَّهُمَّ هَوِّنْ عَلَيْنَا",tm:"பயணம் எளிதாக்கு!",r:"பயணம்",cat:"பயணம்"},
+{t:"107. புது ஊர்",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا",tm:"ஊர் நன்மை கேட்கிறேன்.",r:"பயணம்",cat:"பயணம்"},
+{t:"108. மழை வேண்டி",a:"اللَّهُمَّ اسْقِنَا غَيْثًا",tm:"மழை கொடு!",r:"மழை",cat:"மழை"},
+{t:"109. இடி முழு",a:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ",tm:"இடி தஸ்பீஹ்.",r:"இடி",cat:"மழை"},
+{t:"110. புது ஆடை முழு",a:"الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي",tm:"ஆடை அணிவித்த அல்லாஹ்.",r:"ஆடை",cat:"ஆடை"},
+{t:"111. கண்ணாடி 2",a:"اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي",tm:"குணம் அழகாக்கு!",r:"கண்ணாடி",cat:"தினசரி"},
+{t:"112. திருமணம் 2",a:"بَارَكَ اللَّهُ لَكُمَا",tm:"பரக்கத் செய்வானாக!",r:"திருமணம்",cat:"திருமணம்"},
+{t:"113. குழந்தை பிறப்பு",a:"اللَّهُ أَكْبَرُ",tm:"அல்லாஹ் பெரியவன்!",r:"குழந்தை",cat:"குழந்தை"},
+{t:"114. அகீகா",a:"اللَّهُمَّ إِنَّ هَذَا عَقِيقَةٌ",tm:"அகீகா ஏற்றுக்கொள்!",r:"அகீகா",cat:"குழந்தை"},
+{t:"115. பெற்றோர் முழு",a:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ",tm:"மன்னிப்பாயாக!",r:"தினமும்",cat:"பெற்றோர்"},
+{t:"116. ஆசிரியர்",a:"اللَّهُمَّ اجْزِ مُعَلِّمِي",tm:"ஆசிரியருக்கு கூலி கொடு!",r:"ஆசிரியர்",cat:"ஆசிரியர்"},
+{t:"117. நண்பன்",a:"اللَّهُمَّ احْفَظْ صَدِيقِي",tm:"நண்பனை காப்பாயாக!",r:"நண்பன்",cat:"நண்பன்"},
+{t:"118. உம்மத் 2",a:"اللَّهُمَّ أَصْلِحْ أُمَّةَ مُحَمَّدٍ",tm:"உம்மத்தை சீர்படுத்து!",r:"தினமும்",cat:"உம்மத்"},
+{t:"119. கஷ்டம் - ஹய்யு",a:"يَا حَيُّ يَا قَيُّومُ",tm:"உதவி தேடுகிறேன்!",r:"கஷ்டம்",cat:"கஷ்டம்"},
+{t:"120. கவலை முழு",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ",tm:"கவலையிலிருந்து பாதுகாவல்.",r:"கவலை",cat:"கவலை"},
+{t:"121. சொர்க்கம் வேண்டி",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ",tm:"சொர்க்கம் கேட்கிறேன்!",r:"3 முறை",cat:"சொர்க்கம்"},
+{t:"122. நரக பாதுகாப்பு 2",a:"اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",tm:"நரகத்திலிருந்து காப்பாற்று!",r:"7 முறை",cat:"பாதுகாப்பு"},
+{t:"123. கப்ரு",a:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ",tm:"கப்ரு வேதனை பாதுகாவல்.",r:"தொழுகை",cat:"ஆகிரா"},
+{t:"124. நல்ல முடிவு 2",a:"اللَّهُمَّ اخْتِمْ لَنَا بِالْخَيْرِ",tm:"நன்மையால் முடிவு செய்!",r:"தினமும்",cat:"ஆகிரா"},
+{t:"125. இஸ்திகாரா முழு",a:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ",tm:"நல்லதை தேடுகிறேன்.",r:"இஸ்திகாரா",cat:"இஸ்திகாரா"},
+{t:"126. தொழுகை இஸ்திஃபார்",a:"أَسْتَغْفِرُ اللَّهَ",tm:"மன்னிப்பு தேடுகிறேன்.",r:"தொழுகை",cat:"தொழுகை"},
+{t:"127. சையிதுல் இஸ்திஃபார்",a:"اللَّهُمَّ أَنْتَ رَبِّي",tm:"நீ தான் என் இறைவன்.",r:"காலை/மாலை",cat:"இஸ்திஃபார்"},
+{t:"128. மாலை பாதுகாப்பு",a:"أَعُوذُ بِكَلِمَاتِ اللَّهِ",tm:"பாதுகாவல் தேடுகிறேன்.",r:"3 முறை",cat:"பாதுகாப்பு"},
+{t:"129. உடல் நலம் முழு",a:"اللَّهُمَّ عَافِنِي فِي بَدَنِي",tm:"ஆரோக்கியம் கொடு!",r:"3 முறை",cat:"ஆரோக்கியம்"},
+{t:"130. ரிஸ்க் முழு",a:"اللَّهُمَّ إِنِّي أَسْأَلُكَ رِزْقًا",tm:"பரக்கத் ரிஸ்க் கேட்கிறேன்.",r:"தினமும்",cat:"ரிஸ்க்"},
+{t:"131. குர்ஆன் முடித்ததும்",a:"اللَّهُمَّ ارْحَمْنِي بِالْقُرْآنِ",tm:"குர்ஆன் கருணை காட்டு!",r:"குர்ஆன்",cat:"குர்ஆன்"},
+{t:"132. கடைசி துஆ",a:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً",tm:"உலகிலும் மறுமையிலும் நன்மை.",r:"தினமும்",cat:"முழு துஆ"}
 ];
-var tajweed=[
-{t:"1. தஜ்வீத் என்றால் என்ன?",ar:"التجويد",body:"<h4>தமிழ் விளக்கம்:</h4>குர்ஆனை நபி (ஸல்) எப்படி ஓதினார்களோ அப்படியே அழகாக சரியாக ஓதுவது தான் தஜ்வீத்.<br><br>3 முக்கிய விதிகள்: 1. மக்ரஜ் சரியா இருக்கணும்<br>2. மத்து சரியா நீட்டணும்<br>3. வக்ஃப் சரியா நிற்கணும்"},
-{t:"2. மக்ரஜ் - 17 இடங்கள்",ar:"المخرج",body:"<h4>தமிழ் விளக்கம்:</h4>29 எழுத்து, 17 இடத்திலிருந்து வருது.<br>தொண்டை - ஹா, அய்ன்<br>நாக்கு - காஃப், ஜீம்<br>உதடு - பா, மீம், வாவ்<br>மூக்கு - நூன், மீம் குன்னா"},
-{t:"3. நூன் சாகினா & தன்வீன் - 4 விதிகள்",ar:"النون الساكنة",body:"<h4>தமிழ் விளக்கம்:</h4>1. இழ்ஹார் - தெளிவா ஓதணும் - 6 எழுத்து<br>2. இத்காம் - சேர்த்து ஓதணும்<br>3. இக்லாப் - மீமா மாத்தணும்<br>4. இக்ஃபா - மறைச்சு ஓதணும்"},
-{t:"4. மீம் சாகினா - 3 விதிகள்",ar:"الميم الساكنة",body:"<h4>தமிழ் விளக்கம்:</h4>1. இக்ஃபா ஷஃபவி - பா வந்தா மறைச்சு + குன்னா<br>2. இத்காம் ஷஃபவி - மீம் வந்தா சேர்த்து + குன்னா<br>3. இழ்ஹார் ஷஃபவி - வேற எழுத்து வந்தா தெளிவா"},
-{t:"5. மத்து - நீட்டி ஓதுவது",ar:"المد",body:"<h4>தமிழ் விளக்கம்:</h4>மத்து - நீட்டி ஓதுவது. அலிஃப், வாவ், யா.<br>மத்து தபீஇ - 2 அளவு<br>மத்து முத்தஸில் - 4-5 அளவு<br>மத்து லாஸிம் - 6 அளவு"},
-{t:"6. குன்னா - மூக்கில் ஓசை",ar:"الغنة",body:"<h4>தமிழ் விளக்கம்:</h4>குன்னா - மூக்குல வர்ற ஓசை. 2 அளவு வரணும்.<br>நூன், மீம் ஷத்தா - இன்ன, அம்மா"},
-{t:"7. கல்கலா - 5 எழுத்து",ar:"القلقلة",body:"<h4>தமிழ் விளக்கம்:</h4>காஃப், தா, பா, ஜீம், தால் - 'குத்பு ஜத்'<br>சுகூன் வந்தா எதிரொலிக்கும்."},
-{t:"8. வக்ஃப் - நிற்கும் முறை",ar:"الوقف",body:"<h4>தமிழ் விளக்கம்:</h4>வக்ஃப் லாஸிம் - மீம் - கண்டிப்பா நிற்கணும்<br>வக்ஃப் ஜாயிஸ் - ஜீம் - நிற்கலாம்<br>வக்ஃப் மம்னூ - லா - நிற்க கூடாது"},
-{t:"9. தஃப்கீம் & தர்கீக்",ar:"التفخيم",body:"<h4>தமிழ் விளக்கம்:</h4>தஃப்கீம் - கனமா ஓதணும் - கா, ஸாத், ளாத், கைன், தா, காஃப், ழா<br>தர்கீக் - மெலிசா ஓதணும்"},
-{t:"10. ஹம்ஸா & அலிஃப்",ar:"الهمزة",body:"<h4>தமிழ் விளக்கம்:</h4>ஹம்ஸா - தொண்டையோட கடைசியிலிருந்து வரும்.<br>அலிஃப் - மத்துக்கு மட்டும் வரும்."},
-{t:"11. ஷத்தா & சுகூன்",ar:"الشدة",body:"<h4>தமிழ் விளக்கம்:</h4>ஷத்தா இருந்தா ரெண்டு தடவை ஓதணும் - அழுத்தம் கொடுத்து.<br>சுகூன் இருந்தா ஓசை இல்லாம நிற்கணும்."},
-{t:"12. ரா - கனம் & மெலிசு",ar:"الراء",body:"<h4>தமிழ் விளக்கம்:</h4>ரா-வுக்கு ஃபத்ஹா, தம்மா இருந்தா கனமா ஓதணும்.<br>ரா-வுக்கு கஸ்ரா இருந்தா மெலிசா ஓதணும்."},
-{t:"13. லாம் - அல்லாஹ் பெயரில்",ar:"لام الجلالة",body:"<h4>தமிழ் விளக்கம்:</h4>அல்லாஹ் என்ற வார்த்தைக்கு முன்னாடி ஃபத்ஹா, தம்மா இருந்தா கனமா - அல்லாஹ்.<br>கஸ்ரா இருந்தா மெலிசா - பிஸ்மில்லாஹ்."},
-{t:"14. இத்காம் வகைகள்",ar:"الإدغام",body:"<h4>தமிழ் விளக்கம்:</h4>இத்காம் பி குன்னா - யா, நூன், மீம், வாவ் - குன்னாவோட சேர்க்கணும்.<br>இத்காம் பிலா குன்னா - லாம், ரா - குன்னா இல்லாம சேர்க்கணும்."},
-{t:"15. இக்ஃபா - 15 எழுத்து",ar:"الإخفاء",body:"<h4>தமிழ் விளக்கம்:</h4>நூன் சாகினாவுக்கு பின்னாடி 15 எழுத்து வந்தா மறைச்சு + குன்னாவோட ஓதணும்."},
-{t:"16. இழ்ஹார் - 6 எழுத்து",ar:"الإظهار",body:"<h4>தமிழ் விளக்கம்:</h4>ஹம்ஸா, ஹா, அய்ன், ஹா, கைன், கா - இந்த 6 எழுத்து வந்தா நூனை தெளிவா ஓதணும்."},
-{t:"17. இக்லாப் - பா வந்தா",ar:"الإقلاب",body:"<h4>தமிழ் விளக்கம்:</h4>நூன் சாகினாவுக்கு பின்னாடி பா வந்தா நூனை மீமா மாத்தி, மறைச்சு + குன்னாவோட ஓதணும்."},
-{t:"18. மத்து முன்ஃபஸில் & முத்தஸில்",ar:"المد المنفصل",body:"<h4>தமிழ் விளக்கம்:</h4>முத்தஸில் - ஒரே வார்த்தையில் - 4-5 அளவு.<br>முன்ஃபஸில் - ரெண்டு வார்த்தையில் - 2-4 அளவு."},
-{t:"19. மத்து லாஸிம் & ஆரிள்",ar:"المد اللازم",body:"<h4>தமிழ் விளக்கம்:</h4>லாஸிம் - 6 அளவு கண்டிப்பா நீட்டணும் - அல்-ஹாஃக்கா<br>ஆரிள் லிஸ் சுகூன் - நிற்கும் போது மட்டும் 2-4-6 அளவு நீட்டலாம்."},
-{t:"20. சிஃபாத் - எழுத்து குணம்",ar:"الصفات",body:"<h4>தமிழ் விளக்கம்:</h4>ஒவ்வொரு எழுத்துக்கும் குணம் இருக்கு.<br>ஹம்ஸ் - மெல்லிய காற்று - ஸீன், ஷீன்<br>ஜஹ்ர் - கனமான ஓசை"},
-{t:"21. சூரா பாத்திஹா - தஜ்வீதோடு",ar:"الفاتحة",body:"<h4>தமிழ் விளக்கம்:</h4>பாத்திஹாவை வார்த்தை வார்த்தையா பிரிச்சு படிக்கணும்.<br>அல்ஹம்து - ஹா - தொண்டையிலிருந்து"},
-{t:"22. சூரா இக்லாஸ் - பயிற்சி",ar:"الإخلاص",body:"<h4>தமிழ் விளக்கம்:</h4>குல் ஹுவல்லாஹு அஹத் - காஃப் - கல்கலா<br>அல்லாஹுஸ் ஸமத் - ஸாத் - கனம்"},
-{t:"23. பொதுவான தவறுகள்",ar:"الأخطاء",body:"<h4>தமிழ் விளக்கம்:</h4>1. ஹா-வை ஹா-வா மாத்தி ஓதுறது<br>2. ஸீன்-ஐ ஷீன்-ஆ மாத்துறது<br>3. மத்து இல்லாத இடத்துல நீட்டுறது<br>4. குன்னா இல்லாம ஓதுறது"},
-{t:"24. தினசரி 10 நிமிட பயிற்சி",ar:"التدريب",body:"<h4>தமிழ் திட்டம்:</h4>காலை - 1 விதி படிக்கணும்<br>மதியம் - பாத்திஹா 5 தடவை தஜ்வீதோடு<br>இரவு - இக்லாஸ் 5 தடவை தஜ்வீதோடு"},
-{t:"25. தேர்வு - நீங்க தேறிட்டீங்களா?",ar:"الاختبار",body:"<h4>தமிழ் விளக்கம்:</h4>பாத்திஹா, இக்லாஸ், பலக், நாஸ் - 4 சூராவையும் தஜ்வீதோடு தப்பு இல்லாம ஓதினா நீங்க தேறிட்டீங்க! மாஷா அல்லாஹ்!"}
-];
-var yassarnal=[
-{t:"1. Arabic Ezhuthukkal - 29 Letters",ar:"ا ب ت ث",body:"<h4>Tamil Vilakkam:</h4>Arabic-la 29 Ezhuthu. Valathilirundhu Idathukku Padippom.<br>Alif, Ba, Ta, Tha, Jeem, Ha, Kha..."},
-{t:"2. Harakath",ar:"َ ِ ُ",body:"<h4>Tamil:</h4>Fathah - 'A' Osai - Ba = Baa<br>Kasrah - 'I' Osai - Bi = Bee<br>Dhammah - 'U' Osai - Bu = Boo"},
-{t:"3. Sukoon & Shaddah",ar:"ْ ّ",body:"<h4>Tamil:</h4>Sukoon - Osai Illaama Nirkkanum. Shaddah - Rendu Thadava Oodhanum."},
-{t:"4. Madd - Neettam",ar:"ا و ي",body:"<h4>Tamil:</h4>Alif, Waw, Ya - Neetti Oodhanum. Ba + Alif = Baa (2 Alavu)"},
-{t:"5. Tanween",ar:"ً ٍ ٌ",body:"<h4>Tamil:</h4>Rendu Fathah = 'An' - Kitaban. Rendu Kasrah = 'In', Rendu Dhammah = 'Un'."},
-{t:"6. Surah Fatiha Padippom",ar:"الفاتحة",body:"<h4>Tamil:</h4>Bismillah-il irundhu Aaramikkalam. Oru Oru Vaarthaiya Pirichu Padikkalam."}
-];
-var seerah=[
-{t:"1. மக்காவில் பிறப்பு - 571 AD",ar:"المولد",body:"<h4>தமிழ் கதை:</h4>நபி (ஸல்) மக்காவில் - ரபீஉல் அவ்வல் 12 - திங்கள் கிழமை பிறந்தார்கள்.<br>தந்தை அப்துல்லாஹ், தாய் ஆமினா. ஹலீமா ஸாதியா (ரலி) பாலூட்டி வளர்த்தார்கள்."},
-{t:"2. சின்ன வயது - நம்பிக்கையாளர்",ar:"الشباب",body:"<h4>தமிழ் கதை:</h4>நபி (ஸல்) சின்ன வயசிலிருந்தே உண்மை பேசுபவர் - மக்கள் 'அல்-அமீன்' என்று அழைத்தார்கள்.<br>25 வயதில் கதீஜா (ரலி)-வோட திருமணம்."},
-{t:"3. ஹிரா குகை - வஹி வருகிறது",ar:"الوحي",body:"<h4>தமிழ் கதை:</h4>40 வயதில் - ஹிரா மலையில் - ஜிப்ரீல் (அலை) வந்து 'இக்ரா' என்று சொன்னார்கள்.<br>முதல் வஹி - சூரா அல்-அலக் - முதல் 5 ஆயத்து."},
-{t:"4. ரகசிய தஃவா - 3 வருஷம்",ar:"الدعوة السرية",body:"<h4>தமிழ் கதை:</h4>முதல் 3 வருஷம் ரகசியமா இஸ்லாத்தை சொன்னார்கள். முதல் முஸ்லிம் - கதீஜா, அலி, அபூபக்கர், ஸைத்."},
-{t:"5. கொடுமைகள் - புறக்கணிப்பு",ar:"المقاطعة",body:"<h4>தமிழ் கதை:</h4>குறைஷிகள் முஸ்லிம்களை கொடுமை படுத்தினார்கள். 3 வருஷம் புறக்கணிப்பு - சாப்பாடு இல்லாம கஷ்டப்பட்டார்கள்."},
-{t:"6. தாயிஃப் பயணம்",ar:"الطائف",body:"<h4>தமிழ் கதை:</h4>தாயிஃபுக்கு போனார்கள் - அங்க மக்கள் கல்லால் அடித்தார்கள். நபி (ஸல்) 'இவர்கள் சந்ததியில் முஸ்லிம் வருவார்கள்' என்று சொன்னார்கள்."},
-{t:"7. மிஃராஜ் - விண்ணுலக பயணம்",ar:"المعراج",body:"<h4>தமிழ் கதை:</h4>மக்காவிலிருந்து பைத்துல் முகத்தஸ் - அங்கிருந்து 7 வானம். அல்லாஹ் 5 நேர தொழுகையை கடமையாக்கினான்."},
-{t:"8. ஹிஜ்ரத் - மதீனா பயணம்",ar:"الهجرة",body:"<h4>தமிழ் கதை:</h4>622 AD - மக்காவிலிருந்து மதீனாவுக்கு ஹிஜ்ரத். அபூபக்கர்-ஓட பயணம். ஸவ்ர் குகையில் 3 நாள்."},
-{t:"9. மதீனாவில் மஸ்ஜித்",ar:"المسجد",body:"<h4>தமிழ் கதை:</h4>மதீனாவில் முதல் மஸ்ஜித் - மஸ்ஜிதுன் நபவி கட்டினார்கள். முஹாஜிர் - அன்சார் சகோதரர்களாக்கினார்கள்."},
-{t:"10. பத்ர் யுத்தம் - 624 AD",ar:"بدر",body:"<h4>தமிழ் கதை:</h4>313 முஸ்லிம் vs 1000 குறைஷி. அல்லாஹ் மலக்குகளை அனுப்பி உதவி செய்தான். முஸ்லிம்கள் வெற்றி."},
-{t:"11. உஹுத் யுத்தம் - பாடம்",ar:"أحد",body:"<h4>தமிழ் கதை:</h4>625 AD - உஹுத் மலையில் யுத்தம். 70 ஸஹாபாக்கள் ஷஹீத் - ஹம்ஸா (ரலி) ஷஹீத்."},
-{t:"12. கந்தக் யுத்தம் - அகழ்",ar:"الخندق",body:"<h4>தமிழ் கதை:</h4>627 AD - மதீனாவை சுற்றி அகழ் தோண்டினார்கள். ஸல்மான் ஃபாரிஸி (ரலி) யோசனை. எதிரிகள் திரும்பி போனார்கள்."},
-{t:"13. ஹுதைபியா உடன்படிக்கை",ar:"الحديبية",body:"<h4>தமிழ் கதை:</h4>628 AD - ஹுதைபியாவில் உடன்படிக்கை. வெளியே பார்க்க தோல்வி போல, ஆனா அது தான் பெரிய வெற்றிக்கு வழி."},
-{t:"14. கைபர் வெற்றி",ar:"خيبر",body:"<h4>தமிழ் கதை:</h4>629 AD - கைபர் கோட்டை வெற்றி. அலி (ரலி) கோட்டை கதவை தூக்கினார்கள்."},
-{t:"15. மக்கா வெற்றி - ஃபத்ஹ் மக்கா",ar:"فتح مكة",body:"<h4>தமிழ் கதை:</h4>630 AD - 10,000 முஸ்லிம்களோட மக்கா வெற்றி. 'இன்னைக்கு உங்களுக்கு மன்னிப்பு' என்று மன்னித்தார்கள்."},
-{t:"16. ஹுனைன் யுத்தம்",ar:"حنين",body:"<h4>தமிழ் கதை:</h4>மக்கா வெற்றிக்கு பின் ஹுனைனில் யுத்தம். முதல்ல பின்வாங்கினாலும் அல்லாஹ் வெற்றி கொடுத்தான்."},
-{t:"17. தபூக் பயணம்",ar:"تبوك",body:"<h4>தமிழ் கதை:</h4>630 AD - கோடை காலத்தில் தபூக் பயணம். ரொம்ப கஷ்டமான பயணம். முனாஃபிக்குகள் வரலை."},
-{t:"18. நபி (ஸல்) குடும்பம்",ar:"الأهل",body:"<h4>தமிழ் கதை:</h4>கதீஜா (ரலி), ஆயிஷா (ரலி), பாத்திமா (ரலி), ஹஸன், ஹுசைன் - நபி (ஸல்) குடும்பத்தை ரொம்ப நேசித்தார்கள்."},
-{t:"19. நபி (ஸல்) குணங்கள்",ar:"الأخلاق",body:"<h4>தமிழ் கதை:</h4>நபி (ஸல்) ரொம்ப பொறுமையானவர்கள், இரக்கமானவர்கள், உண்மையானவர்கள். குழந்தைகளை ரொம்ப நேசித்தார்கள்."},
-{t:"20. அன்றாட வாழ்க்கை - சுன்னத்",ar:"السنة",body:"<h4>தமிழ் கதை:</h4>நபி (ஸல்) சாப்பிடும் முன் பிஸ்மில்லாஹ், வலது கையால் சாப்பிடுவார்கள். தூங்கும் முன் துஆ ஓதுவார்கள்."},
-{t:"21. ஸஹாபாக்கள் - அபூபக்கர்",ar:"أبو بكر",body:"<h4>தமிழ் கதை:</h4>அபூபக்கர் (ரலி) - முதல் கலீஃபா. நபி (ஸல்)-ஓட நெருங்கிய நண்பர். ஹிஜ்ரத்தில் கூட இருந்தார்."},
-{t:"22. ஸஹாபாக்கள் - உமர், உஸ்மான், அலி",ar:"الصحابة",body:"<h4>தமிழ் கதை:</h4>உமர் (ரலி) - நீதிமான், உஸ்மான் (ரலி) - வெட்கமுள்ளவர், அலி (ரலி) - அறிவாளி. நால்வரும் சொர்க்கத்திற்கு நன்மாராயம் பெற்றவர்கள்."},
-{t:"23. ஹஜ்ஜத்துல் வதா",ar:"حجة الوداع",body:"<h4>தமிழ் கதை:</h4>632 AD - அரஃபாத்தில் பிரிவு உரை: 'முஸ்லிம்கள் அனைவரும் சகோதரர்கள். குர்ஆனையும் என் சுன்னத்தையும் பிடித்துக்கொண்டு விட்டு செல்கிறேன்.'"},
-{t:"24. மரணம் - 632 AD",ar:"الوفاة",body:"<h4>தமிழ் கதை:</h4>ரபீஉல் அவ்வல் 12 - 63 வயதில் நபி (ஸல்) மரணித்தார்கள். மதீனாவில் அடக்கம் செய்யப்பட்டார்கள்."},
-{t:"25. நாம் கற்க வேண்டிய பாடம்",ar:"الدرس",body:"<h4>தமிழ் கதை:</h4>நபி (ஸல்) வாழ்க்கையிலிருந்து நாம் கற்க வேண்டியது - உண்மை, பொறுமை, இரக்கம், மன்னிப்பு. இதை நம் வாழ்க்கையில் கடைபிடிக்கணும்!"}
-];
-// NOTE: Pazhaya Duas 41-132 - Unga Pazhaya File-la Irundhu Copy Panni - Idhula 40-kku Appuram Paste Pannunga - Appo Full 132 Varum! 41-132 Already Ungakitta Irukku!
-function buildSurahs(){let h='';surahs.forEach(s=>{h+='<div class="surah-row-new" onclick="openSurah('+s[0]+',\''+s[1]+'\')"><div class="num-box">'+s[0]+'</div><div><b style="color:#fff">'+s[1]+'</b><br><small style="color:#9AA3B2">'+s[3]+' Ayahs • Tamil + Tajweed</small></div><span class="ar-name">'+s[2]+'</span></div>'});document.getElementById('surahList').innerHTML=h;updateLastReadText()}
-buildSurahs();
-function buildDuas(){let h='';duas.forEach((d,i)=>{h+='<div class="dua-item" onclick="openDua('+i+')"><div><b>'+d.t+'</b><br><small>'+d.r+'</small></div><span>🤲 →</span></div>'});document.getElementById('duaList').innerHTML=h}
-buildDuas();
-function buildTajweed(){let h='';tajweed.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'tajweed\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Vilakkam • Click Panni Padikkalam</small></div><span>'+d.ar+' →</span></div>'});document.getElementById('tajweedList').innerHTML=h}
-buildTajweed();
-function buildYassarnal(){let h='';yassarnal.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'yassarnal\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Lesson</small></div><span>'+d.ar+' →</span></div>'});document.getElementById('yassarnalList').innerHTML=h}
-buildYassarnal();
-function buildSeerah(){let h='';seerah.forEach((d,i)=>{h+='<div class="lesson-item" onclick="openLesson(\'seerah\','+i+')"><div><b>'+d.t+'</b><br><small>Tamil Story • Click Panni Padikkalam</small></div><span>📖 →</span></div>'});document.getElementById('seerahList').innerHTML=h}
-buildSeerah();
-function hideAll(){['homeSection','classSection','formSection','profileSection','quranSection','hisnulSection','tajweedSection','yassarnalSection','seerahSection'].forEach(id=>document.getElementById(id).style.display='none')}
+function buildDuas(){let h='';duas.forEach((d,i)=>{h+='<div class="dua-item" onclick="openDua('+i+')"><div><b>'+d.t+'</b><br><small>'+d.r+'</small></div><span>🤲 →</span></div>'});document.getElementById('duaList').innerHTML=h}buildDuas();
+function hideAll(){['homeSection','classSection','formSection','profileSection','hisnulSection','quranSection'].forEach(id=>document.getElementById(id).style.display='none')}
 function showHome(){hideAll();document.getElementById('homeSection').style.display='block'}
 function showClass(){hideAll();document.getElementById('classSection').style.display='block'}
 function showForm(){hideAll();document.getElementById('formSection').style.display='block'}
 function showProfile(){hideAll();document.getElementById('profileSection').style.display='block'}
-function showQuranList(){hideAll();document.getElementById('quranSection').style.display='block';window.scrollTo(0,0)}
 function showHisnulList(){hideAll();document.getElementById('hisnulSection').style.display='block';window.scrollTo(0,0)}
-function showTajweedList(){hideAll();document.getElementById('tajweedSection').style.display='block';window.scrollTo(0,0)}
-function showYassarnalList(){hideAll();document.getElementById('yassarnalSection').style.display='block';window.scrollTo(0,0)}
-function showSeerahList(){hideAll();document.getElementById('seerahSection').style.display='block';window.scrollTo(0,0)}
 function searchBooks(){let v=document.getElementById('searchInput').value.toLowerCase();let cards=document.getElementsByClassName('card');for(let i=0;i<cards.length;i++){cards[i].style.display=cards[i].innerText.toLowerCase().includes(v)?"flex":"none"}}
-function searchSurah(){let v=document.getElementById('quranSearch').value.toLowerCase();let items=document.querySelectorAll('#surahList .surah-row-new');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
 function searchDua(){let v=document.getElementById('hisnulSearch').value.toLowerCase();let items=document.getElementsByClassName('dua-item');for(let i=0;i<items.length;i++){items[i].style.display=items[i].innerText.toLowerCase().includes(v)?"flex":"none"}}
-function searchTajweed(){let v=document.getElementById('tajweedSearch').value.toLowerCase();let items=document.querySelectorAll('#tajweedList .lesson-item');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
-function searchSeerah(){let v=document.getElementById('seerahSearch').value.toLowerCase();let items=document.querySelectorAll('#seerahList .lesson-item');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
-function openDua(i){let d=duas[i];document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><span class="repeat">⏰ '+d.r+'</span><div class="ar">'+d.a+'</div><div class="tamil"><b>TAMIL TRANSLATION:</b>'+d.tm+'</div><p style="color:#C9A227;font-size:12px;margin-top:12px">📖 Hisnul Muslim • '+d.cat+'</p></div>'}
-function openLesson(type,i){let d;let title="";if(type=='tajweed'){d=tajweed[i];title="Tajweed - Tamil";}if(type=='yassarnal'){d=yassarnal[i];title="Yassarnal Quran";}if(type=='seerah'){d=seerah[i];title="Ar-Raheeq - Seerah Tamil";}document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><div class="lesson-title">'+d.t+'</div><div class="ar" style="text-align:center;font-size:30px;margin-bottom:10px">'+d.ar+'</div><div class="lesson-body">'+d.body+'</div><p style="color:#C9A227;font-size:12px;margin-top:14px;text-align:center">📖 '+title+' • Madharasathul Ikhlaas</p></div>'}
-let arabicSize = 26;
-let currentSurah = 1;
-let currentAyah = 1;
-let audioObj = new Audio();
-function changeFont(d){ arabicSize += d; if(arabicSize<18) arabicSize=18; if(arabicSize>40) arabicSize=40; document.querySelectorAll('.ar,.mushaf-ar').forEach(e=>e.style.fontSize=arabicSize+'px'); localStorage.setItem('q_font',arabicSize); }
-let isDay = false;
-function toggleTheme(){ isDay=!isDay; if(isDay){ document.body.style.background='#FFF8E1'; document.body.style.color='#000'; document.querySelectorAll('.ayah,.detail-box').forEach(e=>{e.style.background='#fff'; e.style.color='#000'}); document.getElementById('themeBtn').innerText='🌙 Night Mode'; } else { document.body.style.background='#1B1F2A'; document.body.style.color='#fff'; document.querySelectorAll('.ayah,.detail-box').forEach(e=>{e.style.background='#242936'; e.style.color='#fff'}); document.getElementById('themeBtn').innerText='☀️ Day Mode'; } }
-function bookmarkAyah(surah, ayah, text){ let b = JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); b.push({surah, ayah, text, time:Date.now()}); localStorage.setItem('q_bookmarks', JSON.stringify(b)); alert('🔖 Bookmark Saved! Surah '+surah+' Ayah '+ayah); }
-function showBookmarks(){ let b = JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); document.getElementById('readerTitle').innerText='🔖 My Bookmarks'; document.getElementById('reader').style.display='flex'; let c=document.getElementById('readerContent'); if(b.length==0) c.innerHTML='<p style="text-align:center;padding:30px">Bookmark Illa - Ayah-la Bookmark Button Click Pannunga</p>'; else c.innerHTML = b.map((x,i)=>'<div class="ayah"><b>Surah '+x.surah+' : Ayah '+x.ayah+'</b><div class="ar">'+x.text+'</div><button onclick="openSurah('+x.surah+',\'Surah\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700;margin-top:8px">Open →</button> <button onclick="removeBookmark('+i+')" style="background:#333;color:#fff;border:none;padding:8px 12px;border-radius:10px">Delete</button></div>').join(''); }
-function removeBookmark(i){ let b=JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); b.splice(i,1); localStorage.setItem('q_bookmarks',JSON.stringify(b)); showBookmarks(); }
-function saveLast(surah, ayah){ localStorage.setItem('q_last', JSON.stringify({surah, ayah})); }
-function continueLast(){ let l=JSON.parse(localStorage.getItem('q_last')||'null'); if(!l) alert('Last Read Illa - Quran Padikka Start Pannunga'); else openSurah(l.surah,'Surah '+l.surah); }
-async function searchQuranWord(){ let q=document.getElementById('quranWordSearch').value.trim(); if(!q) return alert('Word Type Pannunga'); document.getElementById('readerTitle').innerText='Search: '+q; document.getElementById('reader').style.display='flex'; document.getElementById('readerContent').innerHTML='<p style="text-align:center;padding:30px">⏳ Searching...</p>'; try{ let r=await fetch('https://api.alquran.cloud/v1/search/'+encodeURIComponent(q)+'/all/ta.tamil'); let d=await r.json(); let matches=d.data.matches||[]; if(matches.length==0) document.getElementById('readerContent').innerHTML='<p style="text-align:center;padding:30px">Onnum Kedaikkala</p>'; else document.getElementById('readerContent').innerHTML = matches.slice(0,50).map(m=>'<div class="ayah"><b>Surah '+m.surah.number+' : '+m.surah.englishName+' - Ayah '+m.numberInSurah+'</b><div class="ar">'+m.text+'</div><button onclick="openSurah('+m.surah.number+',\''+m.surah.englishName+'\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700;margin-top:8px">Open Surah →</button></div>').join(''); }catch(e){ document.getElementById('readerContent').innerHTML='<p>Search Work Aagala - Internet Check Pannunga</p>'; } }
-function showJuzList(){ document.getElementById('readerTitle').innerText='📖 30 Juz - Para'; document.getElementById('reader').style.display='flex'; let c=document.getElementById('readerContent'); let h=''; for(let j=1;j<=30;j++){ h+='<div class="surah-item" onclick="openJuz('+j+')"><div><b>Juz '+j+' - Para '+j+'</b><br><small>Click Panni Padikkalam</small></div><span>→</span></div>'; } c.innerHTML=h; }
-async function openJuz(j){ document.getElementById('readerTitle').innerText='Juz '+j; let c=document.getElementById('readerContent'); c.innerHTML='<p style="text-align:center;padding:30px">⏳ Loading Juz '+j+'...</p>'; let r=await fetch('https://api.alquran.cloud/v1/juz/'+j+'/quran-uthmani'); let d=await r.json(); c.innerHTML = d.data.ayahs.map(a=>'<div class="ayah"><b>Surah '+a.surah.number+' : Ayah '+a.numberInSurah+'</b><div class="ar">'+a.text+'</div></div>').join(''); }
-function tajweedColor(text){ return text.replace(/نّ|مّ/g, '<span style="color:#2ECC71;font-weight:700">$&</span>').replace(/قْ|طْ|بْ|جْ|دْ/g, '<span style="color:#FF8C00;font-weight:700">$&</span>').replace(/اا|وو|يي/g, '<span style="color:#3498DB">$&</span>'); }
-function copyAyah(text){ navigator.clipboard.writeText(text); alert('✅ Copy Aachu! WhatsApp-la Paste Pannalam'); }
-function shareAyah(text){ let url='https://wa.me/?text='+encodeURIComponent(text+'\n\n- Madharasathul Ikhlaas Quran'); window.open(url,'_blank'); }
-function playAyah(globalNum){ audioObj.pause(); audioObj.src='https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+globalNum+'.mp3'; audioObj.play(); }
-function playSurah(surah){ audioObj.pause(); audioObj.src='https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/'+surah+'.mp3'; audioObj.play(); alert('🔊 Surah Audio Playing...'); }
-async function loadFullTafsir(surah, ayah, el){ el.innerHTML='⏳ Tafsir Loading...'; try{ let r=await fetch('https://api.alquran.cloud/v1/ayah/'+surah+':'+ayah+'/ta.tamil'); let d=await r.json(); el.innerHTML='<b style="color:#C9A227">FULL TAFSIR - TAMIL:</b><br>'+d.data.text; }catch(e){ el.innerHTML='Tafsir Load Aagala - <a href="https://quran.com/'+surah+':'+ayah+'" target="_blank" style="color:#C9A227">Quran.com-la Paakka Click Pannunga →</a>'; } }
-// --- LUXURY MUSHAF FUNCTIONS ---
-function switchQTab(type,btn){ document.querySelectorAll('.q-tab button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.getElementById('surahList').style.display = type=='surah'?'block':'none'; document.getElementById('pageList').style.display = type=='page'?'block':'none'; document.getElementById('juzListTab').style.display = (type=='juz'||type=='hizb'||type=='ruku')?'block':'none'; if(type=='page'){ let h=''; for(let p=1;p<=604;p+=20){ h+='<div class="surah-item" onclick="openQuranPage('+p+')"><div><b>Page '+p+' - '+(p+19)+'</b><br><small>Mushaf Page</small></div><span>📖 →</span></div>'; } document.getElementById('pageList').innerHTML=h; } if(type=='juz'){ let h=''; for(let j=1;j<=30;j++){ h+='<div class="surah-item" onclick="openJuz('+j+')"><div><b>Juz '+j+' - Para '+j+'</b></div><span>→</span></div>'; } document.getElementById('juzListTab').innerHTML=h; } if(type=='hizb'){ let h=''; for(let i=1;i<=60;i++){ h+='<div class="surah-item" onclick="alert(\'Hizb '+i+' - Juz \'+Math.ceil(i/2)+\' la Irukku\')"><div><b>Hizb '+i+'</b><br><small>Juz '+Math.ceil(i/2)+'</small></div><span>→</span></div>'; } document.getElementById('juzListTab').innerHTML=h; } if(type=='ruku'){ let h=''; for(let i=1;i<=556;i+=20){ h+='<div class="surah-item"><div><b>Ruku '+i+' - '+(i+19)+'</b></div><span>→</span></div>'; } document.getElementById('juzListTab').innerHTML=h; } }
-async function openQuranPage(p){ document.getElementById('readerTitle').innerText='Mushaf Page '+p; document.getElementById('reader').style.display='flex'; let c=document.getElementById('readerContent'); c.innerHTML='<p style="text-align:center;padding:30px">⏳ Loading Page '+p+'...</p>'; try{ let r=await fetch('https://api.alquran.cloud/v1/page/'+p+'/quran-uthmani'); let d=await r.json(); let h='<div class="mushaf-page"><div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div class="mushaf-ar">'; d.data.ayahs.forEach(a=>{ h+= tajweedColor(a.text) + ' <span class="ayah-num" onclick="toggleAyahTamil(this,'+a.surah.number+','+a.numberInSurah+')">'+a.numberInSurah+'</span> '; }); h+='</div><div class="page-bar">📖 Page '+p+' • Juz '+d.data.ayahs[0].juz+' • Madharasathul Ikhlaas</div></div>'; c.innerHTML=h; }catch(e){ c.innerHTML='<p>Page Load Aagala - Internet Check Pannunga</p>'; } }
-async function toggleAyahTamil(el,surah,ayah){ let next = el.nextElementSibling; if(next && next.classList && next.classList.contains('ayah-tamil')){ next.classList.toggle('show'); return; } let div=document.createElement('div'); div.className='ayah-tamil show'; div.innerText='⏳ Tamil Loading...'; el.after(div); try{ let r=await fetch('https://api.alquran.cloud/v1/ayah/'+surah+':'+ayah+'/ta.tamil'); let d=await r.json(); div.innerHTML='<b style="color:#0F3D26">TAMIL MEANING:</b><br>'+d.data.text; }catch(e){ div.innerText='Tamil Load Aagala'; } }
-let autoScrollOn=false, autoTimer=null;
-function toggleAutoScroll(){ autoScrollOn=!autoScrollOn; document.getElementById('autoTxt').innerText = autoScrollOn?'Stop Scroll':'Auto Scroll'; if(autoScrollOn){ autoTimer=setInterval(()=>{ document.getElementById('readerContent').scrollTop+=1; },50); } else clearInterval(autoTimer); }
-function showPlanner(){ let d=prompt('Quran Planner - Oru Naalukku Ethana Page Padikka Poringa? Ex: 5'); if(!d) return; let days=Math.ceil(604/d); alert('📅 Planner:\nOru Naalukku '+d+' Pages\nTotal '+days+' Naal-la Quran Mudiyum!\n\nMasha Allah - Start Pannunga!'); }
-function updateLastReadText(){ let l=JSON.parse(localStorage.getItem('q_last')||'null'); if(l && document.getElementById('lastReadText')) document.getElementById('lastReadText').innerText='Surah '+l.surah+' - Ayah '+l.ayah+' - Continue Pannunga'; }
-async function openSurah(n, name){
-  currentSurah=n; saveLast(n,1);
-  document.getElementById('readerTitle').innerText=n+'. '+name;
-  document.getElementById('reader').style.display='flex';
-  let c=document.getElementById('readerContent');
-  c.innerHTML='<p style="text-align:center;padding:30px">⏳ Loading Quran...</p>';
-  document.getElementById('quranTop').style.display='block';
-  try{
-    let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil,en.transliteration');
-    let data=await res.json();
-    let arabic=data.data[0].ayahs, tamil=data.data[1].ayahs, translit=data.data[2].ayahs;
-    let h='<div style="text-align:center;margin-bottom:12px"><button onclick="playSurah('+n+')" style="background:#C9A227;color:#000;border:none;padding:12px 20px;border-radius:20px;font-weight:700">🔊 Full Surah Audio Play</button><br><br><button onclick="toggleMode(\'word\')" style="background:#C9A227;color:#000;border:none;padding:10px 14px;border-radius:20px;font-weight:700;margin:2px">Word by Word</button><button onclick="toggleMode(\'tafsir\')" style="background:#242936;color:#C9A227;border:1px solid #C9A227;padding:10px 14px;border-radius:20px;font-weight:700;margin:2px">Tafsir</button><button onclick="toggleMode(\'normal\')" style="background:#242936;color:#fff;border:1px solid #555;padding:10px 14px;border-radius:20px;margin:2px">Normal</button></div>';
-    // MUSHAF PAGE VIEW
-    let pageNo=1;
-    h+='<div class="mushaf-page">';
-    if(n!=1 && n!=9){ h+='<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>'; }
-    h+='<div class="mushaf-ar">';
-    arabic.forEach((a,i)=>{
-      h+= tajweedColor(a.text) + ' <span class="ayah-num" onclick="toggleAyahTamil(this,'+n+','+a.numberInSurah+')">'+a.numberInSurah+'</span> ';
-      if((i+1)%10==0 && i!=arabic.length-1){ h+='</div><div class="page-bar">📖 Page '+pageNo+' • Surah '+n+' • Ayah '+(i+1)+' • Madharasathul Ikhlaas</div><div class="mushaf-ar">'; pageNo++; }
-    });
-    h+='</div><div class="page-bar">📖 Page '+pageNo+' • Surah '+n+' • End • Madharasathul Ikhlaas</div></div>';
-    // DETAIL LIST - Tamil + Buttons
-    arabic.forEach((a,i)=>{
-      let words=a.text.split(' ');
-      let wordHtml=words.map(w=>'<span style="display:inline-block;background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:8px;margin:3px;text-align:center"><span style="font-size:22px;display:block">'+tajweedColor(w)+'</span><span style="font-size:11px;color:#C9A227">Word</span></span>').join('');
-      h+='<div class="ayah" id="ayah-'+a.numberInSurah+'">'
-        +'<div class="num">Ayah '+a.numberInSurah+' | Juz '+a.juz+'</div>'
-        +'<div class="ar" style="font-size:'+arabicSize+'px">'+tajweedColor(a.text)+'</div>'
-        +'<div class="tamil"><b>TAMIL:</b> '+tamil[i].text+'</div>'
-        +'<div class="tamil" style="color:#9AA3B2"><b>TRANSLITERATION:</b> '+translit[i].text+'</div>'
-        +'<div class="word-box" style="display:none;margin-top:10px">'+wordHtml+'</div>'
-        +'<div class="tafsir-box" style="display:none;margin-top:10px;border-top:1px dashed #C9A227;padding-top:10px"><button onclick="loadFullTafsir('+n+','+a.numberInSurah+',this.parentElement)" style="background:#C9A227;color:#000;border:none;padding:8px 14px;border-radius:10px;font-weight:700">📖 Full Tafsir Load Pannunga</button></div>'
-        +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">'
-        +'<button onclick="playAyah('+a.number+')" style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:700">🔊 Play</button>'
-        +'<button onclick="bookmarkAyah('+n+','+a.numberInSurah+',\''+a.text.replace(/\'/g,"")+'\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">🔖 Bookmark</button>'
-        +'<button onclick="copyAyah(\''+a.text+' - '+tamil[i].text.replace(/\'/g,"")+'\')" style="background:#333;color:#fff;border:none;padding:8px 12px;border-radius:20px">📋 Copy</button>'
-        +'<button onclick="shareAyah(\''+a.text+' - '+tamil[i].text.replace(/\'/g,"")+'\')" style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:700">💬 Share</button>'
-        +'</div></div>';
-      saveLast(n, a.numberInSurah);
-    });
-    c.innerHTML=h; c.scrollTop=0;
-  }catch(e){ c.innerHTML='<p style="text-align:center;padding:30px">Internet Illa - Check Pannunga</p>'; }
-}
-function toggleMode(mode){ let w=document.querySelectorAll('.word-box'), t=document.querySelectorAll('.tafsir-box'); if(mode=='word'){ w.forEach(x=>x.style.display='block'); t.forEach(x=>x.style.display='none'); } if(mode=='tafsir'){ w.forEach(x=>x.style.display='none'); t.forEach(x=>x.style.display='block'); } if(mode=='normal'){ w.forEach(x=>x.style.display='none'); t.forEach(x=>x.style.display='none'); } }
-function closeBook(){ document.getElementById('reader').style.display='none'; document.getElementById('readerContent').innerHTML=''; var qt = document.getElementById('quranTop'); if(qt) qt.style.display='none'; if(typeof audioObj !== 'undefined' && audioObj) audioObj.pause(); if(autoTimer) clearInterval(autoTimer); autoScrollOn=false; }
+function openDua(i){let d=duas[i];document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><span class="repeat">⏰ '+d.r+'</span><div class="ar">'+d.a+'</div><div class="tamil"><b>TAMIL:</b>'+d.tm+'</div><p style="color:#C9A227;font-size:12px;margin-top:12px">📖 Hisnul Muslim • '+d.cat+'</p></div>'}
+function closeBook(){document.getElementById('reader').style.display='none'}
 function submitAdmission(){let n=document.getElementById('sName').value,a=document.getElementById('sAge').value,pn=document.getElementById('pName').value,pp=document.getElementById('pPhone').value,c=document.getElementById('sClass').value;if(!n||!a||!pn||!pp){alert('Please fill all fields!');return}let m="New Admission%0A%0AStudent: "+n+"%0AAge: "+a+"%0AParent: "+pn+"%0APhone: "+pp+"%0AClass: "+c;window.open('https://wa.me/917418140608?text='+m,'_blank')}
-function openPDF(file){ window.open(file,'_blank'); }
 </script>
 </body>
 </html>
