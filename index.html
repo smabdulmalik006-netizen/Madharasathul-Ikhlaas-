@@ -88,7 +88,25 @@ body{background:#1B1F2A;color:#fff;padding-bottom:90px;overflow-x:hidden}
 <div class="box" id="formSection"><h2>📝 Admission Form</h2><input id="sName" placeholder="Student Name *"><input id="sAge" placeholder="Age *" type="number"><input id="pName" placeholder="Parent Name *"><input id="pPhone" placeholder="Parent Phone *"><select id="sClass"><option>Select Class</option><option>Quran - Basic</option><option>Quran - Hifz</option><option>Aalima Course</option><option>Tajweed</option><option>Yassarnal Quran</option></select><button onclick="submitAdmission()">Submit via WhatsApp ✅</button><p style="text-align:center;margin-top:10px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="box" id="profileSection" style="text-align:center"><h2>Aalima M.Syed Ali Fathima</h2><p style="margin:6px 0">Madharasathul Ikhlaas</p><p>📍 Swamiyarmadam</p><p>📞 7418140608</p><a class="call-btn" href="tel:7418140608">📞 Audio Call</a><a class="call-btn" style="background:#7b1fa2" href="https://wa.me/917418140608?text=Assalamu%20Alaikum%2C%20Video%20Call%20Pannalama%3F">📹 Video Call</a><a class="call-btn" style="background:#25D366" href="https://wa.me/917418140608?text=Assalamu%20Alaikum!">💬 WhatsApp Message</a><a class="call-btn" style="background:#C9A227" onclick="showClass()">📹 Join Live Class</a><p style="margin-top:12px;color:#888;font-size:12px" onclick="showHome()">← Back to Home</p></div>
 <div class="nav"><div class="active" onclick="showHome()">🏠<br>Home</div><div onclick="showClass()">📹<br>Class</div><div onclick="showForm()">📝<br>Admission</div><div onclick="showProfile()">👤<br>Profile</div></div>
-<div id="reader"><div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div><div id="readerContent"></div><div style="background:#141821;padding:10px;text-align:center;font-size:12px;color:#C9A227">Madharasathul Ikhlaas • Scroll Panni Padikkalam</div></div>
+<div id="reader">
+  <div id="readerHeader"><span id="readerTitle">Book</span><button onclick="closeBook()">✕ Close</button></div>
+
+  <!-- ✅ EDITED - quranTop Ippo Reader-kkulla! -->
+  <div id="quranTop" style="display:none;padding:10px;background:#242936;border-bottom:1px solid #C9A227">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center">
+      <button onclick="changeFont(2)" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">A+ Perusu</button>
+      <button onclick="changeFont(-2)" style="background:#242936;color:#fff;border:1px solid #555;padding:8px 12px;border-radius:20px">A- Chinnadhu</button>
+      <button onclick="toggleTheme()" id="themeBtn" style="background:#242936;color:#C9A227;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">🌙 Night / ☀️ Day</button>
+      <button onclick="showJuzList()" style="background:#0F3D26;color:#FFD700;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">📖 30 Juz</button>
+      <button onclick="showBookmarks()" style="background:#5A3A0F;color:#FFD700;border:1px solid #C9A227;padding:8px 12px;border-radius:20px;font-weight:700">🔖 Bookmark</button>
+      <button onclick="continueLast()" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">▶️ Last Read</button>
+    </div>
+    <div class="search" style="margin:10px 0 0"><input id="quranWordSearch" placeholder="Quran-la Thedunga... Ex: Sabur"><button onclick="searchQuranWord()" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700">Search</button></div>
+  </div>
+
+  <div id="readerContent"></div>
+  <div style="background:#141821;padding:10px;text-align:center"><button onclick="closeBook()" style="background:#C9A227;color:#000;border:none;padding:12px 30px;border-radius:20px;font-weight:700">← Back to Home</button></div>
+</div>
 <script>
 var surahs=[["1","Al-Fatiha","الفاتحة","7"],["2","Al-Baqarah","البقرة","286"],["3","Aal-e-Imran","آل عمران","200"],["4","An-Nisa","النساء","176"],["5","Al-Ma'idah","المائدة","120"],["6","Al-An'am","الأنعام","165"],["7","Al-A'raf","الأعراف","206"],["8","Al-Anfal","الأنفال","75"],["9","At-Tawbah","التوبة","129"],["10","Yunus","يونس","109"],["11","Hud","هود","123"],["12","Yusuf","يوسف","111"],["13","Ar-Ra'd","الرعد","43"],["14","Ibrahim","ابراهيم","52"],["15","Al-Hijr","الحجر","99"],["16","An-Nahl","النحل","128"],["17","Al-Isra","الإسراء","111"],["18","Al-Kahf","الكهف","110"],["19","Maryam","مريم","98"],["20","Taha","طه","135"],["21","Al-Anbiya","الأنبياء","112"],["22","Al-Hajj","الحج","78"],["23","Al-Mu'minun","المؤمنون","118"],["24","An-Nur","النور","64"],["25","Al-Furqan","الفرقان","77"],["26","Ash-Shu'ara","الشعراء","227"],["27","An-Naml","النمل","93"],["28","Al-Qasas","القصص","88"],["29","Al-Ankabut","العنكبوت","69"],["30","Ar-Rum","الروم","60"],["31","Luqman","لقمان","34"],["32","As-Sajdah","السجدة","30"],["33","Al-Ahzab","الأحزاب","73"],["34","Saba","سبإ","54"],["35","Fatir","فاطر","45"],["36","Ya-Sin","يس","83"],["37","As-Saffat","الصافات","182"],["38","Sad","ص","88"],["39","Az-Zumar","الزمر","75"],["40","Ghafir","غافر","85"],["41","Fussilat","فصلت","54"],["42","Ash-Shura","الشورى","53"],["43","Az-Zukhruf","الزخرف","89"],["44","Ad-Dukhan","الدخان","59"],["45","Al-Jathiyah","الجاثية","37"],["46","Al-Ahqaf","الأحقاف","35"],["47","Muhammad","محمد","38"],["48","Al-Fath","الفتح","29"],["49","Al-Hujurat","الحجرات","18"],["50","Qaf","ق","45"],["51","Adh-Dhariyat","الذاريات","60"],["52","At-Tur","الطور","49"],["53","An-Najm","النجم","62"],["54","Al-Qamar","القمر","55"],["55","Ar-Rahman","الرحمن","78"],["56","Al-Waqi'ah","الواقعة","96"],["57","Al-Hadid","الحديد","29"],["58","Al-Mujadila","المجادلة","22"],["59","Al-Hashr","الحشر","24"],["60","Al-Mumtahanah","الممتحنة","13"],["61","As-Saff","الصف","14"],["62","Al-Jumu'ah","الجمعة","11"],["63","Al-Munafiqun","المنافقون","11"],["64","At-Taghabun","التغابن","18"],["65","At-Talaq","الطلاق","12"],["66","At-Tahrim","التحريم","12"],["67","Al-Mulk","الملك","30"],["68","Al-Qalam","القلم","52"],["69","Al-Haqqah","الحاقة","52"],["70","Al-Ma'arij","المعارج","44"],["71","Nuh","نوح","28"],["72","Al-Jinn","الجن","28"],["73","Al-Muzzammil","المزمل","20"],["74","Al-Muddaththir","المدثر","56"],["75","Al-Qiyamah","القيامة","40"],["76","Al-Insan","الانسان","31"],["77","Al-Mursalat","المرسلات","50"],["78","An-Naba","النبإ","40"],["79","An-Nazi'at","النازعات","46"],["80","Abasa","عبس","42"],["81","At-Takwir","التكوير","29"],["82","Al-Infitar","الانفطار","19"],["83","Al-Mutaffifin","المطففين","36"],["84","Al-Inshiqaq","الانشقاق","25"],["85","Al-Buruj","البروج","22"],["86","At-Tariq","الطارق","17"],["87","Al-A'la","الأعلى","19"],["88","Al-Ghashiyah","الغاشية","26"],["89","Al-Fajr","الفجر","30"],["90","Al-Balad","البلد","20"],["91","Ash-Shams","الشمس","15"],["92","Al-Layl","الليل","21"],["93","Ad-Duha","الضحى","11"],["94","Ash-Sharh","الشرح","8"],["95","At-Tin","التين","8"],["96","Al-Alaq","العلق","19"],["97","Al-Qadr","القدر","5"],["98","Al-Bayyinah","البينة","8"],["99","Az-Zalzalah","الزلزلة","8"],["100","Al-Adiyat","العاديات","11"],["101","Al-Qari'ah","القارعة","11"],["102","At-Takathur","التكاثر","8"],["103","Al-Asr","العصر","3"],["104","Al-Humazah","الهمزة","9"],["105","Al-Fil","الفيل","5"],["106","Quraysh","قريش","4"],["107","Al-Ma'un","الماعون","7"],["108","Al-Kawthar","الكوثر","3"],["109","Al-Kafirun","الكافرون","6"],["110","An-Nasr","النصر","3"],["111","Al-Masad","المسد","5"],["112","Al-Ikhlas","الإخلاص","4"],["113","Al-Falaq","الفلق","5"],["114","An-Nas","الناس","6"]];
 var duas=[
@@ -314,8 +332,99 @@ function searchTajweed(){let v=document.getElementById('tajweedSearch').value.to
 function searchSeerah(){let v=document.getElementById('seerahSearch').value.toLowerCase();let items=document.querySelectorAll('#seerahList .lesson-item');items.forEach(it=>it.style.display=it.innerText.toLowerCase().includes(v)?"flex":"none")}
 function openDua(i){let d=duas[i];document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><span class="repeat">⏰ '+d.r+'</span><div class="ar">'+d.a+'</div><div class="tamil"><b>TAMIL TRANSLATION:</b>'+d.tm+'</div><p style="color:#C9A227;font-size:12px;margin-top:12px">📖 Hisnul Muslim • '+d.cat+'</p></div>'}
 function openLesson(type,i){let d;let title="";if(type=='tajweed'){d=tajweed[i];title="Tajweed - Tamil";}if(type=='yassarnal'){d=yassarnal[i];title="Yassarnal Quran";}if(type=='seerah'){d=seerah[i];title="Ar-Raheeq - Seerah Tamil";}document.getElementById('readerTitle').innerText=d.t;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.scrollTop=0;c.innerHTML='<div class="detail-box"><div class="lesson-title">'+d.t+'</div><div class="ar" style="text-align:center;font-size:30px;margin-bottom:10px">'+d.ar+'</div><div class="lesson-body">'+d.body+'</div><p style="color:#C9A227;font-size:12px;margin-top:14px;text-align:center">📖 '+title+' • Madharasathul Ikhlaas</p></div>'}
-async function openSurah(n,name){document.getElementById('readerTitle').innerText=n+'. '+name;document.getElementById('reader').style.display='flex';let c=document.getElementById('readerContent');c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Surah Loading... Tamil + Tajweed-oda Varudhu...</p>';c.scrollTop=0;try{let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil');let j=await res.json();let arabic=j.data[0].ayahs;let tamil=j.data[1].ayahs;let html='<div class="tajweed-box"><div>🔴<b>Idgham</b>Red</div><div>🟢<b>Ikhfa</b>Green</div><div>🔵<b>Madd</b>Blue</div><div>🟠<b>Ghunnah</b>Orange</div></div>';html+='<p style="text-align:center;color:#C9A227;font-size:12px;margin-bottom:12px">Tamil Translation - Jan Trust • Tajweed Colour</p>';arabic.forEach((a,i)=>{let txt=a.text;txt=txt.replace(/نّ|مّ/g,'<span style="color:#FFA500">$&</span>');txt=txt.replace(/آ|أٰ|ٱٰ/g,'<span style="color:#5DA9FF">$&</span>');html+='<div class="ayah"><div class="num">Ayah '+a.numberInSurah+'</div><div class="ar">'+txt+'</div><div class="tamil"><b>TAMIL TRANSLATION - JAN TRUST:</b>'+tamil[i].text+'</div></div>'});c.innerHTML=html}catch(e){c.innerHTML='<p style="color:#fff;padding:30px;text-align:center">Load Aagala - Internet Check Pannunga</p>'}}
-function closeBook(){document.getElementById('reader').style.display='none';document.getElementById('readerContent').innerHTML=''}
+let arabicSize = 26;
+let currentSurah = 1;
+let currentAyah = 1;
+let audioObj = new Audio();
+
+// 2. FONT SIZE
+function changeFont(d){ arabicSize += d; if(arabicSize<18) arabicSize=18; if(arabicSize>40) arabicSize=40; document.querySelectorAll('.ar').forEach(e=>e.style.fontSize=arabicSize+'px'); localStorage.setItem('q_font',arabicSize); }
+
+// 3. NIGHT / DAY MODE
+let isDay = false;
+function toggleTheme(){ isDay=!isDay; if(isDay){ document.body.style.background='#FFF8E1'; document.body.style.color='#000'; document.querySelectorAll('.ayah,.detail-box').forEach(e=>{e.style.background='#fff'; e.style.color='#000'}); document.getElementById('themeBtn').innerText='🌙 Night Mode'; } else { document.body.style.background='#1B1F2A'; document.body.style.color='#fff'; document.querySelectorAll('.ayah,.detail-box').forEach(e=>{e.style.background='#242936'; e.style.color='#fff'}); document.getElementById('themeBtn').innerText='☀️ Day Mode'; } }
+
+// 4. BOOKMARK - SAVE / SHOW
+function bookmarkAyah(surah, ayah, text){ let b = JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); b.push({surah, ayah, text, time:Date.now()}); localStorage.setItem('q_bookmarks', JSON.stringify(b)); alert('🔖 Bookmark Saved! Surah '+surah+' Ayah '+ayah); }
+function showBookmarks(){ let b = JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); document.getElementById('readerTitle').innerText='🔖 My Bookmarks'; document.getElementById('reader').style.display='flex'; let c=document.getElementById('readerContent'); if(b.length==0) c.innerHTML='<p style="text-align:center;padding:30px">Bookmark Illa - Ayah-la Bookmark Button Click Pannunga</p>'; else c.innerHTML = b.map((x,i)=>'<div class="ayah"><b>Surah '+x.surah+' : Ayah '+x.ayah+'</b><div class="ar">'+x.text+'</div><button onclick="openSurah('+x.surah+',\'Surah\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700;margin-top:8px">Open →</button> <button onclick="removeBookmark('+i+')" style="background:#333;color:#fff;border:none;padding:8px 12px;border-radius:10px">Delete</button></div>').join(''); }
+function removeBookmark(i){ let b=JSON.parse(localStorage.getItem('q_bookmarks')||'[]'); b.splice(i,1); localStorage.setItem('q_bookmarks',JSON.stringify(b)); showBookmarks(); }
+
+// 5. LAST READ - AUTO SAVE
+function saveLast(surah, ayah){ localStorage.setItem('q_last', JSON.stringify({surah, ayah})); }
+function continueLast(){ let l=JSON.parse(localStorage.getItem('q_last')||'null'); if(!l) alert('Last Read Illa - Quran Padikka Start Pannunga'); else openSurah(l.surah,'Surah '+l.surah); }
+
+// 6. SEARCH - FULL QURAN WORD SEARCH
+async function searchQuranWord(){ let q=document.getElementById('quranWordSearch').value.trim(); if(!q) return alert('Word Type Pannunga'); document.getElementById('readerTitle').innerText='Search: '+q; document.getElementById('reader').style.display='flex'; document.getElementById('readerContent').innerHTML='<p style="text-align:center;padding:30px">⏳ Searching...</p>'; try{ let r=await fetch('https://api.alquran.cloud/v1/search/'+encodeURIComponent(q)+'/all/ta.tamil'); let d=await r.json(); let matches=d.data.matches||[]; if(matches.length==0) document.getElementById('readerContent').innerHTML='<p style="text-align:center;padding:30px">Onnum Kedaikkala</p>'; else document.getElementById('readerContent').innerHTML = matches.slice(0,50).map(m=>'<div class="ayah"><b>Surah '+m.surah.number+' : '+m.surah.englishName+' - Ayah '+m.numberInSurah+'</b><div class="ar">'+m.text+'</div><button onclick="openSurah('+m.surah.number+',\''+m.surah.englishName+'\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:700;margin-top:8px">Open Surah →</button></div>').join(''); }catch(e){ document.getElementById('readerContent').innerHTML='<p>Search Work Aagala - Internet Check Pannunga</p>'; } }
+
+// 7. JUZ LIST - 30 JUZ
+function showJuzList(){ document.getElementById('readerTitle').innerText='📖 30 Juz - Para'; document.getElementById('reader').style.display='flex'; let c=document.getElementById('readerContent'); let h=''; for(let j=1;j<=30;j++){ h+='<div class="surah-item" onclick="openJuz('+j+')"><div><b>Juz '+j+' - Para '+j+'</b><br><small>Click Panni Padikkalam</small></div><span>→</span></div>'; } c.innerHTML=h; }
+async function openJuz(j){ document.getElementById('readerTitle').innerText='Juz '+j; let c=document.getElementById('readerContent'); c.innerHTML='<p style="text-align:center;padding:30px">⏳ Loading Juz '+j+'...</p>'; let r=await fetch('https://api.alquran.cloud/v1/juz/'+j+'/quran-uthmani'); let d=await r.json(); c.innerHTML = d.data.ayahs.map(a=>'<div class="ayah"><b>Surah '+a.surah.number+' : Ayah '+a.numberInSurah+'</b><div class="ar">'+a.text+'</div></div>').join(''); }
+
+// 8. TAJWEED COLOUR - SIMPLE RULE
+function tajweedColor(text){
+  // Ghunnah - Noon / Meem Shadda - Green, Qalqalah - Orange, Madd - Blue
+  return text
+    .replace(/نّ|مّ/g, '<span style="color:#2ECC71;font-weight:700">$&</span>')
+    .replace(/قْ|طْ|بْ|جْ|دْ/g, '<span style="color:#FF8C00;font-weight:700">$&</span>')
+    .replace(/اا|وو|يي/g, '<span style="color:#3498DB">$&</span>');
+}
+
+// 9. COPY / SHARE + AUDIO + FULL TAFSIR
+function copyAyah(text){ navigator.clipboard.writeText(text); alert('✅ Copy Aachu! WhatsApp-la Paste Pannalam'); }
+function shareAyah(text){ let url='https://wa.me/?text='+encodeURIComponent(text+'\n\n- Madharasathul Ikhlaas Quran'); window.open(url,'_blank'); }
+function playAyah(globalNum){ audioObj.pause(); audioObj.src='https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+globalNum+'.mp3'; audioObj.play(); }
+function playSurah(surah){ audioObj.pause(); audioObj.src='https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/'+surah+'.mp3'; audioObj.play(); alert('🔊 Surah Audio Playing...'); }
+async function loadFullTafsir(surah, ayah, el){
+  el.innerHTML='⏳ Tafsir Loading...';
+  try{
+    let r=await fetch('https://api.alquran.cloud/v1/ayah/'+surah+':'+ayah+'/ta.tamil');
+    let d=await r.json();
+    el.innerHTML='<b style="color:#C9A227">FULL TAFSIR - IBN KATHIR / TAMIL:</b><br>'+d.data.text+'<br><br><small>Source: AlQuran Cloud - Tamil Tafsir. Full Tafsir-kku Quran.com-la Paakkalam.</small>';
+  }catch(e){ el.innerHTML='Tafsir Load Aagala - <a href="https://quran.com/'+surah+':'+ayah+'" target="_blank" style="color:#C9A227">Quran.com-la Paakka Click Pannunga →</a>'; }
+}
+
+// 10. MAIN - OPEN SURAH WITH ALL 10
+async function openSurah(n, name){
+  currentSurah=n; saveLast(n,1);
+  document.getElementById('readerTitle').innerText=n+'. '+name;
+  document.getElementById('reader').style.display='flex';
+  let c=document.getElementById('readerContent');
+  c.innerHTML='<p style="text-align:center;padding:30px">⏳ Loading Quran...</p>';
+  document.getElementById('quranTop').style.display='block';
+  try{
+    let res=await fetch('https://api.alquran.cloud/v1/surah/'+n+'/editions/quran-uthmani,ta.tamil,en.transliteration');
+    let data=await res.json();
+    let arabic=data.data[0].ayahs, tamil=data.data[1].ayahs, translit=data.data[2].ayahs;
+    let h='<div style="text-align:center;margin-bottom:12px"><button onclick="playSurah('+n+')" style="background:#C9A227;color:#000;border:none;padding:12px 20px;border-radius:20px;font-weight:700">🔊 Full Surah Audio Play</button><br><br><button onclick="toggleMode(\'word\')" style="background:#C9A227;color:#000;border:none;padding:10px 14px;border-radius:20px;font-weight:700;margin:2px">Word by Word</button><button onclick="toggleMode(\'tafsir\')" style="background:#242936;color:#C9A227;border:1px solid #C9A227;padding:10px 14px;border-radius:20px;font-weight:700;margin:2px">Tafsir</button><button onclick="toggleMode(\'normal\')" style="background:#242936;color:#fff;border:1px solid #555;padding:10px 14px;border-radius:20px;margin:2px">Normal</button></div>';
+    arabic.forEach((a,i)=>{
+      let words=a.text.split(' ');
+      let wordHtml=words.map(w=>'<span style="display:inline-block;background:#242936;border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:8px;margin:3px;text-align:center"><span style="font-size:22px;display:block">'+tajweedColor(w)+'</span><span style="font-size:11px;color:#C9A227">Word</span></span>').join('');
+      h+='<div class="ayah" id="ayah-'+a.numberInSurah+'">'
+        +'<div class="num">Ayah '+a.numberInSurah+' | Juz '+a.juz+'</div>'
+        +'<div class="ar" style="font-size:'+arabicSize+'px">'+tajweedColor(a.text)+'</div>'
+        +'<div class="tamil"><b>TAMIL:</b> '+tamil[i].text+'</div>'
+        +'<div class="tamil" style="color:#9AA3B2"><b>TRANSLITERATION:</b> '+translit[i].text+'</div>'
+        +'<div class="word-box" style="display:none;margin-top:10px">'+wordHtml+'</div>'
+        +'<div class="tafsir-box" style="display:none;margin-top:10px;border-top:1px dashed #C9A227;padding-top:10px"><button onclick="loadFullTafsir('+n+','+a.numberInSurah+',this.parentElement)" style="background:#C9A227;color:#000;border:none;padding:8px 14px;border-radius:10px;font-weight:700">📖 Full Tafsir Load Pannunga</button></div>'
+        +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">'
+        +'<button onclick="playAyah('+a.number+')" style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:700">🔊 Play</button>'
+        +'<button onclick="bookmarkAyah('+n+','+a.numberInSurah+',\''+a.text.replace(/'/g,"")+'\')" style="background:#C9A227;color:#000;border:none;padding:8px 12px;border-radius:20px;font-weight:700">🔖 Bookmark</button>'
+        +'<button onclick="copyAyah(\''+a.text+' - '+tamil[i].text.replace(/'/g,"")+'\')" style="background:#333;color:#fff;border:none;padding:8px 12px;border-radius:20px">📋 Copy</button>'
+        +'<button onclick="shareAyah(\''+a.text+' - '+tamil[i].text.replace(/'/g,"")+'\')" style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:700">💬 Share</button>'
+        +'</div></div>';
+      saveLast(n, a.numberInSurah);
+    });
+    c.innerHTML=h; c.scrollTop=0;
+  }catch(e){ c.innerHTML='<p style="text-align:center;padding:30px">Internet Illa - Check Pannunga</p>'; }
+}
+function toggleMode(mode){ let w=document.querySelectorAll('.word-box'), t=document.querySelectorAll('.tafsir-box'); if(mode=='word'){ w.forEach(x=>x.style.display='block'); t.forEach(x=>x.style.display='none'); } if(mode=='tafsir'){ w.forEach(x=>x.style.display='none'); t.forEach(x=>x.style.display='block'); } if(mode=='normal'){ w.forEach(x=>x.style.display='none'); t.forEach(x=>x.style.display='none'); } }
+function closeBook(){
+  document.getElementById('reader').style.display='none';
+  document.getElementById('readerContent').innerHTML='';
+  var qt = document.getElementById('quranTop');
+  if(qt) qt.style.display='none';
+  if(typeof audioObj !== 'undefined' && audioObj) audioObj.pause();
+}
 function submitAdmission(){let n=document.getElementById('sName').value,a=document.getElementById('sAge').value,pn=document.getElementById('pName').value,pp=document.getElementById('pPhone').value,c=document.getElementById('sClass').value;if(!n||!a||!pn||!pp){alert('Please fill all fields!');return}let m="New Admission%0A%0AStudent: "+n+"%0AAge: "+a+"%0AParent: "+pn+"%0APhone: "+pp+"%0AClass: "+c;window.open('https://wa.me/917418140608?text='+m,'_blank')}
 function openPDF(file){
   window.open(file,'_blank');
