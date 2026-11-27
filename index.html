@@ -3,7 +3,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Arial}body{background:#F8F6F0;color:#222;padding-bottom:90px}
 header{background:#0B3D2E;color:#fff;text-align:center;position:sticky;top:0;z-index:99}header h1{font-size:20px}header p{font-size:12px;color:#C9A227}
-.hero{background:linear-gradient(135deg,#0B3D2E,#145A43);color:#fff;padding:22px 16px;text-align:center}.hero h2{font-size:22px}.hero p{font-size:13px;opacity:.9;margin-top:6px}
+.hero{background:linear-gradient(135deg,#0B3D2E,#145A43);color:#fff;padding:22px 16px;text-align:center}.hero h2{font-size:28px;direction:rtl;line-height:1.8}.hero p{font-size:13px;opacity:.9;margin-top:6px}
 .btn{display:block;width:100%;padding:13px;border:none;border-radius:12px;font-weight:700;margin:8px 0;cursor:pointer;font-size:15px}.green{background:#0B3D2E;color:#fff}.gold{background:#C9A227;color:#fff}.light{background:#fff;border:1px solid #ddd}
 .card{background:#fff;border-radius:14px;padding:14px;margin:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;gap:12px;align-items:center}.card img{width:62px;height:62px;object-fit:cover;border-radius:10px}
 .section{padding:0 12px}.hidden{display:none!important}
@@ -25,8 +25,7 @@ input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;ma
 <body>
 <header><img src="logo.jpg" class="logo-banner" style="height:110px" onerror="this.outerHTML='<h1 style=\'padding:14px\'>🕌 MADHARASATHUL IKHLAAS</h1>'"><p style="padding:6px">Thiruvattar • Tamil Nadu</p></header>
 <div id="homeSection">
-<div><img src="logo.jpg" class="logo-banner" style="height:175px;border-radius:0 0 16px 16px" onerror="this.style.display='none'"></div>
-<div class="hero"><h2>Assalamu Alaikkum!</h2><p>Quran • Hisnul Muslim Tamil • Live Class • Admission</p></div>
+<div class="hero"><h2>السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</h2><p>Quran • Hisnul Muslim Tamil • Live Class • Admission</p></div>
 <div class="section">
 <button class="btn green" onclick="showQuran()">📖 Quran - Arabic + Tamil</button>
 <button class="btn gold" onclick="showHisnul()">🤲 Hisnul Muslim Tamil</button>
@@ -77,7 +76,7 @@ input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;ma
 let surahs=[],qType=1,currentTab='page',currentSurah=null,currentAyahs=[];
 let hisnulData=[
 {n:"1. தூங்கப் போகும் போது",ar:"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",ta:"பிஸ்மிக்க அல்லாஹும்ம அமூத்து வஅஹ்யா. பொருள்: யா அல்லாஹ்! உன் பெயரால் நான் மரணிக்கிறேன், உயிர் வாழ்கிறேன்."},
-{n:"2. தூக்கத்திலிருந்து விழித்தால்",ar:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",ta:"அல்ஹம்து லில்லாஹில்லதீ அஹ்யானா பஃத மா அமாத்தனா வஇலைஹின் நுஷூர். பொருள்: மரணித்த பின் உயிர் கொடுத்த அல்லாஹ்வுக்கே புகழ்."},
+{n:"2. தூக்கத்திலிருந்து விழித்தால்",ar:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",ta:"அல்ஹம்து லில்லாஹில்லதீ அஹ்யானா பஃத மா அமாத்தனா வஇலைஹின் நுஷூர்."},
 {n:"3. சாப்பாட்டிற்கு முன்",ar:"بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ",ta:"பிஸ்மில்லாஹி வஅலா பரகத்தில்லாஹ்."},
 {n:"4. சாப்பாட்டிற்கு பின்",ar:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",ta:"அல்ஹம்து லில்லாஹில்லதீ அத்அமனா வஸகானா வஜஅலனா முஸ்லிமீன்."},
 {n:"5. வீட்டில் நுழையும் போது",ar:"بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى رَبِّنَا تَوَكَّلْنَا",ta:"பிஸ்மில்லாஹி வலஜ்னா வபிஸ்மில்லாஹி கரஜ்னா வஅலா ரப்பினா தவக்கல்னா."},
