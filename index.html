@@ -239,9 +239,28 @@ if(surahs.length==0){box.innerHTML='Loading...';let r=await fetch('https://api.a
 renderSurahList(surahs)}
 function renderSurahList(list){let h='';list.forEach(s=>{h+=`<div class="surah" onclick="openSurah(${s.number})"><div style="display:flex;gap:10px;align-items:center"><div class="num">${s.number}</div><div><b>${s.englishName}</b><br><small>${s.revelationType} • ${s.numberOfAyahs} Ayahs</small></div></div><div class="ar">${s.name}</div></div>`});document.getElementById('quranList').innerHTML=h}
 function filterSurah(){let v=document.getElementById('qSearch').value.toLowerCase();if(currentTab!='page')return;renderSurahList(surahs.filter(s=>s.englishName.toLowerCase().includes(v)||s.name.includes(v)||String(s.number)==v))}
-async function openJuz(n){let juzStart={1:1,2:148,3:260}; // simple: open by surah approx
-// For Juz/Hizb/Ruku - fetch Juz API
-try{let r=await fetch(`https://api.alquran.cloud/v1/juz/${n}/quran-uthmani`);let j=await r.json();showAyahsFromData(j.data.ayahs,`Juz ${n}`,null)}catch(e){alert('Try Again')}}
+async function openJuz(n){
+  let apiType = currentTab;
+  let title = apiType=='juz' ? `Juz ${n}` : apiType=='hizb' ? `Hizb ${n}` : `Ruku ${n}`;
+  
+  document.getElementById('quranList').classList.add('hidden');
+  let rd=document.getElementById('quranReader');
+  rd.classList.remove('hidden');
+  document.getElementById('surahTitle').innerText = title + ' - Loading...';
+  document.getElementById('ayahs').innerHTML='Loading Tamil + Arabic...';
+  currentSurah = null;
+
+  try{
+    let r=await fetch(`https://api.alquran.cloud/v1/${apiType}/${n}/editions/quran-uthmani,ta.tamil`);
+    let j=await r.json();
+    let ar=j.data[0], ta=j.data[1];
+    document.getElementById('surahTitle').innerText = title + ' • ' + ar.ayahs.length + ' Ayahs';
+    currentAyahs = ar.ayahs;
+    showAyahsFromData(ar.ayahs, title, ta.ayahs);
+  }catch(e){
+    document.getElementById('ayahs').innerHTML='Internet Illa - Try Again';
+  }
+}
 function backToList(){document.getElementById('quranReader').classList.add('hidden');document.getElementById('quranList').classList.remove('hidden')}
 async function openSurah(num){currentSurah=num;document.getElementById('quranList').classList.add('hidden');let rd=document.getElementById('quranReader');rd.classList.remove('hidden');document.getElementById('surahTitle').innerText='Loading...';document.getElementById('ayahs').innerHTML='Loading Tamil + Arabic...';
 try{
