@@ -162,19 +162,20 @@ function stripBismillahExact(text){let t=text.trim();for(let f of BISMILLAH_FORM
 function cleanApiText(text){if(!text)return '';return text.replace(/<[^>]*>/g,'').replace(/\[[^\]]*\]/g,'').replace(/\[h:\d+\]/g,'').replace(/\[i\]/g,'').replace(/h:\d+/g,'').replace(/\s+/g,' ').trim()}
 function colorizeTajweed(plain){
 let s=plain;
-s=s.replace(/([ن م][\u064B-\u0652]*[ّ])/g,'\u0001G$1\u0002');
-s=s.replace(/([قطبجد][\u0652])/g,'\u0001Q$1\u0002');
-s=s.replace(/آ/g,'\u0001Mآ\u0002');
-s=s.replace(/نْ?\s*ب/g,'\u0001L$&\u0002');
-s=s.replace(/نْ?\s*[تثجدذزسشصضطظفقك]/g,'\u0001F$&\u0002');
-s=s.replace(/نْ?\s*[يرملون]/g,'\u0001D$&\u0002');
-s=s.replace(/\u0001G([^\u0002]*)\u0002/g,'<span class="t-ghunnah">$1</span>');
-s=s.replace(/\u0001Q([^\u0002]*)\u0002/g,'<span class="t-qalqalah">$1</span>');
-s=s.replace(/\u0001M([^\u0002]*)\u0002/g,'<span class="t-madd">$1</span>');
-s=s.replace(/\u0001L([^\u0002]*)\u0002/g,'<span class="t-iqlab">$1</span>');
-s=s.replace(/\u0001F([^\u0002]*)\u0002/g,'<span class="t-ikhfa">$1</span>');
-s=s.replace(/\u0001D([^\u0002]*)\u0002/g,'<span class="t-idgham">$1</span>');
-return s}
+s=s.replace(/([ن م][\u064B-\u0652]*[ّ])/g,'@@G@$1@@E@');
+s=s.replace(/([قطبجد][\u0652])/g,'@@Q@$1@@E@');
+s=s.replace(/آ/g,'@@M@آ@@E@');
+s=s.replace(/نْ?\s*ب/g,'@@L@$&@@E@');
+s=s.replace(/نْ?\s*[تثجدذزسشصضطظفقك]/g,'@@F@$&@@E@');
+s=s.replace(/نْ?\s*[يرملون]/g,'@@D@$&@@E@');
+s=s.replace(/@@G@(.*?)@@E@/g,'<span class="t-ghunnah">$1</span>');
+s=s.replace(/@@Q@(.*?)@@E@/g,'<span class="t-qalqalah">$1</span>');
+s=s.replace(/@@M@(.*?)@@E@/g,'<span class="t-madd">$1</span>');
+s=s.replace(/@@L@(.*?)@@E@/g,'<span class="t-iqlab">$1</span>');
+s=s.replace(/@@F@(.*?)@@E@/g,'<span class="t-ikhfa">$1</span>');
+s=s.replace(/@@D@(.*?)@@E@/g,'<span class="t-idgham">$1</span>');
+return s.replace(/@@[GQMLFD]@/g,'').replace(/@@E@/g,'');
+}
 async function openJuz(n){
 let apiType=currentTab=='hizb'?'hizb':currentTab;
 let title=currentTab=='juz'?`Juz ${n}`:currentTab=='hizb'?`Hizb ${n}`:`Ruku ${n}`;
