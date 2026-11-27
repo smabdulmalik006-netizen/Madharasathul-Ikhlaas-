@@ -158,8 +158,19 @@ async function loadSurahs(){let box=document.getElementById('quranList');documen
 function renderSurahList(list){let h='';list.forEach(s=>{h+=`<div class="surah" onclick="openSurah(${s.number})"><div style="display:flex;gap:10px;align-items:center"><div class="num">${s.number}</div><div><b>${s.englishName}</b><br><small>${s.revelationType} • ${s.numberOfAyahs} Ayahs</small></div></div><div class="ar">${s.name}</div></div>`});document.getElementById('quranList').innerHTML=h}
 function filterSurah(){let v=document.getElementById('qSearch').value.toLowerCase();if(currentTab!='page')return;renderSurahList(surahs.filter(s=>s.englishName.toLowerCase().includes(v)||s.name.includes(v)||String(s.number)==v))}
 const BISMILLAH_FORMS=["بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ","بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"];
-function stripBismillahExact(text){let t=text.trim();for(let f of BISMILLAH_FORMS){if(t.startsWith(f))return t.slice(f.length).trim()}let p=t.split(/\s+/);if(p.length>4&&p[0].includes('بِسْم')&&p[1].includes('اللَّه')){let idx=0,c=0;while(idx<t.length&&c<4){if(t[idx]===' ')c++;idx++;}let r=t.slice(idx).trim();if(r.length>5)return r}return t}
-function cleanApiText(text){if(!text)return '';return text.replace(/<[^>]*>/g,'').replace(/\[[^\]]*\]/g,'').replace(/\[h:\d+\]/g,'').replace(/\[i\]/g,'').replace(/h:\d+/g,'').replace(/\s+/g,' ').trim()}
+function stripBismillahExact(text){
+let t=text.trim();
+if(t.startsWith('بِسْمِ')||t.startsWith('بِسْم')){
+let parts=t.split(/\s+/);
+if(parts.length>4){return parts.slice(4).join(' ').trim()}
+return '';
+}
+return t;
+}
+function isBismillahOnly(text){
+let t=text.trim();
+return (t.startsWith('بِسْمِ')||t.startsWith('بِسْم')) && t.length<60;
+}
 function colorizeTajweed(plain){
 let s=plain;
 s=s.replace(/([ن م][\u064B-\u0652]*[ّ])/g,'@@G@$1@@E@');
