@@ -216,6 +216,7 @@ let showBismillah=(currentSurah&&currentSurah!=1&&currentSurah!=9&&currentTab=='
 if(showBismillah){h+=`<div class="bismillah-page">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>`}
 h+=`<div class="ayah-flow">`;
 let prevSurah=null;
+ayahs=ayahs.filter(a=>!isBismillahOnly(cleanApiText(a.text)));
 ayahs.forEach((a,idx)=>{
 let plain=cleanApiText(a.text);
 let curSurahNo=a.surah?a.surah.number:currentSurah;
