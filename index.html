@@ -277,7 +277,7 @@ function cleanBismillah(txt){
 }
 function showAyahsFromData(ayahs,title,taAyahs){
   let box=document.getElementById('ayahs');let h='';
-  if(currentSurah && currentSurah!=1 && currentSurah!=9){
+  if(currentSurah && currentSurah!=1 && currentSurah!=9 && currentTab=='page'){
     h+=`<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>`;
   }
   ayahs.forEach((a,idx)=>{
